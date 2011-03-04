@@ -55,20 +55,20 @@
 #pragma mark Retrieval Methods - without faulting
 
 /*!
- @function This returns all records that exist for a table without faulting
+ @method This returns all records that exist for a table without faulting
  @param table - an NSString that presents a table in the database
  */
 +(NSArray*) getRecordsWithoutFaultingForTable:(NSString*)table;
 
 /*!
- @function This returns records that exist for a table based on a condition(s) without faulting
+ @method This returns records that exist for a table based on a condition(s) without faulting
  @param table - an NSString that presents a table in the database
  @param predicate - A predicate which limits the number of records returned
  */
 +(NSArray*) getRecordsWithoutFaultingForTable:(NSString *)table withPredicate:(NSPredicate *)prd;
 
 /*!
- @function This returns records that exist for a table based on a condition(s) without faulting
+ @method This returns records that exist for a table based on a condition(s) without faulting
  @param table - an NSString that presents a table in the database
  @param predicate - NSString representation of a predicate which limits the number of records returned
  */
@@ -78,27 +78,27 @@
 #pragma mark Retrieval Methods - With faulting
 
 /*!
- @function This returns all records that exist for a table
+ @method This returns all records that exist for a table
  @param table - an NSString that presents a table in the database
  */
 +(NSArray*) getRecordsForTable:(NSString*)table;
 
 /*!
- @function This returns records that exist for a table based on a condition(s)
+ @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param predicate - A predicate which limits the number of records returned
  */
 +(NSArray*) getRecordsForTable:(NSString *)table withPredicate:(NSPredicate *)prd;
 
 /*!
- @function This returns records that exist for a table based on a condition(s)
+ @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param predicate - NSString representation of a predicate which limits the number of records returned
  */
 +(NSArray*) getRecordsForTable:(NSString*)table WithStringPredicate:(NSString*)prd;
 
 /*!
- @function This returns records that exist for a table based on a condition(s)
+ @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param top - NSNumber that determines how many records to return
  @param column - NSString that represents a column name
@@ -108,7 +108,7 @@
 
 
 /*!
- @function This returns records that exist for a table based on a condition(s)
+ @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param column - NSString that represents a column name
  @param ascending - Boolean to sort records in ascending or descending order
@@ -121,13 +121,13 @@
 
 
 /*!
- @function Deletes a managed object from the database
+ @method Deletes a managed object from the database
  @param object - Record to be deleted
  */
 +(void) deleteRecord:(NSManagedObject *)object;
 
 /*!
- @function Deletes all entries from database table
+ @method Deletes all entries from database table
  @param table - an NSString that represents a table in the database
  */
 +(void) deleteAllRecordsInTable:(NSString*)table;
@@ -136,7 +136,7 @@
 #pragma mark Save context methods
 
 /*!
- @function Save managedobjectcontext and provide error message handling
+ @method Save managedobjectcontext and provide error message handling
  */
 +(void) saveContext;
 
