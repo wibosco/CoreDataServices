@@ -49,7 +49,7 @@
 #pragma mark ManagedObjectContext accessors
 
 +(void) setManagedObjectContext:(NSManagedObjectContext*)context;
-+(NSManagedObjectContext*) getManagedObjectContext;
++(NSManagedObjectContext *) managedObjectContext;
 
 #pragma mark -
 #pragma mark Retrieval Methods - without faulting
@@ -58,21 +58,21 @@
  @method This returns all records that exist for a table without faulting
  @param table - an NSString that presents a table in the database
  */
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString*)table;
++(NSArray *) recordsWithoutFaultingForTable:(NSString*)table;
 
 /*!
  @method This returns records that exist for a table based on a condition(s) without faulting
  @param table - an NSString that presents a table in the database
  @param predicate - A predicate which limits the number of records returned
  */
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString *)table withPredicate:(NSPredicate *)prd;
++(NSArray *) recordsWithoutFaultingForTable:(NSString *)table predicate:(NSPredicate *)prd;
 
 /*!
  @method This returns records that exist for a table based on a condition(s) without faulting
  @param table - an NSString that presents a table in the database
  @param predicate - NSString representation of a predicate which limits the number of records returned
  */
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString*)table WithStringPredicate:(NSString*)prd;
++(NSArray *) recordsWithoutFaultingForTable:(NSString*)table stringPredicate:(NSString*)prd;
 
 #pragma mark -
 #pragma mark Retrieval Methods - With faulting
@@ -81,21 +81,21 @@
  @method This returns all records that exist for a table
  @param table - an NSString that presents a table in the database
  */
-+(NSArray*) getRecordsForTable:(NSString*)table;
++(NSArray *) recordsForTable:(NSString*)table;
 
 /*!
  @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param predicate - A predicate which limits the number of records returned
  */
-+(NSArray*) getRecordsForTable:(NSString *)table withPredicate:(NSPredicate *)prd;
++(NSArray *) recordsForTable:(NSString *)table predicate:(NSPredicate *)prd;
 
 /*!
  @method This returns records that exist for a table based on a condition(s)
  @param table - an NSString that represents a table in the database
  @param predicate - NSString representation of a predicate which limits the number of records returned
  */
-+(NSArray*) getRecordsForTable:(NSString*)table WithStringPredicate:(NSString*)prd;
++(NSArray *) recordsForTable:(NSString*)table stringPredicate:(NSString*)prd;
 
 /*!
  @method This returns records that exist for a table based on a condition(s)
@@ -104,7 +104,7 @@
  @param column - NSString that represents a column name
  @param ascending - Boolean to sort records in ascending or descending order
  */
-+(NSArray*) getRecordsForTable:(NSString*)table Top:(NSNumber*)top OnColumn:(NSString*)column Ascending:(Boolean)order;
++(NSArray *) recordsForTable:(NSString*)table top:(NSNumber*)top column:(NSString*)column ascending:(Boolean)order;
 
 
 /*!
@@ -113,7 +113,7 @@
  @param column - NSString that represents a column name
  @param ascending - Boolean to sort records in ascending or descending order
  */
-+(NSArray*) getRecordsForTable:(NSString*)table OnColumn:(NSString*)column Ascending:(Boolean)order;
++(NSArray *) recordsForTable:(NSString*)table column:(NSString*)column ascending:(Boolean)order;
 
 
 #pragma mark -

@@ -36,21 +36,19 @@ static NSManagedObjectContext *managedObjectContext;
 #pragma mark -
 #pragma mark ManagedObjectContext accessors
 
-+(void) setManagedObjectContext:(NSManagedObjectContext*)context
-{
++(void) setManagedObjectContext:(NSManagedObjectContext*)context{
 	managedObjectContext = context;
 }
 
-+(NSManagedObjectContext*) getManagedObjectContext
-{
++(NSManagedObjectContext *) managedObjectContext{
 	return managedObjectContext;
 }
 
 #pragma mark -
 #pragma mark Retrieval Methods - without faulting
 
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString*)table 
-{
++(NSArray *) recordsWithoutFaultingForTable:(NSString *)table {
+	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
 	NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
@@ -67,8 +65,8 @@ static NSManagedObjectContext *managedObjectContext;
 	return records;
 }
 
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString *)table withPredicate:(NSPredicate *)prd
-{
++(NSArray *) recordsWithoutFaultingForTable:(NSString *)table predicate:(NSPredicate *)prd{
+	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
@@ -88,8 +86,8 @@ static NSManagedObjectContext *managedObjectContext;
 }
 
 
-+(NSArray*) getRecordsWithoutFaultingForTable:(NSString*)table WithStringPredicate:(NSString*)prd
-{
++(NSArray *) recordsWithoutFaultingForTable:(NSString *)table stringPredicate:(NSString *)prd{
+	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
 	NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
@@ -113,8 +111,8 @@ static NSManagedObjectContext *managedObjectContext;
 #pragma mark -
 #pragma mark Retrieval Methods - With faulting
 
-+(NSArray*) getRecordsForTable:(NSString*)table 
-{
++(NSArray *) recordsForTable:(NSString *)table {
+	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
 	NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
@@ -128,8 +126,8 @@ static NSManagedObjectContext *managedObjectContext;
 	return records;
 }
 
-+(NSArray*) getRecordsForTable:(NSString *)table withPredicate:(NSPredicate *)prd
-{
++(NSArray *) recordsForTable:(NSString *)table predicate:(NSPredicate *)prd{
+	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
@@ -145,8 +143,8 @@ static NSManagedObjectContext *managedObjectContext;
 	return records;
 }
 
-+(NSArray*) getRecordsForTable:(NSString*)table WithStringPredicate:(NSString*)prd
-{
++(NSArray *) recordsForTable:(NSString*)table stringPredicate:(NSString*)prd{
+	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
 	NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
@@ -164,7 +162,7 @@ static NSManagedObjectContext *managedObjectContext;
 	return records;
 }
 
-+(NSArray*) getRecordsForTable:(NSString*)table Top:(NSNumber*)top OnColumn:(NSString*)column Ascending:(Boolean)order{
++(NSArray *) recordsForTable:(NSString*)table top:(NSNumber*)top column:(NSString*)column ascending:(Boolean)order{
 	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
@@ -184,15 +182,30 @@ static NSManagedObjectContext *managedObjectContext;
 	
 	NSMutableArray* topRecords = [[[NSMutableArray alloc] initWithCapacity:[top intValue]] autorelease];
 	
-	for (int i = 0; i < [top intValue]; i++) {
-		[topRecords addObject:[sortedReadings objectAtIndex:i]];
-	}
+	if ([sortedReadings count] > 0) {
+		
+		if (sortedReadings count] > [top intValue]) {
+			
+			for (int i = 0; i < [top intValue]; i++) {
+				[topRecords addObject:[sortedReadings objectAtIndex:i]];
+			}
+			
+			return topRecords;
+			
+		}else {
+			return sortedReadings;
+		}
+
+		
 	
-	return topRecords;
+	}else {
+		return topRecords;
+	}
 	
 }
 
-+(NSArray*) getRecordsForTable:(NSString*)table OnColumn:(NSString*)column Ascending:(Boolean)order{
++(NSArray *) recordsForTable:(NSString*)table column:(NSString*)column ascending:(Boolean)order{
+	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:table inManagedObjectContext:managedObjectContext];
 	
 	NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
