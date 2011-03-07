@@ -170,36 +170,34 @@ static NSManagedObjectContext *managedObjectContext;
 	
 	[fetchRequest setEntity:entity];
 	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column ascending:order];
+	
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	
 	NSArray *records = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
 	
 	[fetchRequest release];
 	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column ascending:order];
-	
-	NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor];
-	
-	NSArray* sortedReadings = [NSArray arrayWithArray:[records sortedArrayUsingDescriptors:descriptors]];
-	
-	NSMutableArray* topRecords = [[[NSMutableArray alloc] initWithCapacity:[top intValue]] autorelease];
-	
-	if ([sortedReadings count] > 0) {
+	if ([records count] > 0) {
 		
-		if (sortedReadings count] > [top intValue]) {
+		NSMutableArray* topRecords = [[[NSMutableArray alloc] initWithCapacity:[top intValue]] autorelease];
+		
+		if ([records count] > [top intValue]) {
 			
 			for (int i = 0; i < [top intValue]; i++) {
-				[topRecords addObject:[sortedReadings objectAtIndex:i]];
+				[topRecords addObject:[records objectAtIndex:i]];
 			}
 			
 			return topRecords;
 			
 		}else {
-			return sortedReadings;
+			return records;
 		}
-
 		
-	
+		
+		
 	}else {
-		return topRecords;
+		return records;
 	}
 	
 }
@@ -212,17 +210,15 @@ static NSManagedObjectContext *managedObjectContext;
 	
 	[fetchRequest setEntity:entity];
 	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column ascending:order];
+	
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	
 	NSArray *records = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
 	
 	[fetchRequest release];
 	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:column ascending:order];
-	
-	NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor];
-	
-	NSArray* sortedReadings = [NSArray arrayWithArray:[records sortedArrayUsingDescriptors:descriptors]];
-	
-	return sortedReadings;
+	return records;
 	
 }
 
