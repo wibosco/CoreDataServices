@@ -180,9 +180,9 @@ static NSManagedObjectContext *managedObjectContext;
 	
 	if ([records count] > 0) {
 		
-		NSMutableArray* topRecords = [[[NSMutableArray alloc] initWithCapacity:[top intValue]] autorelease];
-		
 		if ([records count] > [top intValue]) {
+			
+			NSMutableArray *topRecords = [[[NSMutableArray alloc] initWithCapacity:[top intValue]] autorelease];
 			
 			for (int i = 0; i < [top intValue]; i++) {
 				[topRecords addObject:[records objectAtIndex:i]];
