@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'CoreDataServices' target in the 'CoreDataServices' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "CDSServiceManager.h"
+    #import "NSString+Empty.h"
+#endif
