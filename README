@@ -1,28 +1,20 @@
-/*
- Copyright (C) 2010 Boles. All rights reserved.
- 
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
- 
- Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
- 
- Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
- 
- Neither the name of the author nor the names of its contributors may be used
- to endorse or promote products derived from this software without specific
- prior written permission.
- 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
- FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+CoreDataServices
+===========================
+
+## How do I get CoreDataServices as a universal static library?
+
+In the project you should see two targets:
+
+1. CoreDataServices
+2. CoreDataServicesLibrary
+
+To produce a universal static library you need to ensure that you build the "CoreDataServicesLibrary" target, this is because it combines the i386 and ARM output into one static library that will run on both simulator and device.
+
+So to get the universal static library you need to:
+
+1. Build "CoreDataServicesLirary" target
+2. Expand "Products" folder (in the project navigator)
+3. Open context menu on "libCoreDataServices.a" and select "Show in folder" option
+4. In the Finder window that opens naivgate to "Release-iphoneuniversal" folder (up one level)
+5. Copy and drag both "libCoreDataServices.a" and the "Headers" folder into your project
+6. Dance with joy!
