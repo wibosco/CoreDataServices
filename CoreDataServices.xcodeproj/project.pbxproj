@@ -219,7 +219,7 @@
 			attributes = {
 				CLASSPREFIX = CDA;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = Quipper;
+				ORGANIZATIONNAME = Boles;
 			};
 			buildConfigurationList = EF107C2316EE2E1A00469717 /* Build configuration list for PBXProject "CoreDataServices" */;
 			compatibilityVersion = "Xcode 3.2";
