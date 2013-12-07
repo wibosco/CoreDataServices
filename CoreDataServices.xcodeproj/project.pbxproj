@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		EF107C5A16EE3DD100469717 /* QuipperCoreDataServices */ = {
+		EF107C5A16EE3DD100469717 /* CoreDataServicesLibrary */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "QuipperCoreDataServices" */;
+			buildConfigurationList = EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "CoreDataServicesLibrary" */;
 			buildPhases = (
 				EF107C5F16EE3DF400469717 /* Build static links */,
-				EF107C6016EE3E1000469717 /* ShellScript */,
+				EF107C6016EE3E1000469717 /* Universal build script */,
 				EF107C6116EE3E2100469717 /* CopyFiles */,
 			);
 			dependencies = (
 			);
-			name = QuipperCoreDataServices;
+			name = CoreDataServicesLibrary;
 			productName = QuipperCoreDataServices;
 		};
 /* End PBXAggregateTarget section */
@@ -234,7 +234,7 @@
 			projectRoot = "";
 			targets = (
 				EF107C2716EE2E1A00469717 /* CoreDataServices */,
-				EF107C5A16EE3DD100469717 /* QuipperCoreDataServices */,
+				EF107C5A16EE3DD100469717 /* CoreDataServicesLibrary */,
 			);
 		};
 /* End PBXProject section */
@@ -254,13 +254,14 @@
 			shellPath = /bin/sh;
 			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\n\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n";
 		};
-		EF107C6016EE3E1000469717 /* ShellScript */ = {
+		EF107C6016EE3E1000469717 /* Universal build script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Universal build script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +398,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "QuipperCoreDataServices" */ = {
+		EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "CoreDataServicesLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF107C5C16EE3DD100469717 /* Debug */,
