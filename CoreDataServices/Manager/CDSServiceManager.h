@@ -47,5 +47,4 @@
  */
 + (void) saveManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-
 @end
