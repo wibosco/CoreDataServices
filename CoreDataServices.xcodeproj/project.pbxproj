@@ -217,7 +217,7 @@
 		EF107C2016EE2E1A00469717 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CDA;
+				CLASSPREFIX = CDS;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Boles;
 			};
