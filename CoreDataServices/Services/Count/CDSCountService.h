@@ -17,7 +17,7 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName;
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName;
 
 /*
  Retrieves the count of entries from default context
@@ -26,7 +26,7 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass;
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass;
 
 /*
  Retrieves the count of entries from specfic context
@@ -36,8 +36,8 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
-                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                           managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves the count of entries from specfic context
@@ -47,8 +47,8 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                             managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
+                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves the count of entries that match the provided predicate's conditions from default context
@@ -58,21 +58,21 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                                      predicate:(NSPredicate *)predicate;
+
+/*
+ Retrieves the count of entries that match the provided predicate's conditions from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ 
+ @return count
+ */
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
                                        predicate:(NSPredicate *)predicate;
 
 /*
- Retrieves the count of entries that match the provided predicate's conditions from default context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- 
- @return count
- */
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                                        predicate:(NSPredicate *)predicate;
-
-/*
  Retrieves the count of entries that match the provided predicate's conditions from specfic context
  
  @param entityName a string value for the entity in core data
@@ -81,9 +81,9 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
-                                    predicate:(NSPredicate *)predicate
-                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                                      predicate:(NSPredicate *)predicate
+                           managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves the count of entries that match the provided predicate's conditions from specfic context
@@ -94,8 +94,8 @@
  
  @return count
  */
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                                        predicate:(NSPredicate *)predicate
-                             managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
+                                       predicate:(NSPredicate *)predicate
+                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end

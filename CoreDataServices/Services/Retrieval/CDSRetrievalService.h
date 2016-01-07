@@ -17,7 +17,7 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName;
 
 /*
  Retrieves all entries for an entity in core data from default context
@@ -26,7 +26,7 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass;
 
 /*
  Retrieves all entries for an entity in core data from default context
@@ -36,8 +36,8 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                            fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                           fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 /*
  Retrieves all entries for an entity in core data from default context
@@ -47,8 +47,8 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                             fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                            fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
 /*
@@ -59,20 +59,20 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate;
+
+/*
+ Retrieves all entries for an entity in core data that match the provided predicate's conditions from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate;
 
-/*
- Retrieves all entries for an entity in core data that match the provided predicate's conditions from default context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate;
-
 
 /*
  Retrieves all entries for an entity in core data that match the provided predicate's conditions from default context
@@ -83,9 +83,9 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                                 predicate:(NSPredicate *)predicate
-                            fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                           fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 /*
  Retrieves all entries for an entity in core data that match the provided predicate's conditions from default context
@@ -96,9 +96,9 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                             fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                                 predicate:(NSPredicate *)predicate
+                            fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
 /*
@@ -110,26 +110,26 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending;
+
+/*
+ Retrieves ordered entries for an entity in core data from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param orderBy the property/column name that will be used to order the entries
+ @param ascending determines if the entries are ordered in ascending or descending
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                    orderBy:(NSString *)orderBy
                             ascendingOrder:(BOOL)ascending;
 
 /*
  Retrieves ordered entries for an entity in core data from default context
  
- @param entityClass a class value for the entity in core data
- @param orderBy the property/column name that will be used to order the entries
- @param ascending determines if the entries are ordered in ascending or descending
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending;
-
-/*
- Retrieves ordered entries for an entity in core data from default context
- 
  @param entityName a string value for the entity in core data
  @param orderBy the property/column name that will be used to order the entries
  @param ascending determines if the entries are ordered in ascending or descending
@@ -137,10 +137,10 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
-                            fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending
+                           fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 /*
  Retrieves ordered entries for an entity in core data from default context
@@ -152,10 +152,10 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending
-                             fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                                   orderBy:(NSString *)orderBy
+                            ascendingOrder:(BOOL)ascending
+                            fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
 /*
@@ -168,7 +168,22 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending;
+
+/*
+ Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param orderBy the property/column name that will be used to order the entries
+ @param ascending determines if the entries are ordered in ascending or descending
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
                                    orderBy:(NSString *)orderBy
                             ascendingOrder:(BOOL)ascending;
@@ -176,21 +191,6 @@
 /*
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from default context
  
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param orderBy the property/column name that will be used to order the entries
- @param ascending determines if the entries are ordered in ascending or descending
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending;
-
-/*
- Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from default context
- 
  @param entityName a string value for the entity in core data
  @param predicate a predicate used to limit the entries returned
  @param orderBy the property/column name that will be used to order the entries
@@ -199,11 +199,11 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                                 predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
-                            fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending
+                           fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 /*
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from default context
@@ -216,11 +216,11 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending
-                             fetchBatchSize:(NSUInteger)fetchBatchSize;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                                 predicate:(NSPredicate *)predicate
+                                   orderBy:(NSString *)orderBy
+                            ascendingOrder:(BOOL)ascending
+                            fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 /*
  Retrieves all entries for an entity in core data from a specfic context
@@ -230,45 +230,45 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves all entries for an entity in core data from a specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param managedObjectContext the context used to access the entries
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves all entries for an entity in core data from a specfic context
  
- @param entityClass a class value for the entity in core data
- @param managedObjectContext the context used to access the entries
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Retrieves all entries for an entity in core data from a specfic context
- 
  @param entityName a string value for the entity in core data
  @param fetchBatchSize limits the number of returned objects in each batch
  @param managedObjectContext the context used to access the entries
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                           fetchBatchSize:(NSUInteger)fetchBatchSize
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves all entries for an entity in core data from a specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param fetchBatchSize limits the number of returned objects in each batch
+ @param managedObjectContext the context used to access the entries
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                             fetchBatchSize:(NSUInteger)fetchBatchSize
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Retrieves all entries for an entity in core data from a specfic context
- 
- @param entityClass a class value for the entity in core data
- @param fetchBatchSize limits the number of returned objects in each batch
- @param managedObjectContext the context used to access the entries
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                             fetchBatchSize:(NSUInteger)fetchBatchSize
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from a specfic context
@@ -281,8 +281,8 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                                 predicate:(NSPredicate *)predicate
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
                                   orderBy:(NSString *)orderBy
                            ascendingOrder:(BOOL)ascending
                      managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
@@ -298,11 +298,11 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                                 predicate:(NSPredicate *)predicate
+                                   orderBy:(NSString *)orderBy
+                            ascendingOrder:(BOOL)ascending
+                      managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from a specfic context
@@ -316,12 +316,12 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
-                                 predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
-                      managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending
+                           fetchBatchSize:(NSUInteger)fetchBatchSize
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from a specfic context
@@ -335,12 +335,12 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending
-                             fetchBatchSize:(NSUInteger)fetchBatchSize
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+                                 predicate:(NSPredicate *)predicate
+                                   orderBy:(NSString *)orderBy
+                            ascendingOrder:(BOOL)ascending
+                            fetchBatchSize:(NSUInteger)fetchBatchSize
+                      managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 
 /*
@@ -356,7 +356,28 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                                  orderBy:(NSString *)orderBy
+                           ascendingOrder:(BOOL)ascending
+                           fetchBatchSize:(NSUInteger)fetchBatchSize
+                               fetchLimit:(NSUInteger)fetchLimit
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from a specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param orderBy the property/column name that will be used to order the entries
+ @param ascending determines if the entries are ordered in ascending or descending
+ @param fetchBatchSize limits the number of returned objects in each batch
+ @param fetchLimit limits the number of returned objects (total)
+ @param managedObjectContext the context used to access the entries
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
                                    orderBy:(NSString *)orderBy
                             ascendingOrder:(BOOL)ascending
@@ -364,27 +385,6 @@
                                 fetchLimit:(NSUInteger)fetchLimit
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-/*
- Retrieves ordered entries for an entity in core data that match the provided predicate's conditions from a specfic context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param orderBy the property/column name that will be used to order the entries
- @param ascending determines if the entries are ordered in ascending or descending
- @param fetchBatchSize limits the number of returned objects in each batch
- @param fetchLimit limits the number of returned objects (total)
- @param managedObjectContext the context used to access the entries
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                                    orderBy:(NSString *)orderBy
-                             ascendingOrder:(BOOL)ascending
-                             fetchBatchSize:(NSUInteger)fetchBatchSize
-                                 fetchLimit:(NSUInteger)fetchLimit
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
 
 /*
  Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
@@ -395,50 +395,50 @@
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param managedObjectContext the context used to access the entries
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
  
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param managedObjectContext the context used to access the entries
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
- 
  @param entityName a string value for the entity in core data
  @param predicate a predicate used to limit the entries returned
  @param managedObjectContext the context used to access the entries
  
  @return an array of nsmanagedobjects
  */
-+ (NSArray *) retrieveEntriesForEntityName:(NSString *)entityName
++ (NSArray *)retrieveEntriesForEntityName:(NSString *)entityName
+                                predicate:(NSPredicate *)predicate
+                           fetchBatchSize:(NSUInteger)fetchBatchSize
+                     managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param managedObjectContext the context used to access the entries
+ 
+ @return an array of nsmanagedobjects
+ */
++ (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
                             fetchBatchSize:(NSUInteger)fetchBatchSize
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Retrieves entries for an entity in core data that match the provided predicate's conditions from a specfic context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param managedObjectContext the context used to access the entries
- 
- @return an array of nsmanagedobjects
- */
-+ (NSArray *) retrieveEntriesForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                             fetchBatchSize:(NSUInteger)fetchBatchSize
-                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 #pragma mark - Single retrieval
 
@@ -449,7 +449,7 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName;
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName;
 
 /*
  Retrieves first entry for an entity in core data from default context
@@ -458,7 +458,7 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass;
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass;
 
 /*
  Retrieves first entry for an entity in core data from a specifc context
@@ -467,8 +467,8 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName
-                  managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName
+                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves first entry for an entity in core data from a specifc context
@@ -477,8 +477,8 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass
-                   managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass
+                  managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves first entry for an entity in core data from default context
@@ -490,27 +490,27 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName
+                            predicate:(NSPredicate *)predicate
+                              orderBy:(NSString *)orderBy
+                       ascendingOrder:(BOOL)ascending;
+
+/*
+ Retrieves first entry for an entity in core data from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param orderBy the property/column name that will be used to order the entries
+ @param ascending determines if the entries are ordered in ascending or descending
+ 
+ @return nsmanagedobject
+ */
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate
                                orderBy:(NSString *)orderBy
                         ascendingOrder:(BOOL)ascending;
 
 /*
- Retrieves first entry for an entity in core data from default context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param orderBy the property/column name that will be used to order the entries
- @param ascending determines if the entries are ordered in ascending or descending
- 
- @return nsmanagedobject
- */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass
-                              predicate:(NSPredicate *)predicate
-                                orderBy:(NSString *)orderBy
-                         ascendingOrder:(BOOL)ascending;
-
-/*
  Retrieves first entry for an entity in core data from specfic context
  
  @param entityName a string value for the entity in core data
@@ -521,29 +521,29 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName
+                            predicate:(NSPredicate *)predicate
+                              orderBy:(NSString *)orderBy
+                       ascendingOrder:(BOOL)ascending
+                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
+/*
+ Retrieves first entry for an entity in core data from specfic context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ @param orderBy the property/column name that will be used to order the entries
+ @param ascending determines if the entries are ordered in ascending or descending
+ @param managedObjectContext the context used to access the entries
+ 
+ @return nsmanagedobject
+ */
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate
                                orderBy:(NSString *)orderBy
                         ascendingOrder:(BOOL)ascending
                   managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-/*
- Retrieves first entry for an entity in core data from specfic context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param orderBy the property/column name that will be used to order the entries
- @param ascending determines if the entries are ordered in ascending or descending
- @param managedObjectContext the context used to access the entries
- 
- @return nsmanagedobject
- */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass
-                              predicate:(NSPredicate *)predicate
-                                orderBy:(NSString *)orderBy
-                         ascendingOrder:(BOOL)ascending
-                   managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
 
 /*
  Retrieves first entry for an entity in core data that match the provided predicate's conditions from default context
@@ -553,21 +553,21 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName
+                            predicate:(NSPredicate *)predicate;
+
+/*
+ Retrieves first entry for an entity in core data that match the provided predicate's conditions from default context
+ 
+ @param entityClass a class value for the entity in core data
+ @param predicate a predicate used to limit the entries returned
+ 
+ @return nsmanagedobject
+ */
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate;
 
 /*
- Retrieves first entry for an entity in core data that match the provided predicate's conditions from default context
- 
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- 
- @return nsmanagedobject
- */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass
-                              predicate:(NSPredicate *)predicate;
-
-/*
  Retrieves first entry for an entity in core data that match the provided predicate's conditions from specfic context
  
  @param entityName a string value for the entity in core data
@@ -576,9 +576,9 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityName:(NSString *)entityName
-                             predicate:(NSPredicate *)predicate
-                  managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (id)retrieveFirstEntryForEntityName:(NSString *)entityName
+                            predicate:(NSPredicate *)predicate
+                 managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Retrieves first entry for an entity in core data that match the provided predicate's conditions from specfic context
@@ -591,8 +591,8 @@
  
  @return nsmanagedobject
  */
-+ (id) retrieveFirstEntryForEntityClass:(Class)entityClass
-                              predicate:(NSPredicate *)predicate
-                   managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (id)retrieveFirstEntryForEntityClass:(Class)entityClass
+                             predicate:(NSPredicate *)predicate
+                  managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end

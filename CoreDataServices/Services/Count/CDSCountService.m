@@ -12,9 +12,9 @@
 
 #pragma mark - Count
 
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
-                                       predicate:(NSPredicate *)predicate
-                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                                      predicate:(NSPredicate *)predicate
+                           managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     
     NSUInteger count = 0;
@@ -26,7 +26,7 @@
         
         if (predicate)
         {
-           [request setPredicate:predicate]; 
+            [request setPredicate:predicate];
         }
         
         NSError *error = nil;
@@ -44,55 +44,55 @@
     return count;
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
 {
     return [CDSCountService retrieveEntriesCountForEntityName:entityName
                                                     predicate:nil
                                          managedObjectContext:[CDSServiceManager managedObjectContext]];
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
 {
     return [CDSCountService retrieveEntriesCountForEntityName:NSStringFromClass(entityClass)
                                                     predicate:nil
                                          managedObjectContext:[CDSServiceManager managedObjectContext]];
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                           managedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    return [CDSCountService retrieveEntriesCountForEntityName:entityName
+                                                    predicate:nil
+                                         managedObjectContext:managedObjectContext];
+}
+
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
                             managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    return [CDSCountService retrieveEntriesCountForEntityName:entityName
-                                                    predicate:nil
-                                         managedObjectContext:managedObjectContext];
-}
-
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                             managedObjectContext:(NSManagedObjectContext *)managedObjectContext
-{
     return [CDSCountService retrieveEntriesCountForEntityName:NSStringFromClass(entityClass)
                                                     predicate:nil
                                          managedObjectContext:managedObjectContext];
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                                  predicate:(NSPredicate *)predicate
-                             managedObjectContext:(NSManagedObjectContext *)managedObjectContext
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
+                                       predicate:(NSPredicate *)predicate
+                            managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     return [CDSCountService retrieveEntriesCountForEntityName:NSStringFromClass(entityClass)
                                                     predicate:predicate
-                                            managedObjectContext:managedObjectContext];
+                                         managedObjectContext:managedObjectContext];
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityName:(NSString *)entityName
-                                 predicate:(NSPredicate *)predicate
++ (NSUInteger)retrieveEntriesCountForEntityName:(NSString *)entityName
+                                      predicate:(NSPredicate *)predicate
 {
     return [CDSCountService retrieveEntriesCountForEntityName:entityName
                                                     predicate:predicate
-                                            managedObjectContext:[CDSServiceManager managedObjectContext]];
+                                         managedObjectContext:[CDSServiceManager managedObjectContext]];
 }
 
-+ (NSUInteger) retrieveEntriesCountForEntityClass:(Class)entityClass
-                                        predicate:(NSPredicate *)predicate
++ (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
+                                       predicate:(NSPredicate *)predicate
 {
     return [CDSCountService retrieveEntriesCountForEntityName:NSStringFromClass(entityClass)
                                                     predicate:predicate
