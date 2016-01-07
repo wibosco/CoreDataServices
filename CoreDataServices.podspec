@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "0.2.0"
   s.summary      = "CoreDataServices contains a set of helper classes to abstract away common core data functionality."
 
-  s.homepage     = "http://www.unii.com"
+  s.homepage     = "http://www.williamboles.me"
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author       = "William Boles"
 
