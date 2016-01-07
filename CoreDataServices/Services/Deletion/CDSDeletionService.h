@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Boles. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface CDSDeletionService : NSObject
 
 #pragma mark - Deletion
@@ -51,22 +49,6 @@
 /*
  Deletes entites from default context
  
- @param entityName a string value for the entity in core data
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName;
-
-/*
- Deletes entites from default context
- 
- @param entityName a string value for the entity in core data
- @param saveAfterDeletion used to determine if after deletion the managed object context should be saved
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                 saveAfterDeletion:(BOOL)saveAfterDeletion;
-
-/*
- Deletes entites from default context
- 
  @param entityClass a class value for the entity in core data
  */
 + (void)deleteEntriesForEntityClass:(Class)entityClass;
@@ -80,25 +62,6 @@
 + (void)deleteEntriesForEntityClass:(Class)entityClass
                   saveAfterDeletion:(BOOL)saveAfterDeletion;
 
-/*
- Deletes entites from specfic context
- 
- @param entityName a string value for the entity in core data
- @param managedObjectContext the context used to access the entries
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-              managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Deletes entites from specfic context
- 
- @param entityName a string value for the entity in core data
- @param saveAfterDeletion used to determine if after deletion the managed object context should be saved
- @param managedObjectContext the context used to access the entries
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                 saveAfterDeletion:(BOOL)saveAfterDeletion
-              managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Deletes entites from specfic context
@@ -120,25 +83,6 @@
                   saveAfterDeletion:(BOOL)saveAfterDeletion
                managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
-/*
- Deletes entites that match the predicate from default context
- 
- @param entityName a string value for the entity in core data
- @param predicate a predicate used to limit the entries deleted
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                         predicate:(NSPredicate *)predicate;
-
-/*
- Deletes entites that match the predicate from default context
- 
- @param entityName a string value for the entity in core data
- @param saveAfterDeletion used to determine if after deletion the managed object context should be saved
- @param predicate a predicate used to limit the entries deleted
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                         predicate:(NSPredicate *)predicate
-                 saveAfterDeletion:(BOOL)saveAfterDeletion;
 
 /*
  Deletes entites that match the predicate from default context
@@ -159,30 +103,6 @@
 + (void)deleteEntriesForEntityClass:(Class)entityClass
                           predicate:(NSPredicate *)predicate
                   saveAfterDeletion:(BOOL)saveAfterDeletion;
-
-/*
- Deletes entites that match the predicate from specfic context
- 
- @param entityName a string value for the entity in core data
- @param predicate a predicate used to limit the entries deleted
- @param managedObjectContext the context used to access the entries
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                         predicate:(NSPredicate *)predicate
-              managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-
-/*
- Deletes entites that match the predicate from specfic context
- 
- @param entityName a string value for the entity in core data
- @param predicate a predicate used to limit the entries deleted
- @param managedObjectContext the context used to access the entries
- @param saveAfterDeletion used to determine if after deletion the managed object context should be saved
- */
-+ (void)deleteEntriesForEntityName:(NSString *)entityName
-                         predicate:(NSPredicate *)predicate
-                 saveAfterDeletion:(BOOL)saveAfterDeletion
-              managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 /*
  Deletes entites that match the predicate from specfic context

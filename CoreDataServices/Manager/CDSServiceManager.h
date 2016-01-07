@@ -2,11 +2,9 @@
 //  CoreDataServices.h
 //  CoreDataServices
 //
-//  Created by William Boles on 11/03/2013.
-//  Copyright (c) 2013 Boles. All rights reserved.
+//  Created by William Boles on 15/04/2014.
+//  Copyright (c) 2014 Unii. All rights reserved.
 //
-
-#import <Foundation/Foundation.h>
 
 @interface CDSServiceManager : NSObject
 
@@ -17,34 +15,39 @@
  
  @return Managed Object Context
  */
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+
+/**
+ ManagedObjectContext used to background thread operations.
+ 
+ This context is set as a child of the managedObjectContext.
+ 
+ @return Managed Object Context
+ */
+@property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundManagedObjectContext;
 
 /*
- Singleton
+ Returns the global CDSServiceManager instance.
  
- @return common CDSServiceManager instance
+ @return CDSServiceManager instance.
  */
-+ (CDSServiceManager *) sharedInstance;
++ (instancetype)sharedInstance;
 
-/*
- Class convenience method for accessing the managedObjectContext that executes on the main thread
+/**
+ Sets Up the core data stack using a model with the filename.
  
- This is the managedObjectContext set as managedObjectContext property
- 
- @return ManagedObjectContext
+ @param name - filename of the model to load.
  */
-+ (NSManagedObjectContext *) managedObjectContext;
+- (void)setupModelURLWithModelName:(NSString *)name;
 
-/*
- Saves default managedObjectContext
+/**
+ Destroys all data from core data, tears down the stack and builds it up again.
  */
-+ (void) saveManagedObjectContext;
+- (void)reset;
 
-/*
- Saves specfic managedObjectContext
- 
- @param managedObjectContext to be saved
+/**
+ Destroys all data from core data and tears down the stack.
  */
-+ (void) saveManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (void)clear;
 
 @end
