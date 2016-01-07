@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Unii. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
 @interface CDSServiceManager : NSObject
 
 /*

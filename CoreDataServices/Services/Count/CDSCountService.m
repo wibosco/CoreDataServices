@@ -24,7 +24,6 @@
     
     if (entityName.length > 0)
     {
-        
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
         
         if (predicate)
