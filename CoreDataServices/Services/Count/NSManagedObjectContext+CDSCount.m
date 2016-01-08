@@ -15,8 +15,8 @@
 
 #pragma mark - Count
 
-- (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
-                                       predicate:(NSPredicate *)predicate
+- (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass
+                                           predicate:(NSPredicate *)predicate
 {
     NSUInteger count = 0;
     
@@ -45,10 +45,10 @@
     return count;
 }
 
-- (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
+- (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass
 {
-    return [self retrieveEntriesCountForEntityClass:entityClass
-                                          predicate:nil];
+    return [self cds_retrieveEntriesCountForEntityClass:entityClass
+                                              predicate:nil];
 }
 
 @end

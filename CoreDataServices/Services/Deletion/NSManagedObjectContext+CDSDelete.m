@@ -15,14 +15,14 @@
 
 #pragma mark - Single
 
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
+- (void)cds_deleteManagedObject:(NSManagedObject *)managedObject
 {
-    [self deleteManagedObject:managedObject
-            saveAfterDeletion:YES];
+    [self cds_deleteManagedObject:managedObject
+                saveAfterDeletion:YES];
 }
 
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-          saveAfterDeletion:(BOOL)saveAfterDeletion
+- (void)cds_deleteManagedObject:(NSManagedObject *)managedObject
+              saveAfterDeletion:(BOOL)saveAfterDeletion
 {
     if (managedObject)
     {
@@ -42,17 +42,17 @@
 
 #pragma mark - Multiple
 
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                          predicate:(NSPredicate *)predicate
-                  saveAfterDeletion:(BOOL)saveAfterDeletion
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                              predicate:(NSPredicate *)predicate
+                      saveAfterDeletion:(BOOL)saveAfterDeletion
 {
-    NSArray *entities = [self retrieveEntriesForEntityClass:entityClass
+    NSArray *entities = [self cds_retrieveEntriesForEntityClass:entityClass
                                                   predicate:predicate];
     
     for (NSManagedObject *entity in entities)
     {
-        [self deleteManagedObject:entity
-                saveAfterDeletion:NO];
+        [self cds_deleteManagedObject:entity
+                    saveAfterDeletion:NO];
     }
     
     if (saveAfterDeletion)
@@ -66,27 +66,27 @@
     }
 }
 
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                          predicate:(NSPredicate *)predicate
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                              predicate:(NSPredicate *)predicate
 {
-    [self deleteEntriesForEntityClass:entityClass
-                            predicate:predicate
-                    saveAfterDeletion:YES];
+    [self cds_deleteEntriesForEntityClass:entityClass
+                                predicate:predicate
+                        saveAfterDeletion:YES];
 }
 
-- (void)deleteEntriesForEntityClass:(Class)entityClass
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
 {
-    [self deleteEntriesForEntityClass:entityClass
-                            predicate:nil
-                    saveAfterDeletion:YES];
+    [self cds_deleteEntriesForEntityClass:entityClass
+                                predicate:nil
+                        saveAfterDeletion:YES];
 }
 
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                  saveAfterDeletion:(BOOL)saveAfterDeletion
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                      saveAfterDeletion:(BOOL)saveAfterDeletion
 {
-    [self deleteEntriesForEntityClass:entityClass
-                            predicate:nil
-                    saveAfterDeletion:saveAfterDeletion];
+    [self cds_deleteEntriesForEntityClass:entityClass
+                                predicate:nil
+                        saveAfterDeletion:saveAfterDeletion];
 }
 
 @end

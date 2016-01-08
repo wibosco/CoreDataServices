@@ -11,25 +11,25 @@
 @interface NSManagedObjectContext (CDSCount)
 
 /*
- Retrieves the count of entries 
+ Retrieves the count of entries
  
  @param entityClass - a class value for the entity in core data
  
  @return count of entries for this class/entity
  */
-- (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass;
+- (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass;
 
 
 /*
- Retrieves the count of entries that match the provided predicate's conditions 
+ Retrieves the count of entries that match the provided predicate's conditions
  
  @param entityClass - a class value for the entity in core data
  @param predicate - a predicate used to limit the entries returned
  
  @return count of entries that match provided predicate
  */
-- (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
-                                       predicate:(NSPredicate *)predicate;
+- (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass
+                                           predicate:(NSPredicate *)predicate;
 
 
 @end

@@ -15,11 +15,11 @@
 
 #pragma mark - Multiple
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                 predicate:(NSPredicate *)predicate
-                           sortDescriptors:(NSArray *)sortDescriptors
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
-                                fetchLimit:(NSUInteger)fetchLimit
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                     predicate:(NSPredicate *)predicate
+                               sortDescriptors:(NSArray *)sortDescriptors
+                                fetchBatchSize:(NSUInteger)fetchBatchSize
+                                    fetchLimit:(NSUInteger)fetchLimit
 {
     NSArray *entries = nil;
     
@@ -72,102 +72,102 @@
     return entries;
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:nil
-                               sortDescriptors:nil
-                                fetchBatchSize:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:nil
+                                   sortDescriptors:nil
+                                    fetchBatchSize:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                fetchBatchSize:(NSUInteger)fetchBatchSize
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:nil
-                               sortDescriptors:nil
-                                fetchBatchSize:fetchBatchSize
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:nil
+                                   sortDescriptors:nil
+                                    fetchBatchSize:fetchBatchSize
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                 predicate:(NSPredicate *)predicate
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                     predicate:(NSPredicate *)predicate
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:predicate
-                               sortDescriptors:nil
-                                fetchBatchSize:0
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:predicate
+                                   sortDescriptors:nil
+                                    fetchBatchSize:0
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                 predicate:(NSPredicate *)predicate
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                     predicate:(NSPredicate *)predicate
+                                fetchBatchSize:(NSUInteger)fetchBatchSize
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:predicate
-                               sortDescriptors:nil
-                                fetchBatchSize:fetchBatchSize
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:predicate
+                                   sortDescriptors:nil
+                                    fetchBatchSize:fetchBatchSize
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                           sortDescriptors:(NSArray *)sortDescriptors
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                               sortDescriptors:(NSArray *)sortDescriptors
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:nil
-                               sortDescriptors:sortDescriptors
-                                fetchBatchSize:0
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:nil
+                                   sortDescriptors:sortDescriptors
+                                    fetchBatchSize:0
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                           sortDescriptors:(NSArray *)sortDescriptors
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                               sortDescriptors:(NSArray *)sortDescriptors
+                                fetchBatchSize:(NSUInteger)fetchBatchSize
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:nil
-                               sortDescriptors:sortDescriptors
-                                fetchBatchSize:fetchBatchSize
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:nil
+                                   sortDescriptors:sortDescriptors
+                                    fetchBatchSize:fetchBatchSize
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                 predicate:(NSPredicate *)predicate
-                           sortDescriptors:(NSArray *)sortDescriptors
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                     predicate:(NSPredicate *)predicate
+                               sortDescriptors:(NSArray *)sortDescriptors
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:predicate
-                               sortDescriptors:sortDescriptors
-                                fetchBatchSize:0
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:predicate
+                                   sortDescriptors:sortDescriptors
+                                    fetchBatchSize:0
+                                        fetchLimit:0];
 }
 
-- (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                 predicate:(NSPredicate *)predicate
-                           sortDescriptors:(NSArray *)sortDescriptors
-                            fetchBatchSize:(NSUInteger)fetchBatchSize
+- (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass
+                                     predicate:(NSPredicate *)predicate
+                               sortDescriptors:(NSArray *)sortDescriptors
+                                fetchBatchSize:(NSUInteger)fetchBatchSize
 {
-    return [self retrieveEntriesForEntityClass:entityClass
-                                     predicate:predicate
-                               sortDescriptors:sortDescriptors
-                                fetchBatchSize:fetchBatchSize
-                                    fetchLimit:0];
+    return [self cds_retrieveEntriesForEntityClass:entityClass
+                                         predicate:predicate
+                                   sortDescriptors:sortDescriptors
+                                    fetchBatchSize:fetchBatchSize
+                                        fetchLimit:0];
 }
 
 #pragma mark - Single
 
-- (id)retrieveFirstEntryForEntityClass:(Class)entityClass
-                             predicate:(NSPredicate *)predicate
-                       sortDescriptors:(NSArray *)sortDescriptors
+- (NSManagedObject *)cds_retrieveFirstEntryForEntityClass:(Class)entityClass
+                                                predicate:(NSPredicate *)predicate
+                                          sortDescriptors:(NSArray *)sortDescriptors
 {
     NSManagedObject *entry = nil;
     
-    NSArray *entries = [self retrieveEntriesForEntityClass:entityClass
-                                                 predicate:predicate
-                                           sortDescriptors:sortDescriptors
-                                            fetchBatchSize:0
-                                                fetchLimit:1];
+    NSArray *entries = [self cds_retrieveEntriesForEntityClass:entityClass
+                                                     predicate:predicate
+                                               sortDescriptors:sortDescriptors
+                                                fetchBatchSize:0
+                                                    fetchLimit:1];
     
     
     if (entries.count > 0)
@@ -178,19 +178,19 @@
     return entry;
 }
 
-- (id)retrieveFirstEntryForEntityClass:(Class)entityClass
+- (NSManagedObject *)cds_retrieveFirstEntryForEntityClass:(Class)entityClass
 {
-    return [self retrieveFirstEntryForEntityClass:entityClass
-                                        predicate:nil
-                                  sortDescriptors:nil];
+    return [self cds_retrieveFirstEntryForEntityClass:entityClass
+                                            predicate:nil
+                                      sortDescriptors:nil];
 }
 
-- (id)retrieveFirstEntryForEntityClass:(Class)entityClass
-                             predicate:(NSPredicate *)predicate
+- (NSManagedObject *)cds_retrieveFirstEntryForEntityClass:(Class)entityClass
+                                                predicate:(NSPredicate *)predicate
 {
-    return [self retrieveFirstEntryForEntityClass:entityClass
-                                        predicate:predicate
-                                  sortDescriptors:nil];
+    return [self cds_retrieveFirstEntryForEntityClass:entityClass
+                                            predicate:predicate
+                                      sortDescriptors:nil];
 }
 
 @end

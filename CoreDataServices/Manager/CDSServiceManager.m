@@ -63,7 +63,6 @@ static CDSServiceManager *sharedInstance = nil;
 
 #pragma mark - Getters
 
-
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (!_managedObjectModel)

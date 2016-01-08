@@ -13,56 +13,56 @@
 #pragma mark - Deletion
 
 /*
- Deletes an nsmanagedobject 
+ Deletes an nsmanagedobject
  
  @param managedObject - to be deleted
  */
-- (void)deleteManagedObject:(NSManagedObject *)managedObject;
+- (void)cds_deleteManagedObject:(NSManagedObject *)managedObject;
 
 /*
- Deletes an nsmanagedobject 
+ Deletes an nsmanagedobject
  
  @param managedObject - to be deleted
  @param saveAfterDeletion - used to determine if after deletion the managed object context should be saved
  */
-- (void)deleteManagedObject:(NSManagedObject *)managedObject
-          saveAfterDeletion:(BOOL)saveAfterDeletion;
+- (void)cds_deleteManagedObject:(NSManagedObject *)managedObject
+              saveAfterDeletion:(BOOL)saveAfterDeletion;
 
 /*
- Deletes entites 
+ Deletes entites
  
  @param entityClass - a class value for the entity in core data
  */
-- (void)deleteEntriesForEntityClass:(Class)entityClass;
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass;
 
 /*
- Deletes entites 
+ Deletes entites
  
  @param entityClass - a class value for the entity in core data
  @param saveAfterDeletion - used to determine if after deletion the managed object context should be saved
  */
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                  saveAfterDeletion:(BOOL)saveAfterDeletion;
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                      saveAfterDeletion:(BOOL)saveAfterDeletion;
 
 /*
- Deletes entites that match the predicate 
+ Deletes entites that match the predicate
  
  @param entityClass - a class value for the entity in core data
  @param predicate - a predicate used to limit the entries deleted
  */
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                          predicate:(NSPredicate *)predicate;
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                              predicate:(NSPredicate *)predicate;
 
 /*
- Deletes entites that match the predicate 
+ Deletes entites that match the predicate
  
  @param entityClass - a class value for the entity in core data
  @param predicate - a predicate used to limit the entries deleted
  @param saveAfterDeletion - used to determine if after deletion the managed object context should be saved
  */
-- (void)deleteEntriesForEntityClass:(Class)entityClass
-                          predicate:(NSPredicate *)predicate
-                  saveAfterDeletion:(BOOL)saveAfterDeletion;
+- (void)cds_deleteEntriesForEntityClass:(Class)entityClass
+                              predicate:(NSPredicate *)predicate
+                      saveAfterDeletion:(BOOL)saveAfterDeletion;
 
 
 @end
