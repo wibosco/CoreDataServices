@@ -6,22 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		EF107C5A16EE3DD100469717 /* CoreDataServicesLibrary */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "CoreDataServicesLibrary" */;
-			buildPhases = (
-				EF107C5F16EE3DF400469717 /* Build static links */,
-				EF107C6016EE3E1000469717 /* Universal build script */,
-				EF107C6116EE3E2100469717 /* CopyFiles */,
-			);
-			dependencies = (
-			);
-			name = CoreDataServicesLibrary;
-			productName = QuipperCoreDataServices;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		430B0E761C3ED942003EE1A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430B0E751C3ED942003EE1A8 /* UIKit.framework */; };
 		EF107C2C16EE2E1A00469717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF107C2B16EE2E1A00469717 /* Foundation.framework */; };
@@ -30,10 +14,6 @@
 		EF107C5216EE360E00469717 /* CDSRetrievalService.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C5116EE360E00469717 /* CDSRetrievalService.m */; };
 		EF107C5516EE362C00469717 /* CDSCountService.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C5416EE362C00469717 /* CDSCountService.m */; };
 		EF107C5816EE397B00469717 /* CDSDeletionService.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C5716EE397B00469717 /* CDSDeletionService.m */; };
-		EF107C6216EE3E3100469717 /* CDSCountService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF107C5316EE362C00469717 /* CDSCountService.h */; };
-		EF107C6316EE3E3100469717 /* CDSDeletionService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF107C5616EE397B00469717 /* CDSDeletionService.h */; };
-		EF107C6416EE3E3100469717 /* CDSRetrievalService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF107C5016EE360E00469717 /* CDSRetrievalService.h */; };
-		EF107C6516EE3E3100469717 /* CDSServiceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF107C4216EE327900469717 /* CDSServiceManager.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,19 +23,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EF107C6116EE3E2100469717 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/Headers";
-			dstSubfolderSpec = 0;
-			files = (
-				EF107C6216EE3E3100469717 /* CDSCountService.h in CopyFiles */,
-				EF107C6316EE3E3100469717 /* CDSDeletionService.h in CopyFiles */,
-				EF107C6416EE3E3100469717 /* CDSRetrievalService.h in CopyFiles */,
-				EF107C6516EE3E3100469717 /* CDSServiceManager.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,9 +78,9 @@
 		EF107C2A16EE2E1A00469717 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				430B0E751C3ED942003EE1A8 /* UIKit.framework */,
 				EF107C3F16EE31FF00469717 /* CoreData.framework */,
 				EF107C2B16EE2E1A00469717 /* Foundation.framework */,
+				430B0E751C3ED942003EE1A8 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,41 +192,9 @@
 			projectRoot = "";
 			targets = (
 				EF107C2716EE2E1A00469717 /* CoreDataServices */,
-				EF107C5A16EE3DD100469717 /* CoreDataServicesLibrary */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		EF107C5F16EE3DF400469717 /* Build static links */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build static links";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\n\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos -target ${PROJECT_NAME} -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n";
-		};
-		EF107C6016EE3E1000469717 /* Universal build script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Universal build script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "SIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\" &&\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" &&\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\" &&\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/lib${PROJECT_NAME}.a\" &&\n\n# Create framework directory structure.\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\" &&\n\n# Generate universal binary for the device and simulator.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF107C2416EE2E1A00469717 /* Sources */ = {
@@ -301,7 +236,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -324,7 +259,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -333,6 +268,7 @@
 		EF107C3716EE2E1A00469717 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/CoreDataServices.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataServices/Supporting Files/CDSServices-Prefix.pch";
@@ -345,26 +281,13 @@
 		EF107C3816EE2E1A00469717 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/CoreDataServices.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataServices/Supporting Files/CDSServices-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		EF107C5C16EE3DD100469717 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		EF107C5D16EE3DD100469717 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -385,15 +308,6 @@
 			buildConfigurations = (
 				EF107C3716EE2E1A00469717 /* Debug */,
 				EF107C3816EE2E1A00469717 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EF107C5B16EE3DD100469717 /* Build configuration list for PBXAggregateTarget "CoreDataServicesLibrary" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EF107C5C16EE3DD100469717 /* Debug */,
-				EF107C5D16EE3DD100469717 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
