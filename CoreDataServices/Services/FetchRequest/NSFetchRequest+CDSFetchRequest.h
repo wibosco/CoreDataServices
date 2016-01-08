@@ -17,6 +17,6 @@
  
  @return NSEntityDescription instance.
  */
-+ (instancetype)fetchRequestWithEntityClass:(Class)entityClass;
++ (instancetype)cds_fetchRequestWithEntityClass:(Class)entityClass;
 
 @end

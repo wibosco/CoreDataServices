@@ -12,7 +12,7 @@
 
 #pragma mark - FetchRequest
 
-+ (instancetype)fetchRequestWithEntityClass:(Class)entityClass
++ (instancetype)cds_fetchRequestWithEntityClass:(Class)entityClass
 {
     NSString *entityName = NSStringFromClass(entityClass);
     

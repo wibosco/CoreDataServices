@@ -8,7 +8,7 @@
 
 #import "CDSDeletionService.h"
 
-#import "CDSRetrievalService.h"
+#import "NSManagedObjectContext+CDSRetrieval.h"
 #import "CDSServiceManager.h"
 
 @implementation CDSDeletionService
@@ -64,9 +64,8 @@
                   saveAfterDeletion:(BOOL)saveAfterDeletion
                managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    NSArray *entities = [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
-                                                                 predicate:predicate
-                                                      managedObjectContext:managedObjectContext];
+    NSArray *entities = [managedObjectContext retrieveEntriesForEntityClass:entityClass
+                                                                 predicate:predicate];
     
     for (NSManagedObject *entity in entities)
     {

@@ -18,7 +18,7 @@
  
  @return NSEntityDescription instance.
  */
-+ (NSEntityDescription *)entityForClass:(Class)entityClass
-                 inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
++ (NSEntityDescription *)cds_entityForClass:(Class)entityClass
+                     inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end

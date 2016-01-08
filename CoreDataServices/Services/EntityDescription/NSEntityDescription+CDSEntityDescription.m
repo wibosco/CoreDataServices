@@ -12,7 +12,7 @@
 
 #pragma mark - Retrieval
 
-+ (NSEntityDescription *)entityForClass:(Class)entityClass
++ (NSEntityDescription *)cds_entityForClass:(Class)entityClass
                  inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     NSString *entityName = NSStringFromClass(entityClass);

@@ -9,6 +9,7 @@
 #import "CDSCountService.h"
 
 #import "CDSServiceManager.h"
+#import "NSFetchRequest+CDSFetchRequest.h"
 
 @implementation CDSCountService
 
@@ -24,7 +25,7 @@
     
     if (entityName.length > 0)
     {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        NSFetchRequest *request = [NSFetchRequest cds_fetchRequestWithEntityClass:entityClass];
         
         if (predicate)
         {
@@ -44,7 +45,6 @@
     }
     
     return count;
-    
 }
 
 + (NSUInteger)retrieveEntriesCountForEntityClass:(Class)entityClass
