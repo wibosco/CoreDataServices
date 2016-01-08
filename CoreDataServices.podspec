@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
 
   s.source_files  = "CoreDataServices/**/*.{h,m}"
   s.public_header_files = "CoreDataServices/**/*.{h}"
-
-  s.frameworks = 'UIKit', 'CoreData'
-
+	
   s.requires_arc = true
-
+	
+  s.frameworks = 'UIKit', 'CoreData'
+  
 end
