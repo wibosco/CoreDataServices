@@ -1,6 +1,9 @@
-# Xcode
+ OS X
 .DS_Store
-*/build/*
+
+# Xcode
+build/
+output/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -10,12 +13,14 @@
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-profile
+*.xccheckout
 *.moved-aside
 DerivedData
-.idea/
 *.hmap
-*.xccheckout
+*.ipa
 
-#CocoaPods
-Pods
+# CocoaPods
+Pods/
+
+#Documentation
+Documentation# Xcode
