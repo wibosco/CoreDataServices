@@ -9,6 +9,7 @@
 #import "CDSRetrievalService.h"
 
 #import "CDSServiceManager.h"
+#import "NSFetchRequest+CDSFetchRequest.h"
 
 @implementation CDSRetrievalService
 
@@ -28,7 +29,7 @@
     
     if (entityName.length > 0)
     {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityClass:entityClass];
         
         if (predicate)
         {

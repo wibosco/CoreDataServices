@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		430B0E761C3ED942003EE1A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430B0E751C3ED942003EE1A8 /* UIKit.framework */; };
+		43FC044E1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */; };
+		43FC04521C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */; };
 		EF107C2C16EE2E1A00469717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF107C2B16EE2E1A00469717 /* Foundation.framework */; };
 		EF107C4016EE31FF00469717 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF107C3F16EE31FF00469717 /* CoreData.framework */; };
 		EF107C4416EE327900469717 /* CDSServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C4316EE327900469717 /* CDSServiceManager.m */; };
@@ -30,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		430B0E751C3ED942003EE1A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43FC044C1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+CDSEntityDescription.h"; sourceTree = "<group>"; };
+		43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEntityDescription+CDSEntityDescription.m"; sourceTree = "<group>"; };
+		43FC04501C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+CDSFetchRequest.h"; sourceTree = "<group>"; };
+		43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+CDSFetchRequest.m"; sourceTree = "<group>"; };
 		EF107C2816EE2E1A00469717 /* libCoreDataServices.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCoreDataServices.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF107C2B16EE2E1A00469717 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EF107C3D16EE314400469717 /* CDSServices-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDSServices-Prefix.pch"; sourceTree = "<group>"; };
@@ -58,6 +64,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43FC044B1C401CA1008FD37E /* EntityDescription */ = {
+			isa = PBXGroup;
+			children = (
+				43FC044C1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.h */,
+				43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */,
+			);
+			path = EntityDescription;
+			sourceTree = "<group>";
+		};
+		43FC044F1C402169008FD37E /* FetchRequest */ = {
+			isa = PBXGroup;
+			children = (
+				43FC04501C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.h */,
+				43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */,
+			);
+			path = FetchRequest;
+			sourceTree = "<group>";
+		};
 		EF107C1F16EE2E1A00469717 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +141,8 @@
 			children = (
 				EF107C4D16EE360E00469717 /* Count */,
 				EF107C4E16EE360E00469717 /* Deletion */,
+				43FC044B1C401CA1008FD37E /* EntityDescription */,
+				43FC044F1C402169008FD37E /* FetchRequest */,
 				EF107C4F16EE360E00469717 /* Retrieval */,
 			);
 			path = Services;
@@ -201,9 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43FC044E1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m in Sources */,
 				EF107C4416EE327900469717 /* CDSServiceManager.m in Sources */,
 				EF107C5216EE360E00469717 /* CDSRetrievalService.m in Sources */,
 				EF107C5516EE362C00469717 /* CDSCountService.m in Sources */,
+				43FC04521C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m in Sources */,
 				EF107C5816EE397B00469717 /* CDSDeletionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
