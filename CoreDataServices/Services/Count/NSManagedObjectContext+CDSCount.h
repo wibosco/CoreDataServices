@@ -11,7 +11,7 @@
 @interface NSManagedObjectContext (CDSCount)
 
 /*
- Retrieves the count of entries from default context
+ Retrieves the count of entries 
  
  @param entityClass - a class value for the entity in core data
  
@@ -21,7 +21,7 @@
 
 
 /*
- Retrieves the count of entries that match the provided predicate's conditions from default context
+ Retrieves the count of entries that match the provided predicate's conditions 
  
  @param entityClass - a class value for the entity in core data
  @param predicate - a predicate used to limit the entries returned
