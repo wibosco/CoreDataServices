@@ -1,20 +1,30 @@
-CoreDataServices
-===========================
+CoreDataServices is a suite of helper classes to help to remove some of the boilerplate that surrounds using Core Data
 
-## How do I get CoreDataServices as a universal static library?
+##Installation
 
-In the project you should see two targets:
+CoreDataServices is intended to be installed via [Cocoapods](https://cocoapods.org/) 
 
-1. CoreDataServices
-2. CoreDataServicesLibrary
+CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party in your projects. See the [Getting Started Guide](https://guides.cocoapods.org/using/getting-started.html). You can install it with the following command:
 
-To produce a universal static library you need to ensure that you build the "CoreDataServicesLibrary" target, this is because it combines the i386 and ARM output into one static library that will run on both simulator and device.
+```bash
+$ gem install cocoapods
+```
 
-So to get the universal static library you need to:
+> CocoaPods 0.39.0+ is required to build CoreDataServices.
 
-1. Build "CoreDataServicesLirary" target
-2. Expand "Products" folder (in the project navigator)
-3. Open context menu on "libCoreDataServices.a" and select "Show in folder" option
-4. In the Finder window that opens naivgate to "Release-iphoneuniversal" folder (up one level)
-5. Copy and drag both "libCoreDataServices.a" and the "Headers" folder into your project
-6. Dance with joy!
+#### Podfile
+
+To integrate CoreDataServices into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+pod 'CoreDataServices'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
