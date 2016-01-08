@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		430B0E761C3ED942003EE1A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430B0E751C3ED942003EE1A8 /* UIKit.framework */; };
-		43FC044E1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */; };
-		43FC04521C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */; };
 		43FC04551C4029AC008FD37E /* NSManagedObjectContext+CDSRetrieval.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC04541C4029AC008FD37E /* NSManagedObjectContext+CDSRetrieval.m */; };
+		43FC045F1C402F31008FD37E /* NSManagedObjectContext+CDSCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FC045E1C402F31008FD37E /* NSManagedObjectContext+CDSCount.m */; };
 		EF107C2C16EE2E1A00469717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF107C2B16EE2E1A00469717 /* Foundation.framework */; };
 		EF107C4016EE31FF00469717 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF107C3F16EE31FF00469717 /* CoreData.framework */; };
 		EF107C4416EE327900469717 /* CDSServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C4316EE327900469717 /* CDSServiceManager.m */; };
-		EF107C5516EE362C00469717 /* CDSCountService.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C5416EE362C00469717 /* CDSCountService.m */; };
 		EF107C5816EE397B00469717 /* CDSDeletionService.m in Sources */ = {isa = PBXBuildFile; fileRef = EF107C5716EE397B00469717 /* CDSDeletionService.m */; };
 /* End PBXBuildFile section */
 
@@ -32,20 +30,20 @@
 
 /* Begin PBXFileReference section */
 		430B0E751C3ED942003EE1A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		43FC044C1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+CDSEntityDescription.h"; sourceTree = "<group>"; };
-		43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEntityDescription+CDSEntityDescription.m"; sourceTree = "<group>"; };
-		43FC04501C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+CDSFetchRequest.h"; sourceTree = "<group>"; };
-		43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+CDSFetchRequest.m"; sourceTree = "<group>"; };
 		43FC04531C4029AC008FD37E /* NSManagedObjectContext+CDSRetrieval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+CDSRetrieval.h"; sourceTree = "<group>"; };
 		43FC04541C4029AC008FD37E /* NSManagedObjectContext+CDSRetrieval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+CDSRetrieval.m"; sourceTree = "<group>"; };
+		43FC04581C402F19008FD37E /* NSEntityDescription+CDSEntityDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSEntityDescription+CDSEntityDescription.h"; sourceTree = "<group>"; };
+		43FC04591C402F19008FD37E /* NSEntityDescription+CDSEntityDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSEntityDescription+CDSEntityDescription.m"; sourceTree = "<group>"; };
+		43FC045B1C402F19008FD37E /* NSFetchRequest+CDSFetchRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+CDSFetchRequest.h"; sourceTree = "<group>"; };
+		43FC045C1C402F19008FD37E /* NSFetchRequest+CDSFetchRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+CDSFetchRequest.m"; sourceTree = "<group>"; };
+		43FC045D1C402F31008FD37E /* NSManagedObjectContext+CDSCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+CDSCount.h"; sourceTree = "<group>"; };
+		43FC045E1C402F31008FD37E /* NSManagedObjectContext+CDSCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+CDSCount.m"; sourceTree = "<group>"; };
 		EF107C2816EE2E1A00469717 /* libCoreDataServices.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCoreDataServices.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF107C2B16EE2E1A00469717 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EF107C3D16EE314400469717 /* CDSServices-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDSServices-Prefix.pch"; sourceTree = "<group>"; };
 		EF107C3F16EE31FF00469717 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EF107C4216EE327900469717 /* CDSServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSServiceManager.h; sourceTree = "<group>"; };
 		EF107C4316EE327900469717 /* CDSServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSServiceManager.m; sourceTree = "<group>"; };
-		EF107C5316EE362C00469717 /* CDSCountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSCountService.h; sourceTree = "<group>"; };
-		EF107C5416EE362C00469717 /* CDSCountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSCountService.m; sourceTree = "<group>"; };
 		EF107C5616EE397B00469717 /* CDSDeletionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSDeletionService.h; sourceTree = "<group>"; };
 		EF107C5716EE397B00469717 /* CDSDeletionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSDeletionService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,20 +62,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		43FC044B1C401CA1008FD37E /* EntityDescription */ = {
+		43FC04561C402F19008FD37E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				43FC044C1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.h */,
-				43FC044D1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m */,
+				43FC04571C402F19008FD37E /* EntityDescription */,
+				43FC045A1C402F19008FD37E /* FetchRequest */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		43FC04571C402F19008FD37E /* EntityDescription */ = {
+			isa = PBXGroup;
+			children = (
+				43FC04581C402F19008FD37E /* NSEntityDescription+CDSEntityDescription.h */,
+				43FC04591C402F19008FD37E /* NSEntityDescription+CDSEntityDescription.m */,
 			);
 			path = EntityDescription;
 			sourceTree = "<group>";
 		};
-		43FC044F1C402169008FD37E /* FetchRequest */ = {
+		43FC045A1C402F19008FD37E /* FetchRequest */ = {
 			isa = PBXGroup;
 			children = (
-				43FC04501C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.h */,
-				43FC04511C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m */,
+				43FC045B1C402F19008FD37E /* NSFetchRequest+CDSFetchRequest.h */,
+				43FC045C1C402F19008FD37E /* NSFetchRequest+CDSFetchRequest.m */,
 			);
 			path = FetchRequest;
 			sourceTree = "<group>";
@@ -139,10 +146,9 @@
 		EF107C4516EE333900469717 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				43FC04561C402F19008FD37E /* Core */,
 				EF107C4D16EE360E00469717 /* Count */,
 				EF107C4E16EE360E00469717 /* Deletion */,
-				43FC044B1C401CA1008FD37E /* EntityDescription */,
-				43FC044F1C402169008FD37E /* FetchRequest */,
 				EF107C4F16EE360E00469717 /* Retrieval */,
 			);
 			path = Services;
@@ -151,8 +157,8 @@
 		EF107C4D16EE360E00469717 /* Count */ = {
 			isa = PBXGroup;
 			children = (
-				EF107C5316EE362C00469717 /* CDSCountService.h */,
-				EF107C5416EE362C00469717 /* CDSCountService.m */,
+				43FC045D1C402F31008FD37E /* NSManagedObjectContext+CDSCount.h */,
+				43FC045E1C402F31008FD37E /* NSManagedObjectContext+CDSCount.m */,
 			);
 			path = Count;
 			sourceTree = "<group>";
@@ -227,12 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43FC044E1C401CB4008FD37E /* NSEntityDescription+CDSEntityDescription.m in Sources */,
 				EF107C4416EE327900469717 /* CDSServiceManager.m in Sources */,
-				EF107C5516EE362C00469717 /* CDSCountService.m in Sources */,
 				43FC04551C4029AC008FD37E /* NSManagedObjectContext+CDSRetrieval.m in Sources */,
-				43FC04521C40217F008FD37E /* NSFetchRequest+CDSFetchRequest.m in Sources */,
 				EF107C5816EE397B00469717 /* CDSDeletionService.m in Sources */,
+				43FC045F1C402F31008FD37E /* NSManagedObjectContext+CDSCount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
