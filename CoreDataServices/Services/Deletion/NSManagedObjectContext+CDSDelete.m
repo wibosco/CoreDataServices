@@ -33,7 +33,7 @@
             if ([self save:nil])
             {
                 //Force context to process pending changes as
-                //cascading deletes may not be immediatly applied by coredata.
+                //cascading deletes may not be immediatly applied by core data.
                 [self processPendingChanges];
             }
         }

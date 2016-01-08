@@ -13,7 +13,7 @@
 
 @implementation NSManagedObjectContext (CDSRetrieval)
 
-#pragma mark - MultipleRetrieval
+#pragma mark - Multiple
 
 - (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
@@ -155,7 +155,7 @@
                                     fetchLimit:0];
 }
 
-#pragma mark - SingleRetrieval
+#pragma mark - Single
 
 - (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate
