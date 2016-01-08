@@ -4,7 +4,7 @@ CoreDataServices is a suite of helper classes to help to remove some of the boil
 
 CoreDataServices is intended to be installed via [Cocoapods](https://cocoapods.org/) 
 
-CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party in your projects. See the [Getting Started Guide](https://guides.cocoapods.org/using/getting-started.html). You can install it with the following command:
+CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries in your projects. See the [Getting Started Guide](https://guides.cocoapods.org/using/getting-started.html). You can install it with the following command:
 
 ```bash
 $ gem install cocoapods
