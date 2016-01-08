@@ -3,7 +3,7 @@
 //  CoreDataServices
 //
 //  Created by William Boles on 15/04/2014.
-//  Copyright (c) 2014 Unii. All rights reserved.
+//  Copyright (c) 2014 Boles. All rights reserved.
 //
 
 #import "CDSServiceManager.h"
