@@ -13,12 +13,11 @@
 
 @implementation CDSRetrievalService
 
-#pragma mark - Multiple retrieval
+#pragma mark - MultipleRetrieval
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
                             fetchBatchSize:(NSUInteger)fetchBatchSize
                                 fetchLimit:(NSUInteger)fetchLimit
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext
@@ -33,23 +32,22 @@
         
         if (predicate)
         {
-            [request setPredicate:predicate];
+            request.predicate = predicate;
         }
         
-        if (orderBy)
+        if (sortDescriptors.count > 0)
         {
-            NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:orderBy ascending:ascending];
-            [request setSortDescriptors:[[NSArray alloc] initWithObjects:dateSort, nil]];
+            request.sortDescriptors = sortDescriptors;
         }
         
         if (fetchBatchSize > 0)
         {
-            [request setFetchBatchSize:fetchBatchSize];
+            request.fetchBatchSize = fetchBatchSize;
         }
         
         if (fetchLimit > 0)
         {
-            [request setFetchLimit:fetchLimit];
+            request.fetchLimit = fetchLimit;
         }
         
         NSError *error = nil;
@@ -68,25 +66,22 @@
         
         if (error)
         {
-            NSLog(@"Error attempting to retrieve entries from table %@, pred %@, orderby %@, managedObjectContext %@, ascending %d: %@", entityName, predicate, orderBy, managedObjectContext, ascending, [error userInfo]);
+            NSLog(@"Error attempting to retrieve entries from table %@, pred %@, sortDescriptors %@, managedObjectContext %@, userinfo: %@", entityName, predicate, sortDescriptors, managedObjectContext, [error userInfo]);
         }
     }
     
     return entries;
-    
 }
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
                             fetchBatchSize:(NSUInteger)fetchBatchSize
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:managedObjectContext];
@@ -94,14 +89,12 @@
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
                       managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -111,8 +104,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
@@ -123,8 +115,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:fetchBatchSize
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -135,8 +126,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -148,35 +138,30 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:fetchBatchSize
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
                             fetchBatchSize:(NSUInteger)fetchBatchSize
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:fetchBatchSize
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -184,13 +169,11 @@
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -198,14 +181,12 @@
 
 + (NSArray *)retrieveEntriesForEntityClass:(Class)entityClass
                                  predicate:(NSPredicate *)predicate
-                                   orderBy:(NSString *)orderBy
-                            ascendingOrder:(BOOL)ascending
+                           sortDescriptors:(NSArray *)sortDescriptors
                             fetchBatchSize:(NSUInteger)fetchBatchSize
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:orderBy
-                                               ascendingOrder:ascending
+                                              sortDescriptors:sortDescriptors
                                                fetchBatchSize:fetchBatchSize
                                                    fetchLimit:0
                                          managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
@@ -216,8 +197,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:managedObjectContext];
@@ -229,8 +209,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:nil
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:fetchBatchSize
                                                    fetchLimit:0
                                          managedObjectContext:managedObjectContext];
@@ -242,8 +221,7 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:managedObjectContext];
@@ -256,47 +234,42 @@
 {
     return [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
                                                     predicate:predicate
-                                                      orderBy:nil
-                                               ascendingOrder:NO
+                                              sortDescriptors:nil
                                                fetchBatchSize:0
                                                    fetchLimit:0
                                          managedObjectContext:managedObjectContext];
 }
 
-#pragma mark - Single retrieval
+#pragma mark - SingleRetrieval
 
 + (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate
-                               orderBy:(NSString *)orderBy
-                        ascendingOrder:(BOOL)ascending
+                       sortDescriptors:(NSArray *)sortDescriptors
                   managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    NSManagedObject *managedObject = nil;
+    NSManagedObject *entry = nil;
     
-    NSArray *managedObjects = [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
-                                                                       predicate:predicate
-                                                                         orderBy:orderBy
-                                                                  ascendingOrder:ascending
-                                                                  fetchBatchSize:0
-                                                                      fetchLimit:1
-                                                            managedObjectContext:managedObjectContext];
+    NSArray *entries = [CDSRetrievalService retrieveEntriesForEntityClass:entityClass
+                                                                predicate:predicate
+                                                          sortDescriptors:sortDescriptors
+                                                           fetchBatchSize:0
+                                                               fetchLimit:1
+                                                     managedObjectContext:managedObjectContext];
     
     
-    if (managedObjects.count > 0)
+    if (entries.count > 0)
     {
-        managedObject = [managedObjects objectAtIndex:0];
+        entry = entries[0];
     }
     
-    return managedObject;
+    return entry;
 }
-
 
 + (id)retrieveFirstEntryForEntityClass:(Class)entityClass
 {
     return [CDSRetrievalService retrieveFirstEntryForEntityClass:entityClass
                                                        predicate:nil
-                                                         orderBy:nil
-                                                  ascendingOrder:NO
+                                                 sortDescriptors:nil
                                             managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
 
@@ -305,20 +278,17 @@
 {
     return [CDSRetrievalService retrieveFirstEntryForEntityClass:entityClass
                                                        predicate:nil
-                                                         orderBy:nil
-                                                  ascendingOrder:NO
+                                                 sortDescriptors:nil
                                             managedObjectContext:managedObjectContext];
 }
 
 + (id)retrieveFirstEntryForEntityClass:(Class)entityClass
                              predicate:(NSPredicate *)predicate
-                               orderBy:(NSString *)orderBy
-                        ascendingOrder:(BOOL)ascending
+                       sortDescriptors:(NSArray *)sortDescriptors
 {
     return [CDSRetrievalService retrieveFirstEntryForEntityClass:entityClass
                                                        predicate:predicate
-                                                         orderBy:orderBy
-                                                  ascendingOrder:ascending
+                                                 sortDescriptors:sortDescriptors
                                             managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
 
@@ -327,8 +297,7 @@
 {
     return [CDSRetrievalService retrieveFirstEntryForEntityClass:entityClass
                                                        predicate:predicate
-                                                         orderBy:nil
-                                                  ascendingOrder:NO
+                                                 sortDescriptors:nil
                                             managedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
 }
 
@@ -339,8 +308,7 @@
     
     return [CDSRetrievalService retrieveFirstEntryForEntityClass:entityClass
                                                        predicate:predicate
-                                                         orderBy:nil
-                                                  ascendingOrder:NO
+                                                 sortDescriptors:nil
                                             managedObjectContext:managedObjectContext];
     
 }

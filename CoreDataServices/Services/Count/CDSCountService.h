@@ -14,7 +14,7 @@
 /*
  Retrieves the count of entries from default context
  
- @param entityClass a class value for the entity in core data
+ @param entityClass - a class value for the entity in core data
  
  @return count
  */
@@ -23,8 +23,8 @@
 /*
  Retrieves the count of entries from specfic context
  
- @param entityClass a class value for the entity in core data
- @param managedObjectContext the context used to access the entries
+ @param entityClass - a class value for the entity in core data
+ @param managedObjectContext - the context used to access the entries
  
  @return count
  */
@@ -35,8 +35,8 @@
 /*
  Retrieves the count of entries that match the provided predicate's conditions from default context
  
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
+ @param entityClass - a class value for the entity in core data
+ @param predicate - a predicate used to limit the entries returned
  
  @return count
  */
@@ -46,9 +46,9 @@
 /*
  Retrieves the count of entries that match the provided predicate's conditions from specfic context
  
- @param entityClass a class value for the entity in core data
- @param predicate a predicate used to limit the entries returned
- @param managedObjectContext the context used to access the entries
+ @param entityClass - a class value for the entity in core data
+ @param predicate - a predicate used to limit the entries returned
+ @param managedObjectContext - the context used to access the entries
  
  @return count
  */
