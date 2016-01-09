@@ -39,4 +39,6 @@ Pull requests are encouraged and greatly appreciated! Please try to maintain con
 
 To tag a version use:
 
+```bash
 git tag -a 1.1.5 -m 'Version 1.1.5'
+```
