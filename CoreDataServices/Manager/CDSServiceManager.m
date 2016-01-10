@@ -8,8 +8,6 @@
 
 #import "CDSServiceManager.h"
 
-#import <UIKit/UIKit.h>
-
 static NSString *const CDSPersistentStoreDirectoryName = @"persistent-store";
 static NSString * const CDSPersistentStoreFileExtension = @"sqlite";
 

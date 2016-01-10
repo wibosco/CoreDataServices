@@ -3,6 +3,6 @@
 //
 
 #ifdef __OBJC__
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+    @import CoreData;
+    @import Foundation;
 #endif

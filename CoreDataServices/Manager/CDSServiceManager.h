@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Boles. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+@import CoreData;
+@import Foundation;
+@import UIKit;
 
 @interface CDSServiceManager : NSObject
 
