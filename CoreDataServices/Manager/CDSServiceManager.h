@@ -21,15 +21,6 @@
  */
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 
-/**
- ManagedObjectContext used to background thread operations.
- 
- This context is set as a child of the managedObjectContext.
- 
- @return Managed Object Context
- */
-@property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundManagedObjectContext;
-
 /*
  Returns the global CDSServiceManager instance.
  

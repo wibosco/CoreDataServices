@@ -19,7 +19,6 @@ static CDSServiceManager *sharedInstance = nil;
 @property (nonatomic, strong, readonly) NSURL *storeDirectoryURL;
 @property (nonatomic, strong, readonly) NSURL *storeURL;
 @property (nonatomic, strong, readwrite) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong, readwrite) NSManagedObjectContext *localManagedObjectContext;
 @property (nonatomic, strong, readwrite) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong, readwrite) NSManagedObjectModel *managedObjectModel;
 
@@ -97,23 +96,6 @@ static CDSServiceManager *sharedInstance = nil;
     }
 }
 
-- (NSManagedObjectContext *)localManagedObjectContext
-{
-    @synchronized(self)
-    {
-        if (!_localManagedObjectContext)
-        {
-            _localManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-            [_localManagedObjectContext setParentContext:self.managedObjectContext];
-            
-            [_localManagedObjectContext setUndoManager:nil];
-            [_localManagedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-        }
-        
-        return _localManagedObjectContext;
-    }
-}
-
 #pragma mark - Setup
 
 - (void)setupModelURLWithModelName:(NSString *)name
@@ -133,7 +115,6 @@ static CDSServiceManager *sharedInstance = nil;
 
 - (void)clear
 {
-    self.localManagedObjectContext = nil;
     self.managedObjectContext = nil;
     
     self.persistentStoreCoordinator = nil;
