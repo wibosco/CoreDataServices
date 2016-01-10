@@ -29,7 +29,11 @@ Then, run the following command:
 $ pod install
 ```
 
-##Curious?
+##Using this pod
+
+FetchedResultsController uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
+
+##Found an issue
 
 Please open a [new Issue here](https://github.com/wibosco/CoreDataServices/issues/new) if you run into a problem specific to PureLayout, have a feature request, or want to share a comment. Note that general Core Data questions should be asked on [Stack Overflow](http://stackoverflow.com).
 
