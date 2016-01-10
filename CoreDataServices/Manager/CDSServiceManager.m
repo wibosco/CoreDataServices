@@ -8,7 +8,7 @@
 
 #import "CDSServiceManager.h"
 
-static NSString *const CDSPersistentStoreDirectoryName = @"persistent-store";
+static NSString * const CDSPersistentStoreDirectoryName = @"persistent-store";
 static NSString * const CDSPersistentStoreFileExtension = @"sqlite";
 
 static CDSServiceManager *sharedInstance = nil;
@@ -180,6 +180,7 @@ static CDSServiceManager *sharedInstance = nil;
 {
     NSURL *applicationDocumentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                                             inDomains:NSUserDomainMask] lastObject];
+    
     NSURL *storeDirectoryURL = [applicationDocumentURL URLByAppendingPathComponent:CDSPersistentStoreDirectoryName];
     
     return storeDirectoryURL;
