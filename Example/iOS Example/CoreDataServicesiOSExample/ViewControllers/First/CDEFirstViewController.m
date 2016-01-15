@@ -10,6 +10,7 @@
 
 #import <CoreDataServices/CDSServiceManager.h>
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
+#import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
 #import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
 
 #import "CDEUser.h"
@@ -121,8 +122,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:YES];
+    CDEUser *user = self.users[indexPath.row];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID]; //I could have passed the user itself but I wanted to demostrate a predicate being used
+    
+    [[CDSServiceManager sharedInstance].managedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+                                                                                   predicate:predicate];
+    
+    self.users = nil;
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Insert
@@ -132,6 +141,7 @@
     CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
                                                        inManagedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
     
+    user.userID = [NSUUID UUID].UUIDString;
     user.name = [NSString stringWithFormat:@"Example %@", @(self.users.count)];
     user.age = @(arc4random_uniform(102));
     
