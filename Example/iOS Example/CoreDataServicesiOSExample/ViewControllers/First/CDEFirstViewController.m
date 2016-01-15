@@ -10,6 +10,7 @@
 
 #import <CoreDataServices/CDSServiceManager.h>
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
+#import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
 
 #import "CDEUser.h"
 #import "CDEUserTableViewCell.h"
@@ -19,6 +20,10 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *users;
+
+@property (nonatomic, strong) UIBarButtonItem *insertUserBarButtonItem;
+
+- (void)insertButtonPressed:(UIBarButtonItem *)sender;
 
 @end
 
@@ -33,6 +38,10 @@
     /*-------------------*/
     
     self.title = @"Users";
+    
+    /*-------------------*/
+    
+    self.navigationItem.rightBarButtonItem = self.insertUserBarButtonItem;
     
     /*-------------------*/
     
@@ -56,6 +65,34 @@
     }
     
     return _tableView;
+}
+
+- (UIBarButtonItem *)insertUserBarButtonItem
+{
+    if (!_insertUserBarButtonItem)
+    {
+       _insertUserBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                target:self
+                                                                                action:@selector(insertButtonPressed:)];
+    }
+    
+    return _insertUserBarButtonItem;
+}
+
+#pragma mark - Users
+
+- (NSArray *)users
+{
+    if (!_users)
+    {
+        NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
+                                                                  ascending:YES];
+        
+        _users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+                                                                                            sortDescriptors:@[ageSort]];
+    }
+    
+    return _users;
 }
 
 #pragma mark - UITableViewDataSource
@@ -88,20 +125,19 @@
                              animated:YES];
 }
 
-#pragma mark - Users
+#pragma mark - Insert
 
-- (NSArray *)users
+- (void)insertButtonPressed:(UIBarButtonItem *)sender
 {
-    if (!_users)
-    {
-        NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
-                                                                  ascending:YES];
-        
-        _users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
-                                                                                            sortDescriptors:@[ageSort]];
-    }
+    CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
+                                                       inManagedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
     
-    return _users;
+    user.name = [NSString stringWithFormat:@"Example %@", @(self.users.count)];
+    user.age = @(arc4random_uniform(102));
+    
+    self.users = nil;
+    
+    [self.tableView reloadData];
 }
 
 @end

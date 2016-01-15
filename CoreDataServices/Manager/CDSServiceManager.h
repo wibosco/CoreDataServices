@@ -36,7 +36,7 @@
 - (void)setupModelURLWithModelName:(NSString *)name;
 
 /*
- Saves the managedObjectContext.
+ Saves the managed object context that is set via the managedObjectContext property.
  */
 - (void)saveManagedObjectContext;
 
