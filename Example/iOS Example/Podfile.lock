@@ -1,0 +1,10 @@
+PODS:
+  - CoreDataServices (0.3.3)
+
+DEPENDENCIES:
+  - CoreDataServices
+
+SPEC CHECKSUMS:
+  CoreDataServices: 7018df066ca8631982e43809edadc36d15323c21
+
+COCOAPODS: 0.39.0
