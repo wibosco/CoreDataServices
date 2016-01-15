@@ -174,7 +174,7 @@ static CDSServiceManager *sharedInstance = nil;
     }
 }
 
-#pragma mark - Helpers
+#pragma mark - Store
 
 - (NSURL *)storeDirectoryURL
 {

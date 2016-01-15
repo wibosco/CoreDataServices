@@ -13,12 +13,23 @@
 #pragma mark - Retrieval
 
 + (NSEntityDescription *)cds_entityForClass:(Class)entityClass
-                 inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+                     inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
     NSString *entityName = NSStringFromClass(entityClass);
     
     return [NSEntityDescription entityForName:entityName
                        inManagedObjectContext:managedObjectContext];
+}
+
+#pragma mark - Insertion
+
++ (__kindof NSManagedObject *)cds_insertNewObjectForEntityForClass:(Class)entityClass
+                                            inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    NSString *entityName = NSStringFromClass(entityClass);
+    
+    return [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                         inManagedObjectContext:managedObjectContext];
 }
 
 @end
