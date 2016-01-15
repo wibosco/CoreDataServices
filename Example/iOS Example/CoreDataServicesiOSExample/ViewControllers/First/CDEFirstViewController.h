@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  FirstViewController.h
 //  CoreDataServicesiOSExample
 //
 //  Created by William Boles on 15/01/2016.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface CDEFirstViewController : UIViewController
 
 
 @end

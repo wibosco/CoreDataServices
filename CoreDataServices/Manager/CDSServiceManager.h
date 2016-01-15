@@ -35,6 +35,11 @@
  */
 - (void)setupModelURLWithModelName:(NSString *)name;
 
+/*
+ Saves the managedObjectContext.
+ */
+- (void)saveManagedObjectContext;
+
 /**
  Destroys all data from core data, tears down the stack and builds it up again.
  */

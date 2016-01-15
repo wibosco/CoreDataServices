@@ -1,10 +1,13 @@
 PODS:
   - CoreDataServices (0.3.3)
+  - PureLayout (3.0.1)
 
 DEPENDENCIES:
   - CoreDataServices
+  - PureLayout
 
 SPEC CHECKSUMS:
   CoreDataServices: 7018df066ca8631982e43809edadc36d15323c21
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
 COCOAPODS: 0.39.0
