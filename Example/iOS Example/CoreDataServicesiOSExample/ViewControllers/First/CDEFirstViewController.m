@@ -11,7 +11,9 @@
 #import <CoreDataServices/CDSServiceManager.h>
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
 #import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
+#import <CoreDataServices/NSManagedObjectContext+CDSCount.h>
 #import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
+#import <PureLayout/PureLayout.h>
 
 #import "CDEUser.h"
 #import "CDEUserTableViewCell.h"
@@ -116,6 +118,11 @@
     [cell layoutByApplyingConstraints];
     
     return cell;
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
 }
 
 #pragma mark - UITableViewDelegate

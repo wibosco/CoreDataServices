@@ -10,6 +10,8 @@
 
 #import <PureLayout/PureLayout.h>
 
+static CGFloat const kCDEPadding = 28.0f;
+
 @interface CDEUserTableViewCell ()
 
 @property (nonatomic, strong, readwrite) UILabel *nameLabel;
@@ -70,25 +72,25 @@
     /*-------------------------*/
     
     [self.nameLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft
-                                     withInset:14.0f];
+                                     withInset:kCDEPadding];
     
     [self.nameLabel autoPinEdgeToSuperviewEdge:ALEdgeTop
                                      withInset:4.0f];
     
     [self.nameLabel autoPinEdgeToSuperviewEdge:ALEdgeRight
-                                     withInset:14.0f];
+                                     withInset:kCDEPadding];
     
     /*-------------------------*/
     
     [self.ageLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft
-                                    withInset:14.0f];
+                                    withInset:kCDEPadding];
     
     [self.ageLabel autoPinEdge:ALEdgeTop
                         toEdge:ALEdgeBottom
                         ofView:self.nameLabel];
     
     [self.ageLabel autoPinEdgeToSuperviewEdge:ALEdgeRight
-                                    withInset:14.0f];
+                                    withInset:kCDEPadding];
     
     [self.ageLabel autoSetDimension:ALDimensionHeight
                              toSize:15.0f];

@@ -191,9 +191,9 @@
 		4319379C1C494A1B00447B9E /* First */ = {
 			isa = PBXGroup;
 			children = (
-				431937BA1C495CA900447B9E /* Cells */,
 				4319379D1C494A1B00447B9E /* CDEFirstViewController.h */,
 				4319379E1C494A1B00447B9E /* CDEFirstViewController.m */,
+				431937BA1C495CA900447B9E /* Cells */,
 			);
 			path = First;
 			sourceTree = "<group>";
