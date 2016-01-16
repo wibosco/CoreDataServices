@@ -59,6 +59,41 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 }
 ```
 
+####Counting
+
+```objc
+#import <CoreDataServices/NSManagedObjectContext+CDSCount.h>
+
+....
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
+}
+```
+
+####Deleting
+
+```objc
+#import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
+
+....
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CDEUser *user = self.users[indexPath.row];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID];
+    
+    [[CDSServiceManager sharedInstance].managedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+                                                                                   predicate:predicate];
+    
+    self.users = nil;
+    
+    [self.tableView reloadData];
+}
+```
+
 CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
 
 ##Found an issue?
