@@ -10,33 +10,36 @@
 @import Foundation;
 @import UIKit;
 
+/**
+ A singleton manager that is responsible for setting up a typical (one context) core data stack and providing access to the main queue context. Also contains some convenience methods for interacting with that main queue context.
+ */
 @interface CDSServiceManager : NSObject
 
 /*
- ManagedObjectContext that is used as the default managedObjectContext
+ Context that is used as the default `NSManagedObjectContext` instance.
  
- If when accessing a core data entity, if no managedobjectcontext is specified this one will be used
+ This context is should only be used on the main thread - configured as `NSMainQueueConcurrencyType`.
  
- @return Managed Object Context
+ @return NSManagedObjectContext instance.
  */
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 
 /*
  Returns the global CDSServiceManager instance.
  
- @return CDSServiceManager instance.
+ @return CDSServiceManager shared instance.
  */
 + (instancetype)sharedInstance;
 
 /**
- Sets Up the core data stack using a model with the filename.
+ Sets up the core data stack using a model with the filename.
  
  @param name - filename of the model to load.
  */
 - (void)setupModelURLWithModelName:(NSString *)name;
 
 /*
- Saves the managed object context that is set via the managedObjectContext property.
+ Saves the managed object context that is set via the `managedObjectContext` property.
  */
 - (void)saveManagedObjectContext;
 

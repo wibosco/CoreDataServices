@@ -8,6 +8,11 @@
 
 @import CoreData;
 
+/**
+ A category that extends `NSManagedObjectContext` to provide convenience methods related to counting the number of entries/rows/objects in your Core Data Entity.
+ 
+ In order to use this category you will need to create a subclasses of `NSManagedObject` rather than using KVO.
+ */
 @interface NSManagedObjectContext (CDSCount)
 
 /*
@@ -15,7 +20,7 @@
  
  @param entityClass - a class value for the entity in core data
  
- @return count of entries for this class/entity
+ @return NSUInteger count of entries for this class/entity
  */
 - (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass;
 
@@ -26,7 +31,7 @@
  @param entityClass - a class value for the entity in core data
  @param predicate - a predicate used to limit the entries returned
  
- @return count of entries that match provided predicate
+ @return NSUInteger count of entries that match provided predicate
  */
 - (NSUInteger)cds_retrieveEntriesCountForEntityClass:(Class)entityClass
                                            predicate:(NSPredicate *)predicate;
