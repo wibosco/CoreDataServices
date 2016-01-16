@@ -46,11 +46,19 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 
 ....
 
-NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
-                                                          ascending:YES];
+- (NSArray *)users
+{
+    if (!_users)
+    {
+        NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
+                                                                  ascending:YES];
         
-self.users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
-                                                                                        sortDescriptors:@[ageSort]];
+        _users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+                                                                                            sortDescriptors:@[ageSort]];
+    }
+    
+    return _users;
+}
 ```
 
 ##Found an issue?
