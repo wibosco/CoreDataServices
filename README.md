@@ -4,17 +4,7 @@
 
 CoreDataServices is a suite of helper classes to help to remove some of the boilerplate that surrounds using Core Data.
 
-##Installation
-
-CoreDataServices is intended to be installed via [Cocoapods](https://cocoapods.org/) 
-
-CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries in your projects. See the [Getting Started Guide](https://guides.cocoapods.org/using/getting-started.html). You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-> CocoaPods 0.39.0+ is required to build CoreDataServices.
+##Installation via [Cocoapods](https://cocoapods.org/)
 
 #### Podfile
 
@@ -33,9 +23,11 @@ Then, run the following command:
 $ pod install
 ```
 
+> CocoaPods 0.39.0+ is required to build CoreDataServices.
+
 ##Usage
 
-CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`:
+CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
 
 ####Retrieving
 
@@ -93,6 +85,8 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
     [self.tableView reloadData];
 }
 ```
+
+CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Example/iOS%20Example) to provide more details than listed above.
 
 CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
 
