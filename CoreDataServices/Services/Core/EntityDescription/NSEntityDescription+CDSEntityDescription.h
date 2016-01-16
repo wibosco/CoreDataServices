@@ -16,12 +16,12 @@
 @interface NSEntityDescription (CDSEntityDescription)
 
 /**
- Retrieves NSEntityDescription instance for core data entity class.
+ Retrieves `NSEntityDescription` instance for core data entity class.
  
  @param entityClass - class value for the entity in core data.
  @param managedObjectContext - the context used to access the entries.
  
- @return NSEntityDescription instance of entityClass passed in.
+ @return `NSEntityDescription` instance of entityClass passed in.
  */
 + (NSEntityDescription *)cds_entityForClass:(Class)entityClass
                      inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
@@ -32,7 +32,7 @@
  @param entityClass - class value for the entity in core data.
  @param managedObjectContext - the context used to access the entries.
  
- @return NSManagedObject instance of entityClass passed in.
+ @return `NSManagedObject` instance of entityClass passed in.
  */
 + (__kindof NSManagedObject *)cds_insertNewObjectForEntityForClass:(Class)entityClass
                                             inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;

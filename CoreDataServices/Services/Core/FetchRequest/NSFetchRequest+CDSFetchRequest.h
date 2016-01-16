@@ -16,11 +16,11 @@
 @interface NSFetchRequest (CDSFetchRequest)
 
 /**
- Convenience init'er to allow for retreive of a NSFetchRequest instance given a core data entity class. 
+ Convenience init method to allow for retreive of a NSFetchRequest instance given a core data entity class. 
  
  @param entityClass - class value for the entity in core data.
  
- @return NSFetchRequest instance for the entityClass passed in.
+ @return `NSFetchRequest` instance for the entityClass passed in.
  */
 + (instancetype)cds_fetchRequestWithEntityClass:(Class)entityClass;
 
