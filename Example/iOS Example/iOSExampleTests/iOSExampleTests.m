@@ -1,6 +1,6 @@
 //
-//  CoreDataServicesiOSExampleTests.m
-//  CoreDataServicesiOSExampleTests
+//  iOSExampleTests.m
+//  iOSExampleTests
 //
 //  Created by William Boles on 15/01/2016.
 //  Copyright © 2016 Boles. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface CoreDataServicesiOSExampleTests : XCTestCase
+@interface iOSExampleTests : XCTestCase
 
 @end
 
-@implementation CoreDataServicesiOSExampleTests
+@implementation iOSExampleTests
 
 - (void)setUp {
     [super setUp];
