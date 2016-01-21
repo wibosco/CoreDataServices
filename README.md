@@ -2,11 +2,9 @@
 [![License](https://img.shields.io/cocoapods/l/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 [![Platform](https://img.shields.io/cocoapods/p/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 
-CoreDataServices is a suite of helper classes to help to remove some of the boilerplate that surrounds using Core Data.
+CoreDataServices is a suite of helper classes and categories to help to remove some of the boilerplate that surrounds using Core Data.
 
 ##Installation via [Cocoapods](https://cocoapods.org/)
-
-#### Podfile
 
 To integrate CoreDataServices into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
