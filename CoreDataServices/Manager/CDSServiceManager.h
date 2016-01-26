@@ -10,43 +10,51 @@
 @import Foundation;
 @import UIKit;
 
-/**
- A singleton manager that is responsible for setting up a typical (one context) core data stack and providing access to the main queue context. Also contains some convenience methods for interacting with that main queue context.
- */
 @interface CDSServiceManager : NSObject
 
 /*
- Context that is used as the default `NSManagedObjectContext` instance.
+ `NSManagedObjectContext` instance that is used as the default context.
  
- This context is should only be used on the main thread - configured as `NSMainQueueConcurrencyType`.
+ This context should be used on the main thread. Setup using concurrancy type: `NSMainQueueConcurrencyType`.
  
- @return NSManagedObjectContext instance.
+ @return `NSManagedObjectContext` instance.
  */
-@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *mainManagedObjectContext;
+
+/*
+ `NSManagedObjectContext` instance that is used as the background context
+ 
+ This context should be used on a background thread. Setup using concurrancy type: `NSPrivateQueueConcurrencyType`.
+ 
+ return `NSManagedObjectContext` instance.
+ */
+@property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundManagedObjectContext;
 
 /*
  Returns the global CDSServiceManager instance.
  
- @return CDSServiceManager shared instance.
+ @return CDSServiceManager instance.
  */
 + (instancetype)sharedInstance;
 
 /**
- Sets up the core data stack using a model with the filename.
+ Sets Up the core data stack using a model with the filename.
  
  @param name - filename of the model to load.
  */
 - (void)setupModelURLWithModelName:(NSString *)name;
 
 /*
- Saves the managed object context that is set via the `managedObjectContext` property.
+ Saves the mainManagedObjectContext.
  */
-- (void)saveManagedObjectContext;
+- (void)saveMainManagedObjectContext;
 
-/**
- Destroys all data from core data, tears down the stack and builds it up again.
+/*
+ Saves the backgroundManagedObjectContext.
+ 
+ Saving the backgroundManagedObjectContext will cause the mainManagedObjectContext to be saved. This can result in a slightly longer save operation however the trade-off is to ensure "data correctness" over performance.
  */
-- (void)reset;
+- (void)saveBackgroundManagedObjectContext;
 
 /**
  Destroys all data from core data and tears down the stack.
