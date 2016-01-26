@@ -24,9 +24,9 @@ static CDSServiceManager *sharedInstance = nil;
 @property (nonatomic, strong, readwrite) NSManagedObjectModel *managedObjectModel;
 
 /**
- Will attempt to create the persistent store.
+ Will attempt to create the persistent store and assign that persistent store to the coordinator.
  
- @param deleteAndRetry - will delete the current persistent store and try creating it. This can happen where lightweight migration has failed.
+ @param deleteAndRetry - will delete the current persistent store and try creating it fresh. This can happen where lightweight migration has failed.
  */
 - (void)createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError:(BOOL)deleteAndRetry;
 
