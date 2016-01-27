@@ -15,7 +15,7 @@
  */
 @interface CDSServiceManager : NSObject
 
-/*
+/**
  `NSManagedObjectContext` instance that is used as the default context.
  
  This context should be used on the main thread - using concurrancy type: `NSMainQueueConcurrencyType`.
@@ -24,7 +24,7 @@
  */
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainManagedObjectContext;
 
-/*
+/**
  `NSManagedObjectContext` instance that is used as the background context
  
  This context should be used on a background thread - using concurrancy type: `NSPrivateQueueConcurrencyType`.
@@ -33,7 +33,7 @@
  */
 @property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundManagedObjectContext;
 
-/*
+/**
  Returns the global CDSServiceManager instance.
  
  @return CDSServiceManager shared instance.
@@ -47,12 +47,12 @@
  */
 - (void)setupModelURLWithModelName:(NSString *)name;
 
-/*
+/**
  Saves the managed object context that is used via the `mainManagedObjectContext` property.
  */
 - (void)saveMainManagedObjectContext;
 
-/*
+/**
  Saves the managed object context that is set used the `NSPrivateQueueConcurrencyType` property.
  
  Saving the backgroundManagedObjectContext will cause the mainManagedObjectContext to be saved. This can result in a slightly longer save operation however the trade-off is to ensure "data correctness" over performance.

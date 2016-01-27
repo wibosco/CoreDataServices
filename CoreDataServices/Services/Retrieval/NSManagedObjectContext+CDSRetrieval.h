@@ -15,7 +15,7 @@
  */
 @interface NSManagedObjectContext (CDSRetrieval)
 
-/*
+/**
  Retrieves all entries for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.
@@ -24,7 +24,7 @@
  */
 - (NSArray *)cds_retrieveEntriesForEntityClass:(Class)entityClass;
 
-/*
+/**
  Retrieves all entries for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.
@@ -36,7 +36,7 @@
                                 fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
-/*
+/**
  Retrieves all entries for an entity in core data that match the provided predicate's conditions.
  
  @param entityClass - a class value for the entity in core data.
@@ -48,7 +48,7 @@
                                      predicate:(NSPredicate *)predicate;
 
 
-/*
+/**
  Retrieves all entries for an entity in core data that match the provided predicate's conditions.
  
  @param entityClass - a class value for the entity in core data.
@@ -62,7 +62,7 @@
                                 fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
-/*
+/**
  Retrieves ordered entries for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.
@@ -74,7 +74,7 @@
                                sortDescriptors:(NSArray *)sortDescriptors;
 
 
-/*
+/**
  Retrieves ordered entries for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.
@@ -88,7 +88,7 @@
                                 fetchBatchSize:(NSUInteger)fetchBatchSize;
 
 
-/*
+/**
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions.
  
  @param entityClass - a class value for the entity in core data.
@@ -102,7 +102,7 @@
                                sortDescriptors:(NSArray *)sortDescriptors;
 
 
-/*
+/**
  Retrieves ordered entries for an entity in core data that match the provided predicate's conditions.
  
  @param entityClass - a class value for the entity in core data.
@@ -120,7 +120,7 @@
 
 #pragma mark - SingleRetrieval
 
-/*
+/**
  Retrieves first entry for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.
@@ -129,7 +129,7 @@
  */
 - (NSManagedObject *)cds_retrieveFirstEntryForEntityClass:(Class)entityClass;
 
-/*
+/**
  Retrieves first entry for an entity in core data that match the provided predicate's conditions.
  
  @param entityClass - a class value for the entity in core data.
@@ -141,7 +141,7 @@
                                                 predicate:(NSPredicate *)predicate;
 
 
-/*
+/**
  Retrieves first entry for an entity in core data.
  
  @param entityClass - a class value for the entity in core data.

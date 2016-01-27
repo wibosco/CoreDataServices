@@ -15,14 +15,14 @@
  */
 @interface NSManagedObjectContext (CDSDelete)
 
-/*
+/**
  Deletes an `NSManagedObject` instance.
  
  @param managedObject - to be deleted.
  */
 - (void)cds_deleteManagedObject:(NSManagedObject *)managedObject;
 
-/*
+/**
  Deletes an `NSManagedObject` instance.
  
  @param managedObject - to be deleted.
@@ -31,14 +31,14 @@
 - (void)cds_deleteManagedObject:(NSManagedObject *)managedObject
               saveAfterDeletion:(BOOL)saveAfterDeletion;
 
-/*
+/**
  Deletes entries/rows/objects from core data entity.
  
  @param entityClass - a class value for the entity in core data.
  */
 - (void)cds_deleteEntriesForEntityClass:(Class)entityClass;
 
-/*
+/**
  Deletes entries/rows/objects from core data entity.
  
  @param entityClass - a class value for the entity in core data.
@@ -47,7 +47,7 @@
 - (void)cds_deleteEntriesForEntityClass:(Class)entityClass
                       saveAfterDeletion:(BOOL)saveAfterDeletion;
 
-/*
+/**
  Deletes entries/rows/objects from core data entity that matches the predicate passed.
  
  @param entityClass - a class value for the entity in core data.
@@ -56,7 +56,7 @@
 - (void)cds_deleteEntriesForEntityClass:(Class)entityClass
                               predicate:(NSPredicate *)predicate;
 
-/*
+/**
  Deletes entries/rows/objects from core data entity that matches the predicate passed.
  
  @param entityClass - a class value for the entity in core data.
