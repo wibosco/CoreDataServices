@@ -18,11 +18,21 @@ static CDSServiceManager *sharedInstance = nil;
 @property (nonatomic, strong) NSURL *modelURL;
 @property (nonatomic, strong, readonly) NSURL *storeDirectoryURL;
 @property (nonatomic, strong, readonly) NSURL *storeURL;
-@property (nonatomic, strong, readwrite) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readwrite) NSManagedObjectContext *mainManagedObjectContext;
+@property (nonatomic, strong, readwrite) NSManagedObjectContext *backgroundManagedObjectContext;
 @property (nonatomic, strong, readwrite) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong, readwrite) NSManagedObjectModel *managedObjectModel;
 
-- (void)createPersistentStoreAndRetryOnError:(BOOL)retry;
+/**
+ Will attempt to create the persistent store and assign that persistent store to the coordinator.
+ 
+ @param deleteAndRetry - will delete the current persistent store and try creating it fresh. This can happen where lightweight migration has failed.
+ */
+- (void)createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError:(BOOL)deleteAndRetry;
+
+/**
+ Deletes the persistent store from the file system.
+ */
 - (void)deletePersistentStore;
 
 @end
@@ -50,15 +60,17 @@ static CDSServiceManager *sharedInstance = nil;
     
     if (self)
     {
+        //Make sure that we don't lose anything when the app is terminating
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(saveManagedObjectContext)
+                                                 selector:@selector(saveMainManagedObjectContext)
                                                      name:UIApplicationWillTerminateNotification
                                                    object:nil];
     }
+    
     return self;
 }
 
-#pragma mark - Getters
+#pragma mark - Stack
 
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -76,23 +88,39 @@ static CDSServiceManager *sharedInstance = nil;
     {
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
         
-        [self createPersistentStoreAndRetryOnError:YES];
+        [self createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError:YES];
     }
     
     return _persistentStoreCoordinator;
 }
 
-- (NSManagedObjectContext *)managedObjectContext
+- (NSManagedObjectContext *)mainManagedObjectContext
 {
     @synchronized(self)
     {
-        if (!_managedObjectContext)
+        if (!_mainManagedObjectContext)
         {
-            _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-            [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+            _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+            [_mainManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
         }
         
-        return _managedObjectContext;
+        return _mainManagedObjectContext;
+    }
+}
+
+- (NSManagedObjectContext *)backgroundManagedObjectContext
+{
+    @synchronized(self)
+    {
+        if (!_backgroundManagedObjectContext)
+        {
+            _backgroundManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+            [_backgroundManagedObjectContext setParentContext:self.mainManagedObjectContext];
+            
+            [_backgroundManagedObjectContext setUndoManager:nil];
+        }
+        
+        return _backgroundManagedObjectContext;
     }
 }
 
@@ -104,18 +132,12 @@ static CDSServiceManager *sharedInstance = nil;
                                             withExtension:@"momd"];
 }
 
-#pragma mark - Reset
-
-- (void)reset
-{
-    [self clear];
-}
-
 #pragma mark - Clear
 
 - (void)clear
 {
-    self.managedObjectContext = nil;
+    self.mainManagedObjectContext = nil;
+    self.backgroundManagedObjectContext = nil;
     
     self.persistentStoreCoordinator = nil;
     self.managedObjectModel = nil;
@@ -131,50 +153,59 @@ static CDSServiceManager *sharedInstance = nil;
 
 #pragma mark - CreatePersistentStore
 
-- (void)createPersistentStoreAndRetryOnError:(BOOL)retry
+- (void)createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError:(BOOL)deleteAndRetry
 {
-    NSError *error = nil;
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    NSError *fileManagerError = nil;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if (![fileManager fileExistsAtPath:[self.storeDirectoryURL path]
+    if (![fileManager fileExistsAtPath:self.storeDirectoryURL.path
                            isDirectory:NULL])
     {
         [fileManager createDirectoryAtURL:self.storeDirectoryURL
               withIntermediateDirectories:NO
                                attributes:nil
-                                    error:&error];
+                                    error:&fileManagerError];
     }
     
-    if (!error)
+    if (!fileManagerError)
     {
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        
+        NSError *persistentStoreError = nil;
+        
         [self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                       configuration:nil
                                                                 URL:self.storeURL
                                                             options:options
-                                                              error:&error];
-    }
-    
-    if (error)
-    {
-        [self deletePersistentStore];
+                                                              error:&persistentStoreError];
         
-        if (retry)
+        if (persistentStoreError)
         {
-            NSLog(@"Unresolved persistent store coordinator error %@, %@", error, [error userInfo]);
-            [self createPersistentStoreAndRetryOnError:NO];
+            if (deleteAndRetry)
+            {
+                NSLog(@"Unresolved persistent store error %@, %@", persistentStoreError, [persistentStoreError userInfo]);
+                NSLog(@"Deleting and retrying");
+                
+                [self deletePersistentStore];
+                
+                [self createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError:NO];
+            }
+            else
+            {
+                NSLog(@"Serious error with persistent store %@, %@", persistentStoreError, [persistentStoreError userInfo]);
+            }
         }
-        else
-        {
-            NSLog(@"Serious error with persistent-store %@, %@", error, [error userInfo]);
-        }
+    }
+    else
+    {
+        NSLog(@"Unable to create persistent store on file system due to error %@, %@", fileManagerError, [fileManagerError userInfo]);
     }
 }
 
-#pragma mark - Store
+#pragma mark - URLs
 
 - (NSURL *)storeDirectoryURL
 {
@@ -197,20 +228,49 @@ static CDSServiceManager *sharedInstance = nil;
 
 #pragma mark - Save
 
-- (void)saveManagedObjectContext
+- (void)saveMainManagedObjectContext
 {
-    NSError *error = nil;
-    
-    if (![self.managedObjectContext save:&error])
-    {
-        NSLog(@"Couldn't save context: %@", [error userInfo]);
-    }
-    else
-    {
-        //Force context to process pending changes as
-        //cascading deletes may not be immediatly applied by coredata.
-        [self.managedObjectContext processPendingChanges];
-    }
+    [self.mainManagedObjectContext performBlockAndWait:^
+     {
+         if (self.mainManagedObjectContext.hasChanges)
+         {
+             NSError *error = nil;
+             
+             if (![self.mainManagedObjectContext save:&error])
+             {
+                 NSLog(@"Couldn't save the main context: %@", [error userInfo]);
+             }
+             else
+             {
+                 //Force context to process pending changes as cascading deletes may not be immediately applied by coredata.
+                 [self.mainManagedObjectContext processPendingChanges];
+             }
+         }
+     }];
+}
+
+- (void)saveBackgroundManagedObjectContext
+{
+    [self.backgroundManagedObjectContext performBlockAndWait:^
+     {
+         if (self.backgroundManagedObjectContext.hasChanges)
+         {
+             NSError *error = nil;
+             
+             if (![self.backgroundManagedObjectContext save:&error])
+             {
+                 NSLog(@"Couldn't save the background context: %@", [error userInfo]);
+             }
+             else
+             {
+                 //Force context to process pending changes as cascading deletes may not be immediately applied by coredata.
+                 [self.backgroundManagedObjectContext processPendingChanges];
+                 
+                 //Don't want to changes to be lost if the app crashes so let's save these changes to the persistent store
+                 [self saveMainManagedObjectContext];
+             }
+         }
+     }];
 }
 
 @end

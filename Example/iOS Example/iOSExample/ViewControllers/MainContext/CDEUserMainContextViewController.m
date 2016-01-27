@@ -6,7 +6,7 @@
 //  Copyright © 2016 Boles. All rights reserved.
 //
 
-#import "CDEFirstViewController.h"
+#import "CDEUserMainContextViewController.h"
 
 #import <CoreDataServices/CDSServiceManager.h>
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
@@ -18,7 +18,7 @@
 #import "CDEUser.h"
 #import "CDEUserTableViewCell.h"
 
-@interface CDEFirstViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CDEUserMainContextViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation CDEFirstViewController
+@implementation CDEUserMainContextViewController
 
 #pragma mark - ViewLifecycle
 
@@ -40,15 +40,21 @@
     
     /*-------------------*/
     
-    self.title = @"Users";
-    
-    /*-------------------*/
-    
     self.navigationItem.rightBarButtonItem = self.insertUserBarButtonItem;
     
     /*-------------------*/
     
     [self.view addSubview:self.tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /*-------------------*/
+    
+    self.users = nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Subview
@@ -91,7 +97,7 @@
         NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
                                                                   ascending:YES];
         
-        _users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+        _users = [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
                                                                                             sortDescriptors:@[ageSort]];
     }
     
@@ -122,7 +128,7 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
+    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
 }
 
 #pragma mark - UITableViewDelegate
@@ -133,7 +139,7 @@
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID]; //I could have passed the user itself but I wanted to demostrate a predicate being used
     
-    [[CDSServiceManager sharedInstance].managedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+    [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
                                                                                    predicate:predicate];
     
     self.users = nil;
@@ -146,10 +152,10 @@
 - (void)insertButtonPressed:(UIBarButtonItem *)sender
 {
     CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
-                                                       inManagedObjectContext:[CDSServiceManager sharedInstance].managedObjectContext];
+                                                       inManagedObjectContext:[CDSServiceManager sharedInstance].mainManagedObjectContext];
     
     user.userID = [NSUUID UUID].UUIDString;
-    user.name = [NSString stringWithFormat:@"Example %@", @(self.users.count)];
+    user.name = [NSString stringWithFormat:@"Main %@", @(self.users.count)];
     user.age = @(arc4random_uniform(102));
     
     self.users = nil;

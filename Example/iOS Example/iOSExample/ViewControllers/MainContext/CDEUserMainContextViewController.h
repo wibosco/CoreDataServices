@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  CDEUserMainContextViewController.h
 //  iOSExample
 //
 //  Created by William Boles on 15/01/2016.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CDEFirstViewController : UIViewController
+@interface CDEUserMainContextViewController : UIViewController
 
 
 @end

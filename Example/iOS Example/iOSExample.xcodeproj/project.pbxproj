@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		430CA3481C4D27910096C573 /* iOSExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AED21C4D26EC003C3989 /* iOSExampleTests.m */; };
+		4340ABB11C567B0E000504E6 /* CDEUserMainContextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340ABAC1C567B0E000504E6 /* CDEUserMainContextViewController.m */; };
+		4340ABB21C567B0E000504E6 /* CDEUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340ABB01C567B0E000504E6 /* CDEUserTableViewCell.m */; };
+		4340ABB51C567B27000504E6 /* CDEUserBackgroundContextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340ABB41C567B27000504E6 /* CDEUserBackgroundContextViewController.m */; };
+		4340ABBA1C567DD9000504E6 /* CDEUserInsertionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340ABB91C567DD9000504E6 /* CDEUserInsertionOperation.m */; };
 		43C2AED41C4D26EC003C3989 /* CDEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AEB61C4D26EC003C3989 /* CDEAppDelegate.m */; };
 		43C2AED51C4D26EC003C3989 /* CDEUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AEBA1C4D26EC003C3989 /* CDEUser+CoreDataProperties.m */; };
 		43C2AED61C4D26EC003C3989 /* CDEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AEBC1C4D26EC003C3989 /* CDEUser.m */; };
@@ -15,8 +19,6 @@
 		43C2AED81C4D26EC003C3989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C2AEC21C4D26EC003C3989 /* Assets.xcassets */; };
 		43C2AED91C4D26EC003C3989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C2AEC41C4D26EC003C3989 /* LaunchScreen.storyboard */; };
 		43C2AEDB1C4D26EC003C3989 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AEC81C4D26EC003C3989 /* main.m */; };
-		43C2AEDC1C4D26EC003C3989 /* CDEFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AECC1C4D26EC003C3989 /* CDEFirstViewController.m */; };
-		43C2AEDD1C4D26EC003C3989 /* CDEUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2AED01C4D26EC003C3989 /* CDEUserTableViewCell.m */; };
 		EB9B8D574902231D89A16A0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A32651DAC7AE7AD69D16B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,14 @@
 		35B38508B36B4CBADB00AA60 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		431937511C49480900447B9E /* iOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4319376D1C49480900447B9E /* iOSExample.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSExample.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4340ABAB1C567B0E000504E6 /* CDEUserMainContextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEUserMainContextViewController.h; sourceTree = "<group>"; };
+		4340ABAC1C567B0E000504E6 /* CDEUserMainContextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEUserMainContextViewController.m; sourceTree = "<group>"; };
+		4340ABAF1C567B0E000504E6 /* CDEUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEUserTableViewCell.h; sourceTree = "<group>"; };
+		4340ABB01C567B0E000504E6 /* CDEUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEUserTableViewCell.m; sourceTree = "<group>"; };
+		4340ABB31C567B27000504E6 /* CDEUserBackgroundContextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEUserBackgroundContextViewController.h; sourceTree = "<group>"; };
+		4340ABB41C567B27000504E6 /* CDEUserBackgroundContextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEUserBackgroundContextViewController.m; sourceTree = "<group>"; };
+		4340ABB81C567DD9000504E6 /* CDEUserInsertionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEUserInsertionOperation.h; sourceTree = "<group>"; };
+		4340ABB91C567DD9000504E6 /* CDEUserInsertionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEUserInsertionOperation.m; sourceTree = "<group>"; };
 		43C2AEB51C4D26EC003C3989 /* CDEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEAppDelegate.h; sourceTree = "<group>"; };
 		43C2AEB61C4D26EC003C3989 /* CDEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEAppDelegate.m; sourceTree = "<group>"; };
 		43C2AEB91C4D26EC003C3989 /* CDEUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDEUser+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -45,10 +55,6 @@
 		43C2AEC51C4D26EC003C3989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43C2AEC71C4D26EC003C3989 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C2AEC81C4D26EC003C3989 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		43C2AECB1C4D26EC003C3989 /* CDEFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEFirstViewController.h; sourceTree = "<group>"; };
-		43C2AECC1C4D26EC003C3989 /* CDEFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEFirstViewController.m; sourceTree = "<group>"; };
-		43C2AECF1C4D26EC003C3989 /* CDEUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDEUserTableViewCell.h; sourceTree = "<group>"; };
-		43C2AED01C4D26EC003C3989 /* CDEUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDEUserTableViewCell.m; sourceTree = "<group>"; };
 		43C2AED21C4D26EC003C3989 /* iOSExampleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOSExampleTests.m; sourceTree = "<group>"; };
 		43C2AED31C4D26EC003C3989 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B5574E1C27F1F6F245C69D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +98,60 @@
 				4319376D1C49480900447B9E /* iOSExample.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4340ABA91C567B0E000504E6 /* BackgroundContext */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABB61C567DC1000504E6 /* Operations */,
+				4340ABB31C567B27000504E6 /* CDEUserBackgroundContextViewController.h */,
+				4340ABB41C567B27000504E6 /* CDEUserBackgroundContextViewController.m */,
+			);
+			path = BackgroundContext;
+			sourceTree = "<group>";
+		};
+		4340ABAA1C567B0E000504E6 /* MainContext */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABAB1C567B0E000504E6 /* CDEUserMainContextViewController.h */,
+				4340ABAC1C567B0E000504E6 /* CDEUserMainContextViewController.m */,
+				4340ABAD1C567B0E000504E6 /* Cells */,
+			);
+			path = MainContext;
+			sourceTree = "<group>";
+		};
+		4340ABAD1C567B0E000504E6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABAE1C567B0E000504E6 /* User */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4340ABAE1C567B0E000504E6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABAF1C567B0E000504E6 /* CDEUserTableViewCell.h */,
+				4340ABB01C567B0E000504E6 /* CDEUserTableViewCell.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4340ABB61C567DC1000504E6 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABB71C567DC1000504E6 /* Insert */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		4340ABB71C567DC1000504E6 /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				4340ABB81C567DD9000504E6 /* CDEUserInsertionOperation.h */,
+				4340ABB91C567DD9000504E6 /* CDEUserInsertionOperation.m */,
+			);
+			path = Insert;
 			sourceTree = "<group>";
 		};
 		43C2AEB31C4D26EC003C3989 /* iOSExample */ = {
@@ -180,36 +240,10 @@
 		43C2AEC91C4D26EC003C3989 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				43C2AECA1C4D26EC003C3989 /* First */,
+				4340ABA91C567B0E000504E6 /* BackgroundContext */,
+				4340ABAA1C567B0E000504E6 /* MainContext */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		43C2AECA1C4D26EC003C3989 /* First */ = {
-			isa = PBXGroup;
-			children = (
-				43C2AECB1C4D26EC003C3989 /* CDEFirstViewController.h */,
-				43C2AECC1C4D26EC003C3989 /* CDEFirstViewController.m */,
-				43C2AECD1C4D26EC003C3989 /* Cells */,
-			);
-			path = First;
-			sourceTree = "<group>";
-		};
-		43C2AECD1C4D26EC003C3989 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				43C2AECE1C4D26EC003C3989 /* User */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		43C2AECE1C4D26EC003C3989 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				43C2AECF1C4D26EC003C3989 /* CDEUserTableViewCell.h */,
-				43C2AED01C4D26EC003C3989 /* CDEUserTableViewCell.m */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		43C2AED11C4D26EC003C3989 /* iOSExampleTests */ = {
@@ -391,10 +425,12 @@
 			files = (
 				43C2AEDB1C4D26EC003C3989 /* main.m in Sources */,
 				43C2AED61C4D26EC003C3989 /* CDEUser.m in Sources */,
+				4340ABB51C567B27000504E6 /* CDEUserBackgroundContextViewController.m in Sources */,
+				4340ABBA1C567DD9000504E6 /* CDEUserInsertionOperation.m in Sources */,
 				43C2AED41C4D26EC003C3989 /* CDEAppDelegate.m in Sources */,
+				4340ABB11C567B0E000504E6 /* CDEUserMainContextViewController.m in Sources */,
 				43C2AED51C4D26EC003C3989 /* CDEUser+CoreDataProperties.m in Sources */,
-				43C2AEDC1C4D26EC003C3989 /* CDEFirstViewController.m in Sources */,
-				43C2AEDD1C4D26EC003C3989 /* CDEUserTableViewCell.m in Sources */,
+				4340ABB21C567B0E000504E6 /* CDEUserTableViewCell.m in Sources */,
 				43C2AED71C4D26EC003C3989 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

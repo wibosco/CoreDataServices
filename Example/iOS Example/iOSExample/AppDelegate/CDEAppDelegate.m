@@ -10,11 +10,18 @@
 
 #import <CoreDataServices/CDSServiceManager.h>
 
-#import "CDEFirstViewController.h"
+#import "CDEUserMainContextViewController.h"
+#import "CDEUserBackgroundContextViewController.h"
 
 @interface CDEAppDelegate ()
 
-@property (nonatomic, strong) CDEFirstViewController *viewController;
+@property (nonatomic, strong) CDEUserMainContextViewController *mainContextViewController;
+
+@property (nonatomic, strong) CDEUserBackgroundContextViewController *backgroundContextViewController;
+
+@property (nonatomic, strong) UINavigationController *mainContextNavigationController;
+
+@property (nonatomic, strong) UINavigationController *backgroundContextNavigationController;
 
 @end
 
@@ -40,7 +47,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [[CDSServiceManager sharedInstance] saveManagedObjectContext];
+    [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
 }
 
 #pragma mark - Window
@@ -50,7 +57,7 @@
     if (!_window)
     {
         _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _window.rootViewController = self.navigationController;
+        _window.rootViewController = self.tabBarController;
     }
     
     return _window;
@@ -58,26 +65,71 @@
 
 #pragma mark - Navigation
 
-- (UINavigationController *)navigationController
+- (UITabBarController *)tabBarController
 {
-    if (!_navigationController)
+    if (!_tabBarController)
     {
-        _navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+        _tabBarController = [[UITabBarController alloc] init];
+        
+        [_tabBarController addChildViewController:self.mainContextNavigationController];
+        [_tabBarController addChildViewController:self.backgroundContextNavigationController];
     }
     
-    return _navigationController;
+    return _tabBarController;
+}
+
+- (UINavigationController *)mainContextNavigationController
+{
+    if (!_mainContextNavigationController)
+    {
+        _mainContextNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainContextViewController];
+        
+        UITabBarItem *mainContextNavigationControllerItem = [[UITabBarItem alloc] initWithTitle:@"Main"
+                                                                                          image:[UIImage imageNamed:@"first"]
+                                                                                            tag:0];
+        
+        [_mainContextNavigationController setTabBarItem:mainContextNavigationControllerItem];
+    }
+    
+    return _mainContextNavigationController;
+}
+
+- (UINavigationController *)backgroundContextNavigationController
+{
+    if (!_backgroundContextNavigationController)
+    {
+        _backgroundContextNavigationController = [[UINavigationController alloc] initWithRootViewController:self.backgroundContextViewController];
+        
+        UITabBarItem *backgroundContextNavigationControllerItem = [[UITabBarItem alloc] initWithTitle:@"Background"
+                                                                                                image:[UIImage imageNamed:@"second"]
+                                                                                                  tag:1];
+        
+        [_backgroundContextNavigationController setTabBarItem:backgroundContextNavigationControllerItem];
+    }
+    
+    return _backgroundContextNavigationController;
 }
 
 #pragma mark - ViewController
 
-- (CDEFirstViewController *)viewController
+- (CDEUserMainContextViewController *)mainContextViewController
 {
-    if (!_viewController)
+    if (!_mainContextViewController)
     {
-        _viewController = [[CDEFirstViewController alloc] init];
+        _mainContextViewController = [[CDEUserMainContextViewController alloc] init];
     }
     
-    return _viewController;
+    return _mainContextViewController;
+}
+
+- (CDEUserBackgroundContextViewController *)backgroundContextViewController
+{
+    if (!_backgroundContextViewController)
+    {
+        _backgroundContextViewController = [[CDEUserBackgroundContextViewController alloc] init];
+    }
+    
+    return _backgroundContextViewController;
 }
 
 @end
