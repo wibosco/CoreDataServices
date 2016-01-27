@@ -23,10 +23,6 @@ $ pod install
 
 > CocoaPods 0.39.0+ is required to build CoreDataServices.
 
-##Concurrency Approach
-
-It is possible to take a number of different options for supporting Core Data in a multi-thread environment - CoreDataServices has went with the simplest approach of having one main-thread `NSManagedObjectContext` (`NSMainQueueConcurrencyType`) instance and one background-thread `NSManagedObjectContext` (`NSPrivateQueueConcurrencyType`) instance. 
-
 ##Usage
 
 CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
@@ -88,9 +84,20 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 }
 ```
 
-CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Example/iOS%20Example) to provide more details than listed above.
+##Using in multi-threaded project
 
-CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
+CoreDataServices has the following implementation of Core Data stack:
+
+* One  `NSManagedObjectContext` using the `NSMainQueueConcurrencyType` concurrency type that is attached directly to the `PersistentStoreCoordinator` - the intention is for this context to only be used on the main-thread.
+* One  `NSManagedObjectContext` using the `NSPrivateQueueConcurrencyType` concurrency type that has the `NSMainQueueConcurrencyType` context as it's parent - the intention is for this context to only be used on background-threads. 
+
+The newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `performBlock` or `performBlockAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread. 
+
+An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)).
+
+> CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Example/iOS%20Example) to provide more details than listed above.
+
+> CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
 
 ##Found an issue?
 
