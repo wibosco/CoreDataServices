@@ -84,7 +84,7 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 }
 ```
 
-##Using in multi-threaded project
+####Using in multi-threaded project
 
 CoreDataServices has the following implementation of Core Data stack:
 
