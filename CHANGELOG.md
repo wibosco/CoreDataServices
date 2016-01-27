@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 --- 
 
+## [1.1.2](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.2)
+
+* Improved readme
+
 ## [1.1.1](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.1)
 
 * Conforming to Appledoc standard with documentation now
