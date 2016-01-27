@@ -23,6 +23,10 @@ $ pod install
 
 > CocoaPods 0.39.0+ is required to build CoreDataServices.
 
+##Concurrency Approach
+
+It is possible to take a number of different options for supporting Core Data in a multi-thread environment - CoreDataServices has went with the simplest approach of having one main-thread `NSManagedObjectContext` (`NSMainQueueConcurrencyType`) instance and one background-thread `NSManagedObjectContext` (`NSPrivateQueueConcurrencyType`) instance. 
+
 ##Usage
 
 CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
