@@ -76,7 +76,7 @@ static CDSServiceManager *sharedInstance = nil;
 {
     if (!_managedObjectModel)
     {
-        _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:self.modelURL];
+        _managedObjectModel = [[NSManfagedObjectModel alloc] initWithContentsOfURL:self.modelURL];
     }
     
     return _managedObjectModel;
