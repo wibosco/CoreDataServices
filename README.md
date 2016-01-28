@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/wibosco/CoreDataServices.svg)](https://travis-ci.org/wibosco/CoreDataServices)
 [![Version](https://img.shields.io/cocoapods/v/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 [![License](https://img.shields.io/cocoapods/l/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 [![Platform](https://img.shields.io/cocoapods/p/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
@@ -154,7 +155,7 @@ CoreDataServices has the following implementation of Core Data stack:
 
 The newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `performBlock` or `performBlockAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread. 
 
-An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)).
+An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/).
 
 ```objc
 #import <CoreDataServices/CDSServiceManager.h>
