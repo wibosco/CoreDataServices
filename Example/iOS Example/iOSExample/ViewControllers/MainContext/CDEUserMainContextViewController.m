@@ -158,6 +158,8 @@
     user.name = [NSString stringWithFormat:@"Main %@", @(self.users.count)];
     user.age = @(arc4random_uniform(102));
     
+    [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
+    
     self.users = nil;
     
     [self.tableView reloadData];

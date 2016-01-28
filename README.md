@@ -27,6 +27,30 @@ $ pod install
 
 CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
 
+####Init
+
+```objc
+#import <CoreDataServices/CDSServiceManager.h>
+
+....
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [[CDSServiceManager sharedInstance] setupModelURLWithModelName:@"Model"];//model is the name of the `xcdatamodeld` file
+    
+    /*-------------------*/
+    
+    self.window.backgroundColor = [UIColor clearColor];
+    self.window.clipsToBounds = NO;
+    
+    [self.window makeKeyAndVisible];
+    
+    /*-------------------*/
+    
+    return YES;
+}
+```
+
 ####Retrieving
 
 ```objc
@@ -84,6 +108,43 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 }
 ```
 
+####Saving
+
+```objc
+#import <CoreDataServices/CDSServiceManager.h>
+
+....
+
+    //Main thread
+    [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
+    
+    //Background thread
+    [[CDSServiceManager sharedInstance] saveBackgroundManagedObjectContext];
+}
+```
+
+What is interesting to note is when calling `saveBackgroundManagedObjectContext`, CoreDataServices will also call `saveMainManagedObjectContext`, this introduces a small performance overhead but ensures that save events are not lost if the app crashes.
+
+```objc
+#import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
+
+....
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CDEUser *user = self.users[indexPath.row];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID];
+    
+    [[CDSServiceManager sharedInstance].managedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+                                                                                   predicate:predicate];
+    
+    self.users = nil;
+    
+    [self.tableView reloadData];
+}
+```
+
 ####Using in multi-threaded project
 
 CoreDataServices has the following implementation of Core Data stack:
@@ -94,6 +155,24 @@ CoreDataServices has the following implementation of Core Data stack:
 The newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `performBlock` or `performBlockAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread. 
 
 An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)).
+
+```objc
+#import <CoreDataServices/CDSServiceManager.h>
+
+....
+
+	//this will block the current thread until the work is completed
+    [[CDSServiceManager sharedInstance].backgroundManagedObjectContext performBlockAndWait:^
+    {
+    	//work here
+    }];
+    
+    	//this will not block the current thread until the work is completed
+    [[CDSServiceManager sharedInstance].backgroundManagedObjectContext performBlock:^
+    {
+    	//work here
+    }];
+```
 
 > CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Example/iOS%20Example) to provide more details than listed above.
 
