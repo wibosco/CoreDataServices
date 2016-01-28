@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CoreDataServices"
-  s.version      = "1.1.2"
+  s.version      = "1.1.3"
   s.summary      = "CoreDataServices contains a set of helper classes/categories to abstract out a lot of the boilerplate that you get with Core Data."
 
   s.homepage     = "http://www.williamboles.me"
