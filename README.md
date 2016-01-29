@@ -2,6 +2,7 @@
 [![Version](https://img.shields.io/cocoapods/v/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 [![License](https://img.shields.io/cocoapods/l/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
 [![Platform](https://img.shields.io/cocoapods/p/CoreDataServices.svg?style=flat)](http://cocoapods.org/pods/CoreDataServices)
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/CoreDataServices.svg)](http://cocoapods.org/pods/CoreDataServices)
 
 CoreDataServices is a suite of helper classes and categories to help to remove some of the boilerplate that surrounds using Core Data.
 
