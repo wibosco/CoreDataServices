@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/williamboles/Documents/Personal/Development/CoreDataServices/Example/iOS Example/iOSExample.xcodeproj">
+      location = "group:iOSExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:iOSExample.xcodeproj">
    </FileRef>
 </Workspace>

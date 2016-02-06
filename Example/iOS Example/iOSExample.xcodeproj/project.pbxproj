@@ -83,11 +83,11 @@
 		431937481C49480900447B9E = {
 			isa = PBXGroup;
 			children = (
+				F2A66E12F04D9B43C5EEB82B /* Frameworks */,
 				43C2AEB31C4D26EC003C3989 /* iOSExample */,
 				43C2AED11C4D26EC003C3989 /* iOSExampleTests */,
-				431937521C49480900447B9E /* Products */,
 				D942E219C1D0938BFF17B975 /* Pods */,
-				F2A66E12F04D9B43C5EEB82B /* Frameworks */,
+				431937521C49480900447B9E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -552,7 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iOSExample/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CDE.iOSExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamboles.coredataservices.iOSExample;
 				PRODUCT_NAME = iOSExample;
 			};
 			name = Debug;
@@ -564,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iOSExample/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CDE.iOSExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamboles.coredataservices.iOSExample;
 				PRODUCT_NAME = iOSExample;
 			};
 			name = Release;
