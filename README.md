@@ -6,7 +6,7 @@
 
 CoreDataServices is a suite of helper classes and categories to help to remove some of the boilerplate that surrounds using Core Data.
 
-##Installation via [Cocoapods](https://cocoapods.org/)
+##Installation via [CocoaPods](https://cocoapods.org/)
 
 To integrate CoreDataServices into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
