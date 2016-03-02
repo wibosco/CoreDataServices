@@ -14,7 +14,7 @@
 
 + (instancetype)cds_fetchRequestWithEntityClass:(Class)entityClass
 {
-    NSString *entityName = NSStringFromClass(entityClass);
+    NSString *entityName = [NSStringFromClass(entityClass) componentsSeparatedByString:@"."].lastObject;
     
     return [NSFetchRequest fetchRequestWithEntityName:entityName];
 }

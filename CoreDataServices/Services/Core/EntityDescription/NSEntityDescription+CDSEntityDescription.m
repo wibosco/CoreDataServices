@@ -15,7 +15,7 @@
 + (NSEntityDescription *)cds_entityForClass:(Class)entityClass
                      inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    NSString *entityName = NSStringFromClass(entityClass);
+    NSString *entityName = [NSStringFromClass(entityClass) componentsSeparatedByString:@"."].lastObject;
     
     return [NSEntityDescription entityForName:entityName
                        inManagedObjectContext:managedObjectContext];
@@ -26,7 +26,7 @@
 + (__kindof NSManagedObject *)cds_insertNewObjectForEntityForClass:(Class)entityClass
                                             inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    NSString *entityName = NSStringFromClass(entityClass);
+    NSString *entityName = [NSStringFromClass(entityClass) componentsSeparatedByString:@"."].lastObject;
     
     return [NSEntityDescription insertNewObjectForEntityForName:entityName
                                          inManagedObjectContext:managedObjectContext];
