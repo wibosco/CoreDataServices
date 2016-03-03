@@ -128,8 +128,8 @@ static CDSServiceManager *sharedInstance = nil;
 
 - (void)setupModelURLWithModelName:(NSString *)name
 {
-    self.modelURL = [[NSBundle mainBundle] URLForResource:name
-                                            withExtension:@"momd"];
+    self.modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:name
+                                                             withExtension:@"momd"];
 }
 
 #pragma mark - Clear
