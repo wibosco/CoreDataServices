@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 `CoreDataServices` adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [1.1.6](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.6)
+
+* Implemented for passing the bundle when setting up the model
+
 ## [1.1.5](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.5)
 
 * Don't assume `mainBundle` when loading the model
