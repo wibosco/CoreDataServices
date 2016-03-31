@@ -48,6 +48,15 @@
 - (void)setupModelURLWithModelName:(NSString *)name;
 
 /**
+ Sets Up the core data stack using a model with the filename.
+ 
+ @param name - filename of the model to load.
+ @param bundle - bundle the model is in.
+ */
+- (void)setupModelURLWithModelName:(NSString *)name
+                            bundle:(NSBundle *)bundle;
+
+/**
  Saves the managed object context that is used via the `mainManagedObjectContext` property.
  */
 - (void)saveMainManagedObjectContext;
