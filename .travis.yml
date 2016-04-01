@@ -8,4 +8,4 @@ before_install:
    - sudo gem install cocoapods -v '0.39.0'
 
 script:
-   xcodebuild -workspace CoreDataServices.xcworkspace -scheme CoreDataServices test -sdk iphonesimulator
+   xcodebuild -workspace CoreDataServices.xcworkspace -scheme CoreDataServices test -destination 'platform=iOS Simulator,name=iPhone 6'
