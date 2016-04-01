@@ -1,8 +1,0 @@
-//
-// Prefix header for all source files of the 'CoreDataServices' target in the 'CoreDataServices' project
-//
-
-#ifdef __OBJC__
-    @import CoreData;
-    @import Foundation;
-#endif
