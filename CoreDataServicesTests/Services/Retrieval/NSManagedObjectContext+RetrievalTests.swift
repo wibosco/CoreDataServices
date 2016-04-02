@@ -131,7 +131,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         let idSort = NSSortDescriptor(key: "testID", ascending: false)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: nil, fetchLimit: 1) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1) as! Array<Test>
  
         XCTAssertEqual(managedObjects.count, 1, "Only the first object should be returned")
     }
@@ -140,7 +140,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         let idSort = NSSortDescriptor(key: "testID", ascending: false)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: nil, fetchLimit: 1) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1) as! Array<Test>
         
         XCTAssertEqual(managedObjects[0], self.managedObjectA!, "Object returned should match")
     }
