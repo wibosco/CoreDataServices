@@ -46,14 +46,14 @@
     
     [[ServiceManager sharedInstance].backgroundManagedObjectContext performBlockAndWait:^
     {
-        CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
-                                                           inManagedObjectContext:[CDSServiceManager sharedInstance].backgroundManagedObjectContext];
+        CDEUser *user = (CDEUser *)[NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
+                                                                      inManagedObjectContext:[ServiceManager sharedInstance].backgroundManagedObjectContext];
         
         user.userID = [NSUUID UUID].UUIDString;
         user.name = [NSString stringWithFormat:@"Operation %@", @([self countOfTotalUsers])];
         user.age = @(arc4random_uniform(102));
         
-        [[CDSServiceManager sharedInstance] saveBackgroundManagedObjectContext];
+        [[ServiceManager sharedInstance] saveBackgroundManagedObjectContext];
         
         self.completion();
     }];
@@ -63,7 +63,7 @@
 
 - (NSUInteger)countOfTotalUsers
 {
-    return [[CDSServiceManager sharedInstance].backgroundManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]];
+    return [[ServiceManager sharedInstance].backgroundManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]];
 }
 
 @end

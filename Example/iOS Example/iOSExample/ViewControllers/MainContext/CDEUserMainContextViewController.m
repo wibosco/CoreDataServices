@@ -76,9 +76,9 @@
 {
     if (!_insertUserBarButtonItem)
     {
-       _insertUserBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                target:self
-                                                                                action:@selector(insertButtonPressed:)];
+        _insertUserBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                 target:self
+                                                                                 action:@selector(insertButtonPressed:)];
     }
     
     return _insertUserBarButtonItem;
@@ -93,8 +93,8 @@
         NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
                                                                   ascending:YES];
         
-        _users = [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
-                                                                                            sortDescriptors:@[ageSort]];
+        _users = [[ServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+                                                                                             sortDescriptors:@[ageSort]];
     }
     
     return _users;
@@ -124,7 +124,7 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
+    return [NSString stringWithFormat:@"Total Users: %@", @([[ServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
 }
 
 #pragma mark - UITableViewDelegate
@@ -135,8 +135,8 @@
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID]; //I could have passed the user itself but I wanted to demostrate a predicate being used
     
-    [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
-                                                                                   predicate:predicate];
+    [[ServiceManager sharedInstance].mainManagedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+                                                                                    predicate:predicate];
     
     self.users = nil;
     
@@ -147,14 +147,14 @@
 
 - (void)insertButtonPressed:(UIBarButtonItem *)sender
 {
-    CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
-                                                       inManagedObjectContext:[CDSServiceManager sharedInstance].mainManagedObjectContext];
+    CDEUser *user = (CDEUser *)[NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
+                                                                  inManagedObjectContext:[ServiceManager sharedInstance].mainManagedObjectContext];
     
     user.userID = [NSUUID UUID].UUIDString;
     user.name = [NSString stringWithFormat:@"Main %@", @(self.users.count)];
     user.age = @(arc4random_uniform(102));
     
-    [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
+    [[ServiceManager sharedInstance] saveMainManagedObjectContext];
     
     self.users = nil;
     

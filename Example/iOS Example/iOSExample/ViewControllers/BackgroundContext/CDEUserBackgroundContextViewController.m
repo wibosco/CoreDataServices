@@ -96,7 +96,7 @@
         NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
                                                                   ascending:YES];
         
-        _users = [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+        _users = [[ServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
                                                                                             sortDescriptors:@[ageSort]];
     }
     
@@ -139,7 +139,7 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"Total Users: %@", @([[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
+    return [NSString stringWithFormat:@"Total Users: %@", @([[ServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesCountForEntityClass:[CDEUser class]])];
 }
 
 #pragma mark - UITableViewDelegate
@@ -150,7 +150,7 @@
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID]; //I could have passed the user itself but I wanted to demostrate a predicate being used
     
-    [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
+    [[ServiceManager sharedInstance].mainManagedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
                                                                                    predicate:predicate];
     
     self.users = nil;
