@@ -25,6 +25,7 @@ public extension NSFetchRequest {
      
      @return `NSFetchRequest` instance for the entityClass passed in.
      */
+    @objc(cds_fetchRequestWithEntityClass:)
     public class func fetchRequest(entityClass: AnyClass) -> NSFetchRequest? {
         var fetchRequest: NSFetchRequest?
         

@@ -49,7 +49,6 @@
 		14CC71C6B90DC0695D94C5BD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		438B0DFE1CAD66AE005F7AA9 /* CoreDataServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B0E011CAD66AE005F7AA9 /* CoreDataServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataServices.h; sourceTree = "<group>"; };
-		438B0E031CAD66AE005F7AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438B0E081CAD66AE005F7AA9 /* CoreDataServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B0E0F1CAD66AE005F7AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438B0E1A1CAD66EA005F7AA9 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		43BD3CA41CAECB290026ADD5 /* Test+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		54483417E3885081FFEF4457 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F01A54C866891B00DE00EBA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40C75F51CAFE72800AF89CB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,10 +125,10 @@
 		438B0E001CAD66AE005F7AA9 /* CoreDataServices */ = {
 			isa = PBXGroup;
 			children = (
+				438B0E011CAD66AE005F7AA9 /* CoreDataServices.h */,
 				438B0E181CAD66DA005F7AA9 /* Manager */,
 				438B0E191CAD66DA005F7AA9 /* Services */,
-				438B0E011CAD66AE005F7AA9 /* CoreDataServices.h */,
-				438B0E031CAD66AE005F7AA9 /* Info.plist */,
+				F40C75F41CAFE72800AF89CB /* SupportingFiles */,
 			);
 			path = CoreDataServices;
 			sourceTree = "<group>";
@@ -314,6 +314,14 @@
 				6F01A54C866891B00DE00EBA /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F40C75F41CAFE72800AF89CB /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F40C75F51CAFE72800AF89CB /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,7 +611,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CoreDataServices/Info.plist;
+				INFOPLIST_FILE = CoreDataServices/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamboles.CoreDataServices;
@@ -622,7 +630,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CoreDataServices/Info.plist;
+				INFOPLIST_FILE = CoreDataServices/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamboles.CoreDataServices;

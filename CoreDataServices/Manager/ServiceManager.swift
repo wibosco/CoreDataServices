@@ -142,6 +142,7 @@ class ServiceManager: NSObject {
      
      - param name: filename of the model to load.
      */
+    @objc(setupModelURLWithModelName:)
     func setupModel(name: String) {
         self.setupModel(name, bundle: NSBundle.mainBundle())
     }
@@ -152,6 +153,7 @@ class ServiceManager: NSObject {
      - param name: filename of the model to load.
      - param bundle: bundle the model is in.
      */
+    @objc(setupModelURLWithModelName:bundle:)
     func setupModel(name: String, bundle: NSBundle) {
         self.modelURL = bundle.URLForResource(name, withExtension: "momd")
     }

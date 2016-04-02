@@ -23,6 +23,7 @@ public extension NSManagedObjectContext {
      
      - returns: `NSUInteger` count of entries for this class/entity.
      */
+    @objc(cds_retrieveEntriesCountForEntityClass:)
     public func retrieveEntriesCount(entityClass: AnyClass) -> Int {
         return self.retrieveEntriesCount(entityClass, predicate: nil)
     }
@@ -35,6 +36,7 @@ public extension NSManagedObjectContext {
      
      - returns: `NSUInteger` count of entries that match provided predicate.
      */
+    @objc(cds_retrieveEntriesCountForEntityClass:predicate:)
     public func retrieveEntriesCount(entityClass: AnyClass, predicate: NSPredicate?) -> Int {
         var count = 0
         

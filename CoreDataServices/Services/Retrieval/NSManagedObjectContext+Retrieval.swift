@@ -29,7 +29,8 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
-    public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?, fetchBatchSize: Int?, fetchLimit: Int?) -> Array<NSManagedObject> {
+    @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:fetchBatchSize:fetchLimit:)
+    public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?, fetchBatchSize: Int, fetchLimit: Int) -> Array<NSManagedObject> {
         
         var managedObjects: Array<NSManagedObject> = []
         
@@ -42,12 +43,12 @@ public extension NSManagedObjectContext {
                 fetchRequest.sortDescriptors = sortDescriptors
             }
             
-            if fetchBatchSize != nil && fetchBatchSize > 0 {
-                fetchRequest.fetchBatchSize = fetchBatchSize!
+            if fetchBatchSize > 0 {
+                fetchRequest.fetchBatchSize = fetchBatchSize
             }
             
-            if fetchLimit != nil && fetchLimit > 0 {
-                fetchRequest.fetchLimit = fetchLimit!
+            if fetchLimit > 0 {
+                fetchRequest.fetchLimit = fetchLimit
             }
             
             do {
@@ -71,8 +72,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, sortDescriptors: Array<NSSortDescriptor>, fetchBatchSize: Int) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: fetchBatchSize, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: fetchBatchSize, fetchLimit: 0)
     }
     
     /**
@@ -84,8 +86,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, sortDescriptors: Array<NSSortDescriptor>) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: nil, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: 0, fetchLimit: 0)
     }
     
     /**
@@ -96,8 +99,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:predicate:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: nil, fetchBatchSize: nil, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: nil, fetchBatchSize: 0, fetchLimit: 0)
     }
     
     /**
@@ -108,8 +112,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, fetchBatchSize: Int) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: nil, fetchBatchSize: fetchBatchSize, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: nil, fetchBatchSize: fetchBatchSize, fetchLimit: 0)
     }
     
     /**
@@ -121,8 +126,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:predicate:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, fetchBatchSize: Int) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: nil, fetchBatchSize: fetchBatchSize, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: nil, fetchBatchSize: fetchBatchSize, fetchLimit: 0)
     }
     
     /**
@@ -133,8 +139,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:sortDescriptors:)
     public func retrieveEntries(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: sortDescriptors, fetchBatchSize: nil, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: sortDescriptors, fetchBatchSize: 0, fetchLimit: 0)
     }
     
     /**
@@ -146,8 +153,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:sortDescriptors:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>, fetchBatchSize: Int) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: sortDescriptors, fetchBatchSize: fetchBatchSize, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: sortDescriptors, fetchBatchSize: fetchBatchSize, fetchLimit: 0)
     }
     
     /**
@@ -157,8 +165,9 @@ public extension NSManagedObjectContext {
      
      - returns: `Array` of `NSManagedObjects`.
      */
+    @objc(cds_retrieveEntriesForEntityClass:)
     public func retrieveEntries(entityClass: AnyClass) -> Array<NSManagedObject> {
-        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: nil, fetchBatchSize: nil, fetchLimit: nil)
+        return self.retrieveEntries(entityClass, predicate: nil, sortDescriptors: nil, fetchBatchSize: 0, fetchLimit: 0)
     }
     
     //MARK: Single
@@ -172,8 +181,9 @@ public extension NSManagedObjectContext {
      
      - returns: `NSManagedObject` instance.
      */
+    @objc(cds_retrieveFirstEntryForEntityClass:predicate:sortDescriptors:)
     public func retrieveFirstEntry(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?) -> NSManagedObject? {
-        let managedObjects = self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: nil, fetchLimit: 1)
+        let managedObjects = self.retrieveEntries(entityClass, predicate: predicate, sortDescriptors: sortDescriptors, fetchBatchSize: 0, fetchLimit: 1)
         
         return managedObjects.first
     }
@@ -186,6 +196,7 @@ public extension NSManagedObjectContext {
      
      - returns: `NSManagedObject` instance.
      */
+    @objc(cds_retrieveFirstEntryForEntityClass:predicate:)
     public func retrieveFirstEntry(entityClass: AnyClass, predicate: NSPredicate) -> NSManagedObject? {
         return self.retrieveFirstEntry(entityClass, predicate: predicate, sortDescriptors: nil)
     }
@@ -198,6 +209,7 @@ public extension NSManagedObjectContext {
      
      - returns: `NSManagedObject` instance.
      */
+    @objc(cds_retrieveFirstEntryForEntityClass:sortDescriptors:)
     public func retrieveFirstEntry(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>) -> NSManagedObject? {
         return self.retrieveFirstEntry(entityClass, predicate: nil, sortDescriptors: sortDescriptors)
     }
@@ -209,6 +221,7 @@ public extension NSManagedObjectContext {
 
      - returns: `NSManagedObject` instance.
      */
+    @objc(cds_retrieveFirstEntryForEntityClass:)
     public func retrieveFirstEntry(entityClass: AnyClass) -> NSManagedObject? {
         return self.retrieveFirstEntry(entityClass, predicate: nil, sortDescriptors: nil)
     }

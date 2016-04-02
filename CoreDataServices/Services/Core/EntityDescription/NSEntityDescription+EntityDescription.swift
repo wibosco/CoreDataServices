@@ -26,6 +26,7 @@ public extension NSEntityDescription {
      
      - returns: `NSEntityDescription` instance of entityClass passed in.
      */
+    @objc(cds_entityForClass:inManagedObjectContext:)
     public class func entityFor(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
         var entityDescription: NSEntityDescription?
         
@@ -46,6 +47,7 @@ public extension NSEntityDescription {
      
      - returns: `NSManagedObject` instance of entityClass passed in.
      */
+    @objc(cds_insertNewObjectForEntityForClass:inManagedObjectContext:)
     public class func insertNewObjectForEntity(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
         var managedObject: NSManagedObject?
         
