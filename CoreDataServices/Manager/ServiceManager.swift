@@ -13,7 +13,7 @@ import ConvenientFileManager
 /**
  A singleton manager that is responsible for setting up a core data stack and providing access to both a main `NSManagedObjectContext` and private `NSManagedObjectContext` context. The implementation of this stack is where mainManagedObjectContext will be the parent of backgroundManagedObjectContext using the newer main/private concurrency solution rather than confinement. When performing Core Data tasks you should use `performBlock` or `performBlockAndWait` to ensure that the context is being used on the correct thread. This can lead to performance overhead when compared to alternative stack solutions (http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/) however it is the simplest conceptually to understand.
  */
-@objc class ServiceManager: NSObject {
+@objc public class ServiceManager: NSObject {
     
     //MARK: Accessors
     
@@ -63,6 +63,11 @@ import ConvenientFileManager
     
     private var _managedObjectModel: NSManagedObjectModel?
     
+    /**
+     Persistent store coordinator - responsible for handling communication with the persistent store
+     
+     - returns: `NSPersistentStoreCoordinator`
+     */
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         get {
             if _persistentStoreCoordinator == nil {
@@ -84,7 +89,8 @@ import ConvenientFileManager
      
      - returns: `NSManagedObjectContext` instance.
      */
-    var mainManagedObjectContext: NSManagedObjectContext {
+    @objc(mainManagedObjectContext)
+    public var mainManagedObjectContext: NSManagedObjectContext {
         get {
             objc_sync_enter(self)
             defer { objc_sync_exit(self) }
@@ -108,7 +114,8 @@ import ConvenientFileManager
      
      - returns: `NSManagedObjectContext` instance.
      */
-    var backgroundManagedObjectContext: NSManagedObjectContext {
+    @objc(backgroundManagedObjectContext)
+    public var backgroundManagedObjectContext: NSManagedObjectContext {
         get {
             objc_sync_enter(self)
             defer { objc_sync_exit(self) }
@@ -133,7 +140,8 @@ import ConvenientFileManager
      
      - returns: ServiceManager shared instance.
      */
-    static let sharedInstance = ServiceManager()
+    @objc(sharedInstance)
+    public static let sharedInstance = ServiceManager()
     
     //MARK: SetUp
     
@@ -143,7 +151,7 @@ import ConvenientFileManager
      - param name: filename of the model to load.
      */
     @objc(setupModelURLWithModelName:)
-    func setupModel(name: String) {
+    public func setupModel(name: String) {
         self.setupModel(name, bundle: NSBundle.mainBundle())
     }
     
@@ -154,7 +162,7 @@ import ConvenientFileManager
      - param bundle: bundle the model is in.
      */
     @objc(setupModelURLWithModelName:bundle:)
-    func setupModel(name: String, bundle: NSBundle) {
+    public func setupModel(name: String, bundle: NSBundle) {
         self.modelURL = bundle.URLForResource(name, withExtension: "momd")
     }
     
@@ -209,7 +217,8 @@ import ConvenientFileManager
     /**
      Destroys all data from core data and tears down the stack.
      */
-    func clear() {
+    @objc(clear)
+    public func clear() {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         
@@ -227,7 +236,8 @@ import ConvenientFileManager
     /**
      Saves the managed object context that is used via the `mainManagedObjectContext` var.
      */
-    func saveMainManagedObjectContext() {
+    @objc(saveMainManagedObjectContext)
+    public func saveMainManagedObjectContext() {
         self.mainManagedObjectContext.performBlockAndWait({
             if self.mainManagedObjectContext.hasChanges {
                 do {
@@ -248,7 +258,8 @@ import ConvenientFileManager
      
      Saving the backgroundManagedObjectContext will cause the mainManagedObjectContext to be saved. This can result in a slightly longer save operation however the trade-off is to ensure "data correctness" over performance.
      */
-    func saveBackgroundManagedObjectContext() {
+    @objc(saveBackgroundManagedObjectContext)
+    public func saveBackgroundManagedObjectContext() {
         self.backgroundManagedObjectContext.performBlockAndWait({
             if self.backgroundManagedObjectContext.hasChanges {
                 do {
