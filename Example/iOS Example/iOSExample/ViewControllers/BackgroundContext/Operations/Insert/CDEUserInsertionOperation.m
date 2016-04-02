@@ -8,9 +8,7 @@
 
 #import "CDEUserInsertionOperation.h"
 
-#import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
-#import <CoreDataServices/NSManagedObjectContext+CDSCount.h>
-#import "CDSServiceManager.h"
+#import <CoreDataServices/CoreDataServices-Swift.h>
 
 #import "CDEUser.h"
 
@@ -46,7 +44,7 @@
     
     /*----------------*/
     
-    [[CDSServiceManager sharedInstance].backgroundManagedObjectContext performBlockAndWait:^
+    [[ServiceManager sharedInstance].backgroundManagedObjectContext performBlockAndWait:^
     {
         CDEUser *user = [NSEntityDescription cds_insertNewObjectForEntityForClass:[CDEUser class]
                                                            inManagedObjectContext:[CDSServiceManager sharedInstance].backgroundManagedObjectContext];

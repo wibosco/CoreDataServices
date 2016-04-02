@@ -1,5 +1,7 @@
 PODS:
-  - CoreDataServices (1.1.0)
+  - ConvenientFileManager (2.0.5)
+  - CoreDataServices (2.0.0):
+    - ConvenientFileManager (~> 2.0)
   - PureLayout (3.0.1)
 
 DEPENDENCIES:
@@ -7,7 +9,8 @@ DEPENDENCIES:
   - PureLayout
 
 SPEC CHECKSUMS:
-  CoreDataServices: 55afeeff8dde22933727e6612f69e374ac4368c6
+  ConvenientFileManager: 0c064c7694fc82bd1b7d51126ac0aaf4cede888c
+  CoreDataServices: 63cd46fc14926a9b9ef65943f47f35461a4c259f
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
 COCOAPODS: 0.39.0

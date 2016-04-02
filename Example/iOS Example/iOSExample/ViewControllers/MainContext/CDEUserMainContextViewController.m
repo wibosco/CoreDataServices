@@ -8,11 +8,7 @@
 
 #import "CDEUserMainContextViewController.h"
 
-#import <CoreDataServices/CDSServiceManager.h>
-#import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
-#import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
-#import <CoreDataServices/NSManagedObjectContext+CDSCount.h>
-#import <CoreDataServices/NSEntityDescription+CDSEntityDescription.h>
+#import <CoreDataServices/CoreDataServices-Swift.h>
 #import <PureLayout/PureLayout.h>
 
 #import "CDEUser.h"

@@ -8,7 +8,7 @@
 
 #import "CDEAppDelegate.h"
 
-#import <CoreDataServices/CDSServiceManager.h>
+#import <CoreDataServices/CoreDataServices-Swift.h>
 
 #import "CDEUserMainContextViewController.h"
 #import "CDEUserBackgroundContextViewController.h"
