@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "CoreDataServices"
-  s.version      = "1.1.6"
-  s.summary      = "CoreDataServices contains a set of helper classes/categories to abstract out a lot of the boilerplate that you get with Core Data."
+  s.version      = "2.0.0"
+  s.summary      = "CoreDataServices contains a set of helper classes/extensions to abstract out a lot of the boilerplate that you get with Core Data."
 
   s.homepage     = "http://www.williamboles.me"
   s.license      = { :type => 'MIT', 
@@ -15,11 +15,10 @@ Pod::Spec.new do |s|
   					 :branch => "master", 
   					 :tag => s.version }
 
-  s.source_files  = "CoreDataServices/**/*.{h,m}"
-  s.public_header_files = "CoreDataServices/**/*.{h}"
+  s.source_files  = "CoreDataServices/**/*.swift"
 	
   s.requires_arc = true
 	
-  s.frameworks = 'UIKit', 'CoreData'
+  s.frameworks = 'CoreData'
   
 end

@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `CoreDataServices` adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+
+## [2.0.0](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.0)
+
+* Converted project over to using Swift
+
+* Implemented for passing the bundle when setting up the model
+
 ## [1.1.6](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.6)
 
 * Implemented for passing the bundle when setting up the model
