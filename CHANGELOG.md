@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [2.0.3](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.3)
+
+* Updated example project to use new swift version
+
 ## [2.0.2](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.2)
 
 * Added `public` to ServiceManager class and it's functions
