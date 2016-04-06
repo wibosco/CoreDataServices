@@ -31,7 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[ServiceManager sharedInstance] setupModelURLWithModelName:@"Model"];
+    [[CDSServiceManager sharedInstance] setupModelURLWithModelName:@"Model"];
     
     /*-------------------*/
     
@@ -47,7 +47,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [[ServiceManager sharedInstance] saveMainManagedObjectContext];
+    [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
 }
 
 #pragma mark - Window
