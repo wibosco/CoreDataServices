@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ## [2.0.4](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.4)
 
-* Added @objc attribute to ServiceManager class name
+* Added `@objc` attribute to ServiceManager class name
 
 ## [2.0.3](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.3)
 
