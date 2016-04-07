@@ -19,9 +19,9 @@ public extension NSManagedObjectContext {
     /**
      Retrieves the count of entries.
      
-     -param entityClass: a class value for the entity in core data.
+     - Parametereter entityClass: a class value for the entity in core data.
      
-     - returns: `NSUInteger` count of entries for this class/entity.
+     - Returns: `NSUInteger` count of entries for this class/entity.
      */
     @objc(cds_retrieveEntriesCountForEntityClass:)
     public func retrieveEntriesCount(entityClass: AnyClass) -> Int {
@@ -31,10 +31,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves the count of entries that match the provided predicate's conditions.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
      
-     - returns: `NSUInteger` count of entries that match provided predicate.
+     - Returns: `NSUInteger` count of entries that match provided predicate.
      */
     @objc(cds_retrieveEntriesCountForEntityClass:predicate:)
     public func retrieveEntriesCount(entityClass: AnyClass, predicate: NSPredicate?) -> Int {

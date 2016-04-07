@@ -21,7 +21,7 @@ public class ServiceManager: NSObject {
     /**
      URL of the directory where persistent store's is located.
      
-     - returns: `NSURL`
+     - Returns: `NSURL`
      */
     private lazy var storeDirectoryURL: NSURL = {
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).last!
@@ -34,7 +34,7 @@ public class ServiceManager: NSObject {
     /**
      URL of where persistent store's is located.
      
-     - returns: `NSURL`
+     - Returns: `NSURL`
      */
     private lazy var storeURL: NSURL = {
         let modelFileName = self.modelURL?.URLByDeletingPathExtension?.lastPathComponent!
@@ -50,7 +50,7 @@ public class ServiceManager: NSObject {
     /**
      Model of the persistent store.
      
-     - returns: `NSManagedObjectModel`
+     - Returns: `NSManagedObjectModel`
      */
     private var managedObjectModel: NSManagedObjectModel {
         get {
@@ -67,7 +67,7 @@ public class ServiceManager: NSObject {
     /**
      Persistent store coordinator - responsible for handling communication with the persistent store
      
-     - returns: `NSPersistentStoreCoordinator`
+     - Returns: `NSPersistentStoreCoordinator`
      */
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         get {
@@ -88,7 +88,7 @@ public class ServiceManager: NSObject {
      
      This context should be used on the main thread - using concurrancy type: `NSMainQueueConcurrencyType`.
      
-     - returns: `NSManagedObjectContext` instance.
+     - Returns: `NSManagedObjectContext` instance.
      */
     @objc(mainManagedObjectContext)
     public var mainManagedObjectContext: NSManagedObjectContext {
@@ -113,7 +113,7 @@ public class ServiceManager: NSObject {
      
      This context should be used on a background thread - using concurrancy type: `NSPrivateQueueConcurrencyType`.
      
-     - returns: `NSManagedObjectContext` instance.
+     - Returns: `NSManagedObjectContext` instance.
      */
     @objc(backgroundManagedObjectContext)
     public var backgroundManagedObjectContext: NSManagedObjectContext {
@@ -139,7 +139,7 @@ public class ServiceManager: NSObject {
     /**
      Returns the global ServiceManager instance.
      
-     - returns: ServiceManager shared instance.
+     - Returns: ServiceManager shared instance.
      */
     @objc(sharedInstance)
     public static let sharedInstance = ServiceManager()
@@ -149,7 +149,7 @@ public class ServiceManager: NSObject {
     /**
      Sets Up the core data stack using a model with the filename.
      
-     - param name: filename of the model to load.
+     - Parameter name: filename of the model to load.
      */
     @objc(setupModelURLWithModelName:)
     public func setupModel(name: String) {
@@ -159,8 +159,8 @@ public class ServiceManager: NSObject {
     /**
      Sets Up the core data stack using a model with the filename.
      
-     - param name: filename of the model to load.
-     - param bundle: bundle the model is in.
+     - Parameter name: filename of the model to load.
+     - Parameter bundle: bundle the model is in.
      */
     @objc(setupModelURLWithModelName:bundle:)
     public func setupModel(name: String, bundle: NSBundle) {
@@ -172,7 +172,7 @@ public class ServiceManager: NSObject {
     /**
      Will attempt to create the persistent store and assign that persistent store to the coordinator.
      
-     - param deleteAndRetry: will delete the current persistent store and try creating it fresh. This can happen where lightweight migration has failed.
+     - Parameter deleteAndRetry: will delete the current persistent store and try creating it fresh. This can happen where lightweight migration has failed.
      */
     private func createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: NSPersistentStoreCoordinator, deleteAndRetry: Bool) {
         var directoryCreated = true

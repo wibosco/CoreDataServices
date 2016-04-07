@@ -21,10 +21,10 @@ public extension NSEntityDescription {
     /**
      Retrieves `NSEntityDescription` instance for core data entity class.
      
-     - param entityClass: class value for the entity in core data.
-     - param managedObjectContext: the context used to access the entries.
+     - Parameter entityClass: class value for the entity in core data.
+     - Parameter managedObjectContext: the context used to access the entries.
      
-     - returns: `NSEntityDescription` instance of entityClass passed in.
+     - Returns: `NSEntityDescription` instance of entityClass passed in.
      */
     @objc(cds_entityForClass:inManagedObjectContext:)
     public class func entityFor(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
@@ -42,10 +42,10 @@ public extension NSEntityDescription {
     /**
      Inserts instance of entity class into core data.
      
-     - param entityClass: class value for the entity in core data.
-     - param managedObjectContext: the context used to access the entries.
+     - Parameter entityClass: class value for the entity in core data.
+     - Parameter managedObjectContext: the context used to access the entries.
      
-     - returns: `NSManagedObject` instance of entityClass passed in.
+     - Returns: `NSManagedObject` instance of entityClass passed in.
      */
     @objc(cds_insertNewObjectForEntityForClass:inManagedObjectContext:)
     public class func insertNewObjectForEntity(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {

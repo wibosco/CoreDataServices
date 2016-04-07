@@ -21,9 +21,9 @@ public extension NSFetchRequest {
     /**
      Convenience init method to allow for retreive of a NSFetchRequest instance given a core data entity class.
      
-     @param entityClass - class value for the entity in core data.
+     - Parameter entityClass - class value for the entity in core data.
      
-     @return `NSFetchRequest` instance for the entityClass passed in.
+     - Returns: `NSFetchRequest` instance for the entityClass passed in.
      */
     @objc(cds_fetchRequestWithEntityClass:)
     public class func fetchRequest(entityClass: AnyClass) -> NSFetchRequest? {

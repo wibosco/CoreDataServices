@@ -21,13 +21,13 @@ public extension NSManagedObjectContext {
     /**
      Retrieves top ordered entries for an entity in core data that match the provided predicate's conditions within batches.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
-     - param fetchBatchSize: limits the number of returned objects in each batch.
-     - param fetchLimit : limts the total number of returned objects.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter fetchBatchSize: limits the number of returned objects in each batch.
+     - Parameter fetchLimit : limts the total number of returned objects.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:fetchBatchSize:fetchLimit:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?, fetchBatchSize: Int, fetchLimit: Int) -> Array<NSManagedObject> {
@@ -65,12 +65,12 @@ public extension NSManagedObjectContext {
     /**
      Retrieves ordered entries for an entity in core data that match the provided predicate's conditions within batches.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
-     - param fetchBatchSize: limits the number of returned objects in each batch.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter fetchBatchSize: limits the number of returned objects in each batch.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, sortDescriptors: Array<NSSortDescriptor>, fetchBatchSize: Int) -> Array<NSManagedObject> {
@@ -80,11 +80,11 @@ public extension NSManagedObjectContext {
     /**
      Retrieves ordered entries for an entity in core data that match the provided predicate's conditions.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, sortDescriptors: Array<NSSortDescriptor>) -> Array<NSManagedObject> {
@@ -94,10 +94,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves all entries for an entity in core data that match the provided predicate's conditions.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate) -> Array<NSManagedObject> {
@@ -107,10 +107,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves all entries for an entity in core data within batches.
      
-     - param entityClass: a class value for the entity in core data.
-     - param fetchBatchSize: limits the number of returned objects in each batch.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter fetchBatchSize: limits the number of returned objects in each batch.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, fetchBatchSize: Int) -> Array<NSManagedObject> {
@@ -120,11 +120,11 @@ public extension NSManagedObjectContext {
     /**
      Retrieves all entries for an entity in core data that match the provided predicate's conditions within batches.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
-     - param fetchBatchSize: limits the number of returned objects in each batch.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
+     - Parameter fetchBatchSize: limits the number of returned objects in each batch.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate, fetchBatchSize: Int) -> Array<NSManagedObject> {
@@ -134,10 +134,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves ordered entries for an entity in core data.
      
-     - param entityClass: a class value for the entity in core data.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:sortDescriptors:)
     public func retrieveEntries(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>) -> Array<NSManagedObject> {
@@ -147,11 +147,11 @@ public extension NSManagedObjectContext {
     /**
      Retrieves ordered entries for an entity in core data within batches.
      
-     - param entityClass: a class value for the entity in core data.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
-     - param fetchBatchSize: limits the number of returned objects in each batch.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter fetchBatchSize: limits the number of returned objects in each batch.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:sortDescriptors:fetchBatchSize:)
     public func retrieveEntries(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>, fetchBatchSize: Int) -> Array<NSManagedObject> {
@@ -161,9 +161,9 @@ public extension NSManagedObjectContext {
     /**
      Retrieves all entries for an entity in core data.
      
-     - param entityClass: a class value for the entity in core data.
+     - Parameter entityClass: a class value for the entity in core data.
      
-     - returns: `Array` of `NSManagedObjects`.
+     - Returns: `Array` of `NSManagedObjects`.
      */
     @objc(cds_retrieveEntriesForEntityClass:)
     public func retrieveEntries(entityClass: AnyClass) -> Array<NSManagedObject> {
@@ -175,11 +175,11 @@ public extension NSManagedObjectContext {
     /**
      Retrieves first/top entry for an entity in core data, ordered by sort descriptors and matching the conditions of the predicate.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
      
-     - returns: `NSManagedObject` instance.
+     - Returns: `NSManagedObject` instance.
      */
     @objc(cds_retrieveFirstEntryForEntityClass:predicate:sortDescriptors:)
     public func retrieveFirstEntry(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?) -> NSManagedObject? {
@@ -191,10 +191,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves first/top entry for an entity in core data matching the conditions of the predicate.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries returned.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries returned.
      
-     - returns: `NSManagedObject` instance.
+     - Returns: `NSManagedObject` instance.
      */
     @objc(cds_retrieveFirstEntryForEntityClass:predicate:)
     public func retrieveFirstEntry(entityClass: AnyClass, predicate: NSPredicate) -> NSManagedObject? {
@@ -204,10 +204,10 @@ public extension NSManagedObjectContext {
     /**
      Retrieves first/top entry for an entity in core data matching the conditions of the predicate.
      
-     - param entityClass: a class value for the entity in core data.
-     - param sortDescriptors: an array containing sorting values to be applied to this request.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter sortDescriptors: an array containing sorting values to be applied to this request.
      
-     - returns: `NSManagedObject` instance.
+     - Returns: `NSManagedObject` instance.
      */
     @objc(cds_retrieveFirstEntryForEntityClass:sortDescriptors:)
     public func retrieveFirstEntry(entityClass: AnyClass, sortDescriptors: Array<NSSortDescriptor>) -> NSManagedObject? {
@@ -217,9 +217,9 @@ public extension NSManagedObjectContext {
     /**
      Retrieves first/top entry for an entity in core data.
      
-     - param entityClass: a class value for the entity in core data.
+     - Parameter entityClass: a class value for the entity in core data.
 
-     - returns: `NSManagedObject` instance.
+     - Returns: `NSManagedObject` instance.
      */
     @objc(cds_retrieveFirstEntryForEntityClass:)
     public func retrieveFirstEntry(entityClass: AnyClass) -> NSManagedObject? {

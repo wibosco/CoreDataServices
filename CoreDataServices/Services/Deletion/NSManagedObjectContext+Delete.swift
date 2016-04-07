@@ -19,8 +19,8 @@ public extension NSManagedObjectContext {
     /**
      Deletes entries/rows/objects from core data entity.
      
-     - param entityClass: a class value for the entity in core data.
-     - param saveAfterDeletion: used to determine if after deletion the managed object context should be saved. Especially useful when deleting objects on a background thread and you want to perform our tasks before saving/merging into the main `NSManagedObjectContext`.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter saveAfterDeletion: used to determine if after deletion the managed object context should be saved. Especially useful when deleting objects on a background thread and you want to perform our tasks before saving/merging into the main `NSManagedObjectContext`.
      */
     @objc(cds_deleteEntriesForEntityClass:)
     public func deleteEntries(entityClass: AnyClass) {
@@ -30,9 +30,9 @@ public extension NSManagedObjectContext {
     /**
      Deletes entries/rows/objects from core data entity that matches the predicate passed.
      
-     - param entityClass: a class value for the entity in core data.
-     - param predicate: a predicate used to limit the entries deleted.
-     - param saveAfterDeletion: used to determine if after deletion the managed object context should be saved. Especially useful when deleting objects on a background thread and you want to perform our tasks before saving/merging into the main `NSManagedObjectContext`.
+     - Parameter entityClass: a class value for the entity in core data.
+     - Parameter predicate: a predicate used to limit the entries deleted.
+     - Parameter saveAfterDeletion: used to determine if after deletion the managed object context should be saved. Especially useful when deleting objects on a background thread and you want to perform our tasks before saving/merging into the main `NSManagedObjectContext`.
      */
     @objc(cds_deleteEntriesForEntityClass:predicate:)
     public func deleteEntries(entityClass: AnyClass, predicate: NSPredicate?) {
