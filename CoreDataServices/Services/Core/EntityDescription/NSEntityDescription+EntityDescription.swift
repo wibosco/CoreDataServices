@@ -27,14 +27,13 @@ public extension NSEntityDescription {
      - Returns: `NSEntityDescription` instance of entityClass passed in.
      */
     @objc(cds_entityForClass:inManagedObjectContext:)
-    public class func entityFor(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        var entityDescription: NSEntityDescription?
+    public class func entityFor(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSEntityDescription {
+        let entityName = String(entityClass).componentsSeparatedByString(".").last!
         
-        if let entityName = String(entityClass).componentsSeparatedByString(".").last {
-            entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedObjectContext)
-        }
+        NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedObjectContext)
         
-        return entityDescription
+        //if entityName does not exist we want this statement to throw an exception and crash the app - fail fast
+        return NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedObjectContext)!
     }
     
     //MARK: Insertion
@@ -48,13 +47,10 @@ public extension NSEntityDescription {
      - Returns: `NSManagedObject` instance of entityClass passed in.
      */
     @objc(cds_insertNewObjectForEntityForClass:inManagedObjectContext:)
-    public class func insertNewObjectForEntity(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
-        var managedObject: NSManagedObject?
+    public class func insertNewObjectForEntity(entityClass: AnyClass, managedObjectContext: NSManagedObjectContext) -> NSManagedObject {
+        let entityName = String(entityClass).componentsSeparatedByString(".").last!
         
-        if let entityName = String(entityClass).componentsSeparatedByString(".").last {
-            managedObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: managedObjectContext)
-        }
-        
-        return managedObject
+        //if entityName does not exist we want this statement to throw an exception and crash the app - fail fast
+        return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: managedObjectContext)
     }
 }

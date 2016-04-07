@@ -38,20 +38,18 @@ public extension NSManagedObjectContext {
      */
     @objc(cds_retrieveEntriesCountForEntityClass:predicate:)
     public func retrieveEntriesCount(entityClass: AnyClass, predicate: NSPredicate?) -> Int {
-        var count = 0
+        let fetchRequest = NSFetchRequest.fetchRequest(entityClass)
         
-        if let fetchRequest = NSFetchRequest.fetchRequest(entityClass) {
-            if predicate != nil {
-                fetchRequest.predicate = predicate
-            }
-            
-            var error: NSError?
-            
-            count = self.countForFetchRequest(fetchRequest, error: &error)
-            
-            if error != nil {
-                print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error!.description)")
-            }
+        if predicate != nil {
+            fetchRequest.predicate = predicate
+        }
+        
+        var error: NSError?
+        
+        let count = self.countForFetchRequest(fetchRequest, error: &error)
+        
+        if error != nil {
+            print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error!.description)")
         }
         
         return count

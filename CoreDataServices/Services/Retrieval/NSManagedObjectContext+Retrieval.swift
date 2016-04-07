@@ -31,33 +31,32 @@ public extension NSManagedObjectContext {
      */
     @objc(cds_retrieveEntriesForEntityClass:predicate:sortDescriptors:fetchBatchSize:fetchLimit:)
     public func retrieveEntries(entityClass: AnyClass, predicate: NSPredicate?, sortDescriptors: Array<NSSortDescriptor>?, fetchBatchSize: Int, fetchLimit: Int) -> Array<NSManagedObject> {
+        let fetchRequest = NSFetchRequest.fetchRequest(entityClass)
+        
+        if predicate != nil {
+            fetchRequest.predicate = predicate
+        }
+        
+        if sortDescriptors != nil && sortDescriptors!.count > 0 {
+            fetchRequest.sortDescriptors = sortDescriptors
+        }
+        
+        if fetchBatchSize > 0 {
+            fetchRequest.fetchBatchSize = fetchBatchSize
+        }
+        
+        if fetchLimit > 0 {
+            fetchRequest.fetchLimit = fetchLimit
+        }
         
         var managedObjects: Array<NSManagedObject> = []
         
-        if let fetchRequest = NSFetchRequest.fetchRequest(entityClass) {
-            if predicate != nil {
-                fetchRequest.predicate = predicate
-            }
-            
-            if sortDescriptors != nil && sortDescriptors!.count > 0 {
-                fetchRequest.sortDescriptors = sortDescriptors
-            }
-            
-            if fetchBatchSize > 0 {
-                fetchRequest.fetchBatchSize = fetchBatchSize
-            }
-            
-            if fetchLimit > 0 {
-                fetchRequest.fetchLimit = fetchLimit
-            }
-            
-            do {
-                try managedObjects = self.executeFetchRequest(fetchRequest) as! Array<NSManagedObject>
-            } catch let error as NSError {
-                print("Error attempting to retrieve entries from class \(entityClass), predicate \(predicate), sortDescriptors \(sortDescriptors), fetchBatchSize \(fetchBatchSize), fetchLimit \(fetchLimit), managedObjectContext \(self). Error: \(error.description)")
-            }
+        do {
+            try managedObjects = self.executeFetchRequest(fetchRequest) as! Array<NSManagedObject>
+        } catch let error as NSError {
+            print("Error attempting to retrieve entries from class \(entityClass), predicate \(predicate), sortDescriptors \(sortDescriptors), fetchBatchSize \(fetchBatchSize), fetchLimit \(fetchLimit), managedObjectContext \(self). Error: \(error.description)")
         }
-        
+
         return managedObjects
     }
     

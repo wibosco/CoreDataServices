@@ -30,7 +30,7 @@ class NSEntityDescription_EntityDescriptionTests: XCTestCase {
     func test_entityFor_entityDescriptionReturned() {
         let entityDescription = NSEntityDescription.entityFor(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
-        XCTAssertEqual(entityDescription!.name!, String(Test), "Should have an NSEntityDescription instance for \(String(Test))")
+        XCTAssertEqual(entityDescription.name!, String(Test), "Should have an NSEntityDescription instance for \(String(Test))")
     }
     
     //MARK: Insert
@@ -44,6 +44,6 @@ class NSEntityDescription_EntityDescriptionTests: XCTestCase {
     func test_insertNewObjectForEntity_returnType() {
         let managedObject = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
-        XCTAssertTrue(managedObject!.isKindOfClass(Test.self), "Should have returned object of type: \(String(Test))")
+        XCTAssertTrue(managedObject.isKindOfClass(Test.self), "Should have returned object of type: \(String(Test))")
     }
 }

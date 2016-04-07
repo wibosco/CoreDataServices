@@ -30,6 +30,6 @@ class NSFetchRequest_FetchRequestTests: XCTestCase {
     func test_fetchRequest_entityClass() {
         let fetchRequest = NSFetchRequest.fetchRequest(Test.self)
         
-        XCTAssertEqual(fetchRequest?.entityName, String(Test), "Should have a NSFetchRequest instance for \(String(Test))")
+        XCTAssertEqual(fetchRequest.entityName, String(Test), "Should have a NSFetchRequest instance for \(String(Test))")
     }
 }
