@@ -17,12 +17,8 @@ import ConvenientFileManager
 public class ServiceManager: NSObject {
     
     //MARK: Accessors
-    
-    /**
-     URL of the directory where persistent store's is located.
-     
-     - Returns: `NSURL`
-     */
+
+    /// URL of the directory where persistent store's is located.
     private lazy var storeDirectoryURL: NSURL = {
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).last!
         
@@ -31,11 +27,8 @@ public class ServiceManager: NSObject {
         return storeDirectoryURL
     }()
     
-    /**
-     URL of where persistent store's is located.
-     
-     - Returns: `NSURL`
-     */
+    
+    /// URL of where persistent store's is located.
     private lazy var storeURL: NSURL = {
         let modelFileName = self.modelURL?.URLByDeletingPathExtension?.lastPathComponent!
         let storeFilePath = "\(modelFileName!).sqlite"
@@ -47,11 +40,7 @@ public class ServiceManager: NSObject {
     
     private var modelURL: NSURL?
     
-    /**
-     Model of the persistent store.
-     
-     - Returns: `NSManagedObjectModel`
-     */
+    /// Model of the persistent store.
     private var managedObjectModel: NSManagedObjectModel {
         get {
             if _managedObjectModel == nil {
@@ -64,11 +53,7 @@ public class ServiceManager: NSObject {
     
     private var _managedObjectModel: NSManagedObjectModel?
     
-    /**
-     Persistent store coordinator - responsible for handling communication with the persistent store
-     
-     - Returns: `NSPersistentStoreCoordinator`
-     */
+    /// Persistent store coordinator - responsible for handling communication with the persistent store
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         get {
             if _persistentStoreCoordinator == nil {
@@ -87,8 +72,6 @@ public class ServiceManager: NSObject {
      `NSManagedObjectContext` instance that is used as the default context.
      
      This context should be used on the main thread - using concurrancy type: `NSMainQueueConcurrencyType`.
-     
-     - Returns: `NSManagedObjectContext` instance.
      */
     @objc(mainManagedObjectContext)
     public var mainManagedObjectContext: NSManagedObjectContext {
@@ -112,8 +95,6 @@ public class ServiceManager: NSObject {
      `NSManagedObjectContext` instance that is used as the background context
      
      This context should be used on a background thread - using concurrancy type: `NSPrivateQueueConcurrencyType`.
-     
-     - Returns: `NSManagedObjectContext` instance.
      */
     @objc(backgroundManagedObjectContext)
     public var backgroundManagedObjectContext: NSManagedObjectContext {
