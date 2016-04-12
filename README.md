@@ -31,6 +31,26 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 
 ####Init
 
+######Swift
+
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+	ServiceManager.sharedInstance.setupModel("Model")//model is the name of the `xcdatamodeld` file
+
+    /*----------------*/
+    
+    self.window!.rootViewController = self.rootViewController
+    self.window!.makeKeyAndVisible()
+    
+    /*----------------*/
+    
+    return true
+}
+```
+
+######Objective-C
+
 ```objc
 #import <CoreDataServices/CDSServiceManager.h>
 
@@ -55,6 +75,20 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 
 ####Retrieving
 
+######Swift
+
+```swift
+lazy var users: Array<User> = {
+	let ageSort = NSSortDescriptor(key: "age", ascending: true)
+
+	let users = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(User.self, sortDescriptors: [ageSort])
+
+	return users
+}
+```
+
+######Objective-C
+
 ```objc
 #import <CoreDataServices/NSManagedObjectContext+CDSRetrieval.h>
 
@@ -67,8 +101,8 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
         NSSortDescriptor *ageSort = [NSSortDescriptor sortDescriptorWithKey:@"age"
                                                                   ascending:YES];
         
-        _users = [[CDSServiceManager sharedInstance].managedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
-                                                                                            sortDescriptors:@[ageSort]];
+        _users = [[CDSServiceManager sharedInstance].mainManagedObjectContext cds_retrieveEntriesForEntityClass:[CDEUser class]
+                                                                                            	sortDescriptors:@[ageSort]];
     }
     
     return _users;
@@ -76,6 +110,18 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 ```
 
 ####Counting
+
+######Swift
+
+```swift
+func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	let totalUsers = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(User.self)
+
+	return "Total Users: \(totalUsers)"
+}
+```
+
+######Objective-C
 
 ```objc
 #import <CoreDataServices/NSManagedObjectContext+CDSCount.h>
@@ -89,6 +135,24 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 ```
 
 ####Deleting
+
+######Swift
+
+```swift
+func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	let user = self.users[indexPath.row]
+
+	let predicate = NSPredicate(format: "userID MATCHES '\(user.userID)'")
+
+	ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(User.self, predicate: predicate)
+
+	self.users = nil
+
+	self.tableView.reloadData()
+}
+```
+
+######Objective-C
 
 ```objc
 #import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
@@ -112,40 +176,33 @@ CoreDataServices is mainly composed of a suite of categories that extend `NSMana
 
 ####Saving
 
+######Swift
+
+```swift
+    //Main thread's context
+    ServiceManager.sharedInstance.saveMainManagedObjectContext()
+    
+    //Background thread's context
+    ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
+}
+```
+
+######Objective-C
+
 ```objc
 #import <CoreDataServices/CDSServiceManager.h>
 
 ....
 
-    //Main thread
+    //Main thread's context
     [[CDSServiceManager sharedInstance] saveMainManagedObjectContext];
     
-    //Background thread
+    //Background thread's context
     [[CDSServiceManager sharedInstance] saveBackgroundManagedObjectContext];
 }
 ```
 
 What is interesting to note is when calling `saveBackgroundManagedObjectContext`, CoreDataServices will also call `saveMainManagedObjectContext`, this introduces a small performance overhead but ensures that save events are not lost if the app crashes.
-
-```objc
-#import <CoreDataServices/NSManagedObjectContext+CDSDelete.h>
-
-....
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CDEUser *user = self.users[indexPath.row];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID MATCHES %@", user.userID];
-    
-    [[CDSServiceManager sharedInstance].managedObjectContext cds_deleteEntriesForEntityClass:[CDEUser class]
-                                                                                   predicate:predicate];
-    
-    self.users = nil;
-    
-    [self.tableView reloadData];
-}
-```
 
 ####Using in multi-threaded project
 
