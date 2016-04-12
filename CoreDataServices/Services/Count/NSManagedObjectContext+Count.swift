@@ -19,7 +19,7 @@ public extension NSManagedObjectContext {
     /**
      Retrieves the count of entries.
      
-     - Parametereter entityClass: a class value for the entity in core data.
+     - Parameter entityClass: a class value for the entity in core data.
      
      - Returns: `NSUInteger` count of entries for this class/entity.
      */
