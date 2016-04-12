@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [2.0.6](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.6)
+
+* Removed unneeded `Parameters` from documentation
+* Updated `README` to include examples of using this pod in a Swift project
+
 ## [2.0.5](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.5)
 
 * Updated documentation format to what is now expected
@@ -14,7 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ## [2.0.3](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.3)
 
-* Updated example project to use new swift version
+* Updated example project to use new Swift version
 
 ## [2.0.2](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.2)
 
@@ -50,12 +55,12 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.2](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.2)
 
-* Improved readme
+* Improved `README`
 
 ## [1.1.1](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.1)
 
 * Conforming to Appledoc standard with documentation now
-* Improved readme with better explanation when working in a multi-threaded project
+* Improved `README` with better explanation when working in a multi-threaded project
 
 ## [1.1.0](https://github.com/wibosco/CoreDataServices/releases/tag/1.1.0)
 
