@@ -5,4 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'ConvenientFileManager'
+target 'CoreDataServices' do
+	pod 'ConvenientFileManager'
+end
+
+target 'CoreDataServicesTests' do
+    pod 'ConvenientFileManager'
+end
