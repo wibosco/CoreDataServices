@@ -24,7 +24,7 @@ public class ServiceManager: NSObject {
         
         let storeDirectoryURL = documentsURL.URLByAppendingPathComponent("persistent-store")
         
-        return storeDirectoryURL
+        return storeDirectoryURL!
     }()
     
     
@@ -35,7 +35,7 @@ public class ServiceManager: NSObject {
         
         let storeURL = self.storeDirectoryURL.URLByAppendingPathComponent(storeFilePath)
         
-        return storeURL
+        return storeURL!
     }()
     
     private var modelURL: NSURL?

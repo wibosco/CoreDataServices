@@ -44,14 +44,12 @@ public extension NSManagedObjectContext {
             fetchRequest.predicate = predicate
         }
         
-        var error: NSError?
-        
-        let count = self.countForFetchRequest(fetchRequest, error: &error)
-        
-        if error != nil {
-            print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error!.description)")
+        do {
+            return try self.countForFetchRequest(fetchRequest)
+        } catch {
+            print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error)")
+            
+            return 0
         }
-        
-        return count
     }
 }

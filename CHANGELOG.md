@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [2.1.0](https://github.com/wibosco/CoreDataServices/releases/tag/2.1.0)
+
+* Updated project to support Swift 2.3
+
 ## [2.0.6](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.6)
 
 * Removed unneeded `Parameters` from documentation
