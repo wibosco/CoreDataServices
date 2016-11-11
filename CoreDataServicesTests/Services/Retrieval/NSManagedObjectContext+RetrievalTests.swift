@@ -25,7 +25,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         
         /*---------------*/
         
-        ServiceManager.sharedInstance.setupModel("Model", bundle: Bundle(for: ServiceManagerTests.self))
+        ServiceManager.sharedInstance.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
         
         /*---------------*/
         

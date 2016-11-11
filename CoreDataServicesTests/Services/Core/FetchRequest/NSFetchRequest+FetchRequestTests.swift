@@ -16,7 +16,7 @@ class NSFetchRequest_FetchRequestTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        ServiceManager.sharedInstance.setupModel("Model", bundle: Bundle(for: ServiceManagerTests.self))
+        ServiceManager.sharedInstance.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
     }
     
     override func tearDown() {

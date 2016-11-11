@@ -52,8 +52,8 @@ public extension NSManagedObjectContext {
             let managedObjects = try self.fetch(fetchRequest) as! Array<T>
             
             return managedObjects
-        } catch let error as NSError {
-            print("Error attempting to retrieve entries from class \(entityClass), predicate \(predicate), sortDescriptors \(sortDescriptors), fetchBatchSize \(fetchBatchSize), fetchLimit \(fetchLimit), managedObjectContext \(self). Error: \(error.description)")
+        } catch {
+            print("Error attempting to retrieve entries from class \(entityClass), predicate \(predicate), sortDescriptors \(sortDescriptors), fetchBatchSize \(fetchBatchSize), fetchLimit \(fetchLimit), managedObjectContext \(self). Error: \(error)")
             
             return Array<T>()
         }
