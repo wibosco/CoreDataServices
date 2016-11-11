@@ -21,7 +21,7 @@ public extension NSManagedObjectContext {
      
      - Parameter entityClass: a class value for the entity in core data.
      */
-    public func deleteEntries(entityClass: AnyClass) {
+    public func deleteEntries(entityClass: NSManagedObject.Type) {
         self.deleteEntries(entityClass: entityClass, predicate: nil)
     }
     
@@ -31,7 +31,7 @@ public extension NSManagedObjectContext {
      - Parameter entityClass: a class value for the entity in core data.
      - Parameter predicate: a predicate used to limit the entries deleted.
      */
-    public func deleteEntries(entityClass: AnyClass, predicate: NSPredicate?) {
+    public func deleteEntries(entityClass: NSManagedObject.Type, predicate: NSPredicate?) {
         var managedObjects: Array<NSManagedObject>
         
         if let predicate = predicate {
@@ -44,5 +44,4 @@ public extension NSManagedObjectContext {
             self.delete(managedObject)
         }
     }
-    
 }

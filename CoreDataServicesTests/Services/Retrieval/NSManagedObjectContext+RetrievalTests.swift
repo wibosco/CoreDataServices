@@ -11,14 +11,14 @@ import CoreData
 
 class NSManagedObjectContext_RetrievalTests: XCTestCase {
     
-    //MARK: Accessors
+    //MARK: - Accessors
     
     var managedObjectA: Test?
     var managedObjectB: Test?
     var managedObjectC: Test?
     var managedObjectD: Test?
     
-    //MARK: TestSuiteLifecycle
+    //MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -71,7 +71,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: Retrieval - ClassOnly
+    //MARK: - Retrieval - ClassOnly
     
     func test_retrieveEntriesClassOnly_all() {
         let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self)
@@ -79,7 +79,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         XCTAssertEqual(managedObjects.count, 4, "Should have returned all entries")
     }
     
-    //MARK: Retrieval - ClassAndPredicate
+    //MARK: - Retrieval - ClassAndPredicate
     
     func test_retrieveEntriesClassAndPredicate_all() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
@@ -89,12 +89,12 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         XCTAssertEqual(managedObjects.count, 2, "Should have returned all entries matching predicate")
     }
     
-    //MARK: Retrieval - ClassAndSortDescriptor
+    //MARK: - Retrieval - ClassAndSortDescriptor
     
     func test_retrieveEntriesClassAndSortDescriptor_all() {
         let idSort = NSSortDescriptor(key: "testID", ascending: true)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, sortDescriptors: [idSort]) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, sortDescriptors: [idSort])
         
         let sortedArray = [self.managedObjectD!, self.managedObjectB!, self.managedObjectC!, self.managedObjectA!]
         
@@ -105,33 +105,33 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         let idSort = NSSortDescriptor(key: "testID", ascending: true)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, sortDescriptors: [nameSort, idSort]) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, sortDescriptors: [nameSort, idSort])
         
         let sortedArray = [self.managedObjectC!, self.managedObjectA!, self.managedObjectD!, self.managedObjectB!]
         
         XCTAssertEqual(managedObjects, sortedArray, "Both array should have the same content, in the same order")
     }
     
-    //MARK: Retrieval - ClassAndSortDescriptorAndPredicate
+    //MARK: - Retrieval - ClassAndSortDescriptorAndPredicate
     
     func test_retrieveEntriesClassAndSortDescriptorAndPredicate_all() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         let idSort = NSSortDescriptor(key: "testID", ascending: false)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort]) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort])
         
         let sortedArray = [self.managedObjectA!, self.managedObjectC!]
         
         XCTAssertEqual(managedObjects, sortedArray, "Both array should have the same content, in the same order")
     }
     
-    //MARK: Retrieval - ClassAndSortDescriptorAndPredicateAndLimit
+    //MARK: - Retrieval - ClassAndSortDescriptorAndPredicateAndLimit
     
     func test_retrieveEntriesClassAndSortDescriptorAndPredicateAndLimit_count() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         let idSort = NSSortDescriptor(key: "testID", ascending: false)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1)
  
         XCTAssertEqual(managedObjects.count, 1, "Only the first object should be returned")
     }
@@ -140,12 +140,12 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         let idSort = NSSortDescriptor(key: "testID", ascending: false)
         
-        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1) as! Array<Test>
+        let managedObjects = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: Test.self, predicate: predicate, sortDescriptors: [idSort], fetchBatchSize: 0, fetchLimit: 1)
         
         XCTAssertEqual(managedObjects[0], self.managedObjectA!, "Object returned should match")
     }
     
-    //MARK: Retrieval - Single - ClassOnly
+    //MARK: - Retrieval - Single - ClassOnly
     
     func test_retrieveEntryClassOnly_type() {
         let managedObject = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveFirstEntry(entityClass: Test.self)
@@ -153,7 +153,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         XCTAssertTrue(managedObject!.isKind(of: Test.self), "Entity should be of the type requested")
     }
     
-    //MARK: Retrieval - Single - ClassAndSortDescriptor
+    //MARK: - Retrieval - Single - ClassAndSortDescriptor
     
     func test_retrieveEntryClassAndSortDescriptor_type() {
         let idSort = NSSortDescriptor(key: "testID", ascending: true)
@@ -172,7 +172,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         XCTAssertEqual(managedObject, self.managedObjectA, "Object returned should match")
     }
     
-    //MARK: Retrieval - Single - ClassAndPredicate
+    //MARK: - Retrieval - Single - ClassAndPredicate
     
     func test_retrieveEntryClassAndPredicate_type() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
@@ -182,7 +182,7 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         XCTAssertNotNil(managedObject, "Object should have been returned")
     }
     
-    //MARK: Retrieval - Single - ClassAndPredicateAndSortDescriptor
+    //MARK: - Retrieval - Single - ClassAndPredicateAndSortDescriptor
     
     func test_retrieveEntryClassAndPredicateAndSortDescriptor_type() {
         let idSort = NSSortDescriptor(key: "testID", ascending: false)

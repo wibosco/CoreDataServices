@@ -12,7 +12,7 @@ import CoreData
 
 class ServiceManagerTests: XCTestCase {
 
-    //MARK: TestSuiteLifecycle
+    //MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class ServiceManagerTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: Singleton
+    //MARK: - Singleton
     
     func test_sharedInstance_returnsSameObjectOnMutlipleCalls() {
         let sharedInstanceA = ServiceManager.sharedInstance
@@ -34,7 +34,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertEqual(sharedInstanceA, sharedInstanceB, "Same object should be returned. sharedInstanceA: \(sharedInstanceA), sharedInstanceB\(sharedInstanceB)")
     }
     
-    //MARK: SetUp
+    //MARK: - SetUp
     
     func test_setupModel_mainContextCreated() {
         ServiceManager.sharedInstance.setupModel("Model", bundle: Bundle(for: ServiceManagerTests.self))
@@ -48,7 +48,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertNotNil(ServiceManager.sharedInstance.backgroundManagedObjectContext, "Background context should be able to be created")
     }
     
-    //MARK: Clear
+    //MARK: - Clear
     
     func test_clear_persistentStoreDeleted() {
         let modelName = "Model"

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 /**
  An extension that extends `String` to add functions that focus on interacting with Core Data.
@@ -20,7 +21,7 @@ public extension String {
      
      - Returns: Stripped `String` instance of entityClass passed in.
      */
-    public static func stripModule(entityClass: AnyClass) -> String? {
+    public static func stripModule(entityClass: NSManagedObject.Type) -> String? {
         return String(describing: entityClass).components(separatedBy: ".").last
     }
 }

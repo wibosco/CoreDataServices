@@ -16,7 +16,7 @@ import CoreData
  */
 public extension NSFetchRequest {
     
-    //MARK: Class
+    //MARK: - Class
     
     /**
      Convenience init method to allow for retreive of a NSFetchRequest instance given a core data entity class.
@@ -25,7 +25,7 @@ public extension NSFetchRequest {
      
      - Returns: `NSFetchRequest` instance for the entityClass passed in.
      */
-    public convenience init(entityClass: AnyClass) {
+    public convenience init(entityClass: NSManagedObject.Type) {
         let entityName = String.stripModule(entityClass: entityClass)!
         self.init(entityName: entityName)
     }

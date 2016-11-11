@@ -15,7 +15,7 @@ import ConvenientFileManager
  */
 open class ServiceManager: NSObject {
     
-    //MARK: Accessors
+    //MARK: - Accessors
 
     /// URL of the directory where persistent store's is located.
     fileprivate lazy var storeDirectoryURL: URL = {
@@ -119,7 +119,7 @@ open class ServiceManager: NSObject {
      */
     open static let sharedInstance = ServiceManager()
     
-    //MARK: SetUp
+    //MARK: - SetUp
     
     /**
      Sets Up the core data stack using a model with the filename.
@@ -140,7 +140,7 @@ open class ServiceManager: NSObject {
         self.modelURL = bundle.url(forResource: name, withExtension: "momd")
     }
     
-    //MARK: PersistentStore
+    //MARK: - PersistentStore
     
     /**
      Will attempt to create the persistent store and assign that persistent store to the coordinator.
@@ -186,7 +186,7 @@ open class ServiceManager: NSObject {
         FileManager.deleteData(absolutePath: self.storeDirectoryURL.path)
     }
     
-    //MARK: Clear
+    //MARK: - Clear
     
     /**
      Destroys all data from core data and tears down the stack.
@@ -204,7 +204,7 @@ open class ServiceManager: NSObject {
         self.deletePersistentStore()
     }
     
-    //MARK: Save
+    //MARK: - Save
     
     /**
      Saves the managed object context that is used via the `mainManagedObjectContext` var.
