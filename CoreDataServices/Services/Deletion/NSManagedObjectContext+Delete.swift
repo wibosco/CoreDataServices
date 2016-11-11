@@ -21,9 +21,8 @@ public extension NSManagedObjectContext {
      
      - Parameter entityClass: a class value for the entity in core data.
      */
-    @objc(cds_deleteEntriesForEntityClass:)
-    public func deleteEntries(entityClass: AnyClass) {
-        self.deleteEntries(entityClass, predicate: nil)
+    public func deleteEntries(entityClass: NSManagedObject.Type) {
+        self.deleteEntries(entityClass: entityClass, predicate: nil)
     }
     
     /**
@@ -32,20 +31,17 @@ public extension NSManagedObjectContext {
      - Parameter entityClass: a class value for the entity in core data.
      - Parameter predicate: a predicate used to limit the entries deleted.
      */
-    @objc(cds_deleteEntriesForEntityClass:predicate:)
-    public func deleteEntries(entityClass: AnyClass, predicate: NSPredicate?) {
-        
+    public func deleteEntries(entityClass: NSManagedObject.Type, predicate: NSPredicate?) {
         var managedObjects: Array<NSManagedObject>
         
-        if predicate != nil {
-            managedObjects = self.retrieveEntries(entityClass, predicate: predicate!)
+        if let predicate = predicate {
+            managedObjects = self.retrieveEntries(entityClass: entityClass, predicate: predicate)
         } else {
-            managedObjects = self.retrieveEntries(entityClass)
+            managedObjects = self.retrieveEntries(entityClass: entityClass)
         }
         
         for managedObject in managedObjects {
-            self.deleteObject(managedObject)
+            self.delete(managedObject)
         }
     }
-    
 }

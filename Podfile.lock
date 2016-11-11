@@ -1,11 +1,11 @@
 PODS:
-  - ConvenientFileManager (2.0.8)
+  - ConvenientFileManager (3.0.0)
 
 DEPENDENCIES:
   - ConvenientFileManager
 
 SPEC CHECKSUMS:
-  ConvenientFileManager: f69cef84cf02f132a2b78076ac45982c048474e5
+  ConvenientFileManager: 81dbcb7e4663ef9fc6c007f4248aeafefa099a0f
 
 PODFILE CHECKSUM: b65831cd9eb80cf588280d28ca0d54872e9d922c
 

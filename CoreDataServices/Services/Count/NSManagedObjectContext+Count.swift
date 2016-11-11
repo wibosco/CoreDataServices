@@ -23,9 +23,8 @@ public extension NSManagedObjectContext {
      
      - Returns: `NSUInteger` count of entries for this class/entity.
      */
-    @objc(cds_retrieveEntriesCountForEntityClass:)
-    public func retrieveEntriesCount(entityClass: AnyClass) -> Int {
-        return self.retrieveEntriesCount(entityClass, predicate: nil)
+    public func retrieveEntriesCount(entityClass: NSManagedObject.Type) -> Int {
+        return self.retrieveEntriesCount(entityClass: entityClass, predicate: nil)
     }
     
     /**
@@ -36,16 +35,17 @@ public extension NSManagedObjectContext {
      
      - Returns: `NSUInteger` count of entries that match provided predicate.
      */
-    @objc(cds_retrieveEntriesCountForEntityClass:predicate:)
-    public func retrieveEntriesCount(entityClass: AnyClass, predicate: NSPredicate?) -> Int {
-        let fetchRequest = NSFetchRequest.fetchRequest(entityClass)
+    public func retrieveEntriesCount(entityClass: NSManagedObject.Type, predicate: NSPredicate?) -> Int {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityClass: entityClass)
         
-        if predicate != nil {
+        if let predicate = predicate {
             fetchRequest.predicate = predicate
         }
         
         do {
-            return try self.countForFetchRequest(fetchRequest)
+            let count = try self.count(for: fetchRequest)
+            
+            return count
         } catch {
             print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error)")
             

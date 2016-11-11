@@ -11,32 +11,32 @@ import CoreData
 
 class NSManagedObjectContext_CountTests: XCTestCase {
     
-    //MARK: TestSuiteLifecycle
+    //MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
         
         /*---------------*/
         
-        ServiceManager.sharedInstance.setupModel("Model", bundle: NSBundle(forClass: ServiceManagerTests.self))
+        ServiceManager.sharedInstance.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
         
         /*---------------*/
         
-        let managedObjectA = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectA = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectA.name = "Bob"
         
-        let managedObjectB = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectB = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectB.name = "Toby"
         
-        let managedObjectC = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectC = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectC.name = "Bobby"
         
         /*---------------*/
         
-        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObjectForEntity(AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! AdditionalTest
+        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObjectForEntity(entityClass:AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! AdditionalTest
         
         managedObjectShouldNotBeReturned.title = "Bobsen"
         
@@ -51,20 +51,20 @@ class NSManagedObjectContext_CountTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: Total
+    //MARK: - Total
     
     func test_retrieveEntriesCount_total() {
-        let total = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(Test.self)
+        let total = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self)
         
-        XCTAssertEqual(total, 3, "Should have returned all entries for \(String(Test.self))")
+        XCTAssertEqual(total, 3, "Should have returned all entries for \(String(describing: Test.self))")
     }
     
-    //MARK: Predicate
+    //MARK: - Predicate
     
     func test_retrieveEntriesCountWithPredicate_total() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         
-        let total = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(Test.self, predicate: predicate)
+        let total = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self, predicate: predicate)
         
         XCTAssertEqual(total, 2, "Should have returned all entries that match the predicate: \(predicate)")
     }
