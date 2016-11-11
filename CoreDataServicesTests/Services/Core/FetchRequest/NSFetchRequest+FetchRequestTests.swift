@@ -16,7 +16,7 @@ class NSFetchRequest_FetchRequestTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        ServiceManager.sharedInstance.setupModel("Model", bundle: NSBundle(forClass: ServiceManagerTests.self))
+        ServiceManager.sharedInstance.setupModel("Model", bundle: Bundle(for: ServiceManagerTests.self))
     }
     
     override func tearDown() {
@@ -28,8 +28,8 @@ class NSFetchRequest_FetchRequestTests: XCTestCase {
     //MARK: Class
     
     func test_fetchRequest_entityClass() {
-        let fetchRequest = NSFetchRequest.fetchRequest(Test.self)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityClass: Test.self)
         
-        XCTAssertEqual(fetchRequest.entityName, String(Test), "Should have a NSFetchRequest instance for \(String(Test))")
+        XCTAssertEqual(fetchRequest.entityName, String(describing: Test.self), "Should have a NSFetchRequest instance for \(String(describing: Test.self))")
     }
 }

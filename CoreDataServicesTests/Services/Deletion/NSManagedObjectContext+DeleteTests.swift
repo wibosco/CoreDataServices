@@ -18,25 +18,25 @@ class NSManagedObjectContext_DeleteTests: XCTestCase {
         
         /*---------------*/
         
-        ServiceManager.sharedInstance.setupModel("Model", bundle: NSBundle(forClass: ServiceManagerTests.self))
+        ServiceManager.sharedInstance.setupModel("Model", bundle: Bundle(for: ServiceManagerTests.self))
         
         /*---------------*/
         
-        let managedObjectA = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectA = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectA.name = "Bob"
         
-        let managedObjectB = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectB = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectB.name = "Toby"
         
-        let managedObjectC = NSEntityDescription.insertNewObjectForEntity(Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
+        let managedObjectC = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! Test
         
         managedObjectC.name = "Bobby"
         
         /*---------------*/
         
-        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObjectForEntity(AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! AdditionalTest
+        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObjectForEntity(entityClass:AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! AdditionalTest
         
         managedObjectShouldNotBeReturned.title = "Bobsen"
         
@@ -54,11 +54,11 @@ class NSManagedObjectContext_DeleteTests: XCTestCase {
     //MARK: All
     
     func test_deleteEntries_deleteAll() {
-        ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(Test.self)
+        ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(entityClass: Test.self)
         
-        let totalRemaining = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(Test.self)
+        let totalRemaining = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self)
         
-        XCTAssertEqual(totalRemaining, 0, "Shouldn't have returned any entries for \(String(Test.self))")
+        XCTAssertEqual(totalRemaining, 0, "Shouldn't have returned any entries for \(String(describing: Test.self))")
     }
     
     //MARK: Predciate
@@ -66,9 +66,9 @@ class NSManagedObjectContext_DeleteTests: XCTestCase {
     func test_deleteEntries_predicate() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")
         
-        ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(Test.self, predicate: predicate)
+        ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(entityClass: Test.self, predicate: predicate)
         
-        let totalRemaining = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(Test.self)
+        let totalRemaining = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self)
         
         XCTAssertEqual(totalRemaining, 1, "Should have deleted those entries matching the predicate \(predicate))")
     }
