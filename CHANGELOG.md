@@ -4,9 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.0.0](https://github.com/wibosco/CoreDataServices/releases/tag/3.0.0)
+
+* Updated project to use Swift 3.0
+* Added generic support to retrieval class to avoid having to cast as much
+
 ## [2.1.0](https://github.com/wibosco/CoreDataServices/releases/tag/2.1.0)
 
-* Updated project to support Swift 2.3
+* Updated project to use Swift 2.3
 
 ## [2.0.6](https://github.com/wibosco/CoreDataServices/releases/tag/2.0.6)
 
