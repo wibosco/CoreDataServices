@@ -19,9 +19,7 @@ open class ServiceManager: NSObject {
 
     /// URL of the directory where persistent store's is located.
     fileprivate lazy var storeDirectoryURL: URL = {
-        let documentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).last!
-        
-        let storeDirectoryURL = documentsURL.appendingPathComponent("persistent-store")
+        let storeDirectoryURL = FileManager.documentsDirectoryURL().appendingPathComponent("persistent-store")
         
         return storeDirectoryURL
     }()

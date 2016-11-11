@@ -32,6 +32,8 @@
 		43BD3CA21CAEC5FB0026ADD5 /* AdditionalTest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3CA01CAEC5FB0026ADD5 /* AdditionalTest+CoreDataProperties.swift */; };
 		43BD3CA31CAEC5FB0026ADD5 /* AdditionalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3CA11CAEC5FB0026ADD5 /* AdditionalTest.swift */; };
 		43BD3CA51CAECB290026ADD5 /* Test+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3CA41CAECB290026ADD5 /* Test+CoreDataProperties.swift */; };
+		912D8C6E1DD634C200215F5A /* String+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D8C6D1DD634C200215F5A /* String+Module.swift */; };
+		912D8C6F1DD635B900215F5A /* String+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D8C6D1DD634C200215F5A /* String+Module.swift */; };
 		9BE18F05B873FB0D9667C203 /* Pods_CoreDataServicesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4B9E6303D1E34E96BF3D65 /* Pods_CoreDataServicesTests.framework */; };
 		A630DFAC4815C1BFB3B987E0 /* Pods_CoreDataServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C79220D2D6C6CC3398FE44E /* Pods_CoreDataServices.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,7 @@
 		43BD3CA41CAECB290026ADD5 /* Test+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6406C1F3A9BEFB6524DD700B /* Pods-CoreDataServicesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServicesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F01A54C866891B00DE00EBA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		912D8C6D1DD634C200215F5A /* String+Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Module.swift"; sourceTree = "<group>"; };
 		9C79220D2D6C6CC3398FE44E /* Pods_CoreDataServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FC826BBBA88751D87719F8 /* Pods-CoreDataServicesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServicesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD4B9E6303D1E34E96BF3D65 /* Pods_CoreDataServicesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataServicesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +166,7 @@
 		43BD3C651CAE6CB00026ADD5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				912D8C6C1DD634B200215F5A /* String */,
 				43BD3C691CAE70410026ADD5 /* EntityDescription */,
 				43BD3C6B1CAE70410026ADD5 /* FetchRequest */,
 			);
@@ -303,6 +307,14 @@
 				43BD3C9E1CAEC20B0026ADD5 /* NSManagedObjectContext+RetrievalTests.swift */,
 			);
 			path = Retrieval;
+			sourceTree = "<group>";
+		};
+		912D8C6C1DD634B200215F5A /* String */ = {
+			isa = PBXGroup;
+			children = (
+				912D8C6D1DD634C200215F5A /* String+Module.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 		94ED3B33B5FE130CD8C848A3 /* Frameworks */ = {
@@ -527,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912D8C6E1DD634C200215F5A /* String+Module.swift in Sources */,
 				43BD3C6C1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift in Sources */,
 				43BD3C6F1CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift in Sources */,
 				438B0E1B1CAD66EA005F7AA9 /* ServiceManager.swift in Sources */,
@@ -554,6 +567,7 @@
 				43BD3C851CAE88770026ADD5 /* Model.xcdatamodeld in Sources */,
 				43BD3C9C1CAEBF420026ADD5 /* NSManagedObjectContext+DeleteTests.swift in Sources */,
 				43BD3C701CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift in Sources */,
+				912D8C6F1DD635B900215F5A /* String+Module.swift in Sources */,
 				43BD3C991CAEBC3E0026ADD5 /* NSManagedObjectContext+CountTests.swift in Sources */,
 				43BD3C791CAE75A80026ADD5 /* NSManagedObjectContext+Delete.swift in Sources */,
 				438B0E1C1CAD66EA005F7AA9 /* ServiceManager.swift in Sources */,

@@ -26,7 +26,7 @@ public extension NSFetchRequest {
      - Returns: `NSFetchRequest` instance for the entityClass passed in.
      */
     public convenience init(entityClass: AnyClass) {
-        let entityName = String(describing: entityClass).components(separatedBy: ".").last!
+        let entityName = String.stripModule(entityClass: entityClass)!
         self.init(entityName: entityName)
     }
 }
