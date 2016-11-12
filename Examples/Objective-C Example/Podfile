@@ -6,6 +6,6 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'iOSExample' do
-	pod 'CoreDataServices'
+	pod 'CoreDataServices', '2.1.0'
 	pod 'PureLayout'
 end

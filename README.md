@@ -119,7 +119,7 @@ The newer main/private concurrency solution rather than confinement concurrency 
 
 An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/).
 
-> CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Example/iOS%20Example) to provide more details than listed above.
+> CoreDataServices comes with an [example project](https://github.com/wibosco/CoreDataServices/tree/master/Examples/Swift%20Example) to provide more details than listed above.
 
 > CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
 
