@@ -51,8 +51,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let user = users[indexPath.row]
         
-        cell.nameLabel.text = user.name
-        cell.ageLabel.text = String(user.age)
+        cell.nameLabel.text = "NAME: \(user.name!)"
+        cell.ageLabel.text = "AGE: \(user.age)"
         
         return cell
     }
@@ -104,16 +104,18 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func addUserOnBackgroundContext() {
         DispatchQueue.global(qos: .background).async { [weak self] in
-            let user = NSEntityDescription.insertNewObject(entityClass: User.self, managedObjectContext: ServiceManager.sharedInstance.backgroundManagedObjectContext)
-            
-            user.userID = UUID().uuidString
-            user.name = "Anna BackgroundContext"
-            user.age = Int16(arc4random_uniform(102))
-            
-            ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
-            
-            DispatchQueue.main.async(execute: {
-                self?.clearAndReloadUsers()
+            ServiceManager.sharedInstance.backgroundManagedObjectContext.performAndWait({
+                let user = NSEntityDescription.insertNewObject(entityClass: User.self, managedObjectContext: ServiceManager.sharedInstance.backgroundManagedObjectContext)
+                
+                user.userID = UUID().uuidString
+                user.name = "Anna BackgroundContext"
+                user.age = Int16(arc4random_uniform(102))
+                
+                ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
+                
+                DispatchQueue.main.async(execute: {
+                    self?.clearAndReloadUsers()
+                })
             })
         }
     }
