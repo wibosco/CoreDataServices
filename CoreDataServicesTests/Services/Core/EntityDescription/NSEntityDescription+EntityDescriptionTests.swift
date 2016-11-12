@@ -36,13 +36,13 @@ class NSEntityDescription_EntityDescriptionTests: XCTestCase {
     //MARK: - Insert
     
     func test_insertNewObjectForEntity_inserted() {
-        NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
+        NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         XCTAssertEqual(ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self), 1, "Should have one row in the \(String(describing: Test.self)) entity")
     }
     
     func test_insertNewObjectForEntity_returnType() {
-        let managedObject = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
+        let managedObject = NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         XCTAssertTrue(managedObject.isKind(of: Test.self), "Should have returned object of type: \(String(describing: Test.self))")
     }
