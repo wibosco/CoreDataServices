@@ -1,0 +1,18 @@
+PODS:
+  - ConvenientFileManager (3.0.0)
+  - CoreDataServices (3.0.0):
+    - ConvenientFileManager (~> 3.0)
+  - PureLayout (3.0.2)
+
+DEPENDENCIES:
+  - CoreDataServices
+  - PureLayout
+
+SPEC CHECKSUMS:
+  ConvenientFileManager: 81dbcb7e4663ef9fc6c007f4248aeafefa099a0f
+  CoreDataServices: 2863c675e09fdea5710df78598ad207ac73cb8a1
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+
+PODFILE CHECKSUM: b9e0a1352eb2635e66bc2a8cc408ded132f9d93c
+
+COCOAPODS: 1.1.1

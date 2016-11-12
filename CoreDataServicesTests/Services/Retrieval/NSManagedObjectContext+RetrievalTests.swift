@@ -29,29 +29,29 @@ class NSManagedObjectContext_RetrievalTests: XCTestCase {
         
         /*---------------*/
         
-        self.managedObjectA = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as? Test
+        self.managedObjectA = NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         self.managedObjectA!.name = "Bob"
         self.managedObjectA!.testID = 19
         
-        self.managedObjectB = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as? Test
+        self.managedObjectB = NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         self.managedObjectB!.name = "Toby"
         self.managedObjectB!.testID = 3
         
-        self.managedObjectC = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as? Test
+        self.managedObjectC = NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         self.managedObjectC!.name = "Bob"
         self.managedObjectC!.testID = 8
         
-        self.managedObjectD = NSEntityDescription.insertNewObjectForEntity(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as? Test
+        self.managedObjectD = NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         self.managedObjectD!.name = "Gaby"
         self.managedObjectD!.testID = 1
         
         /*---------------*/
         
-        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObjectForEntity(entityClass:AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext) as! AdditionalTest
+        let managedObjectShouldNotBeReturned = NSEntityDescription.insertNewObject(entityClass:AdditionalTest.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
         
         managedObjectShouldNotBeReturned.title = "Bobsen"
         
