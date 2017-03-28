@@ -6,7 +6,7 @@
 
 CoreDataServices is a suite of helper classes and categories to help to remove some of the boilerplate that surrounds using Core Data.
 
-##Installation via [CocoaPods](https://cocoapods.org/)
+## Installation via [CocoaPods](https://cocoapods.org/)
 
 To integrate CoreDataServices into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -25,11 +25,11 @@ $ pod install
 
 > CocoaPods 1.0.1+ is required to build CoreDataServices.
 
-##Usage
+## Usage
 
 CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
 
-####Init
+#### Init
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -38,7 +38,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-####Retrieving
+#### Retrieving
 
 ```swift
 lazy var users: [User] = {
@@ -50,7 +50,7 @@ lazy var users: [User] = {
 }
 ```
 
-####Counting
+#### Counting
 
 ```swift
 func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -60,7 +60,7 @@ func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> 
 }
 ```
 
-####Deleting
+#### Deleting
 
 ```swift
 func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -74,7 +74,7 @@ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSInde
 }
 ```
 
-####Saving
+#### Saving
 
 ```swift
     //Main thread's context
@@ -87,7 +87,7 @@ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSInde
 
 What is interesting to note is when calling `saveBackgroundManagedObjectContext`, CoreDataServices will also call `saveMainManagedObjectContext`, this introduces a small performance overhead but ensures that save events are not lost if the app crashes.
 
-####Using BackgroundManagedObjectContext
+#### Using BackgroundManagedObjectContext
 
 ```swift
 func addUserOnBackgroundContext() {
@@ -109,7 +109,7 @@ func addUserOnBackgroundContext() {
 }
 ```
 
-####Using in multi-threaded project
+#### Using in multi-threaded project
 
 CoreDataServices has the following implementation of Core Data stack:
 
@@ -124,7 +124,7 @@ An interesting article about different configurations to the Core Data stack can
 
 > CoreDataServices uses [modules](http://useyourloaf.com/blog/modules-and-precompiled-headers.html) for importing/using frameworks - you will need to enable this in your project.
 
-##Found an issue?
+## Found an issue?
 
 Please open a [new Issue here](https://github.com/wibosco/CoreDataServices/issues/new) if you run into a problem specific to CoreDataServices, have a feature request, or want to share a comment. Note that general Core Data questions should be asked on [Stack Overflow](http://stackoverflow.com).
 
