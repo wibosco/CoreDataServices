@@ -11,6 +11,8 @@
 		438B0E091CAD66AE005F7AA9 /* CoreDataServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438B0DFE1CAD66AE005F7AA9 /* CoreDataServices.framework */; };
 		438B0E1B1CAD66EA005F7AA9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B0E1A1CAD66EA005F7AA9 /* ServiceManager.swift */; };
 		438B0E1C1CAD66EA005F7AA9 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438B0E1A1CAD66EA005F7AA9 /* ServiceManager.swift */; };
+		43B3B7881F091E980091232D /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3B7871F091E980091232D /* NSManagedObjectContext+Save.swift */; };
+		43B3B78C1F0976E40091232D /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3B7871F091E980091232D /* NSManagedObjectContext+Save.swift */; };
 		43BD3C6C1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3C6A1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift */; };
 		43BD3C6D1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3C6A1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift */; };
 		43BD3C6F1CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BD3C6E1CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift */; };
@@ -56,6 +58,7 @@
 		438B0E081CAD66AE005F7AA9 /* CoreDataServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B0E0F1CAD66AE005F7AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		438B0E1A1CAD66EA005F7AA9 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		43B3B7871F091E980091232D /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
 		43BD3C6A1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSEntityDescription+EntityDescription.swift"; sourceTree = "<group>"; };
 		43BD3C6E1CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFetchRequest+FetchRequest.swift"; sourceTree = "<group>"; };
 		43BD3C721CAE72810026ADD5 /* NSManagedObjectContext+Count.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Count.swift"; sourceTree = "<group>"; };
@@ -159,8 +162,17 @@
 				43BD3C711CAE72680026ADD5 /* Count */,
 				43BD3C761CAE759B0026ADD5 /* Deletion */,
 				43BD3C7A1CAE78B30026ADD5 /* Retrieval */,
+				43B3B7861F091E5F0091232D /* Save */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		43B3B7861F091E5F0091232D /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				43B3B7871F091E980091232D /* NSManagedObjectContext+Save.swift */,
+			);
+			path = Save;
 			sourceTree = "<group>";
 		};
 		43BD3C651CAE6CB00026ADD5 /* Core */ = {
@@ -469,7 +481,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4C5D39F92375277E67057CE0 /* [CP] Check Pods Manifest.lock */ = {
@@ -484,7 +496,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7C5C1FEB9BAA08352E0E9C88 /* [CP] Copy Pods Resources */ = {
@@ -539,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B3B7881F091E980091232D /* NSManagedObjectContext+Save.swift in Sources */,
 				912D8C6E1DD634C200215F5A /* String+Module.swift in Sources */,
 				43BD3C6C1CAE70410026ADD5 /* NSEntityDescription+EntityDescription.swift in Sources */,
 				43BD3C6F1CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift in Sources */,
@@ -567,6 +580,7 @@
 				43BD3C851CAE88770026ADD5 /* Model.xcdatamodeld in Sources */,
 				43BD3C9C1CAEBF420026ADD5 /* NSManagedObjectContext+DeleteTests.swift in Sources */,
 				43BD3C701CAE70540026ADD5 /* NSFetchRequest+FetchRequest.swift in Sources */,
+				43B3B78C1F0976E40091232D /* NSManagedObjectContext+Save.swift in Sources */,
 				912D8C6F1DD635B900215F5A /* String+Module.swift in Sources */,
 				43BD3C991CAEBC3E0026ADD5 /* NSManagedObjectContext+CountTests.swift in Sources */,
 				43BD3C791CAE75A80026ADD5 /* NSManagedObjectContext+Delete.swift in Sources */,

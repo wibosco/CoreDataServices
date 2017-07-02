@@ -11,7 +11,7 @@ import Foundation
 import ConvenientFileManager
 
 /**
- A singleton manager that is responsible for setting up a core data stack and providing access to both a main `NSManagedObjectContext` and private `NSManagedObjectContext` context. The implementation of this stack is where mainManagedObjectContext will be the parent of backgroundManagedObjectContext using the newer main/private concurrency solution rather than confinement. When performing Core Data tasks you should use `performBlock` or `performBlockAndWait` to ensure that the context is being used on the correct thread. This can lead to performance overhead when compared to alternative stack solutions (http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/) however it is the simplest conceptually to understand.
+ A singleton manager that is responsible for setting up a core data stack and providing access to both a main `NSManagedObjectContext` and private `NSManagedObjectContext` context. The implementation of this stack is where mainManagedObjectContext will be the parent of backgroundManagedObjectContext using the newer main/private concurrency solution rather than confinement. When performing Core Data tasks you should use `performBlock` or `performBlockAndWait` to ensure that the context is being used on the correct thread. Please note, that this can lead to performance overhead when compared to alternative stack solutions (http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/) however it is the simplest conceptually to understand.
  */
 public class ServiceManager: NSObject {
     
@@ -41,7 +41,7 @@ public class ServiceManager: NSObject {
     private var managedObjectModel: NSManagedObjectModel {
         get {
             if _managedObjectModel == nil {
-                _managedObjectModel = NSManagedObjectModel(contentsOf: self.modelURL!)
+                _managedObjectModel = NSManagedObjectModel(contentsOf: modelURL!)
             }
             
             return _managedObjectModel!
@@ -54,9 +54,9 @@ public class ServiceManager: NSObject {
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         get {
             if _persistentStoreCoordinator == nil {
-                _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+                _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
                 
-                self.createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: _persistentStoreCoordinator!, deleteAndRetry: true)
+                createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: _persistentStoreCoordinator!, deleteAndRetry: true)
             }
             
             return _persistentStoreCoordinator!
@@ -78,7 +78,7 @@ public class ServiceManager: NSObject {
             if _mainManagedObjectContext == nil {
                 _mainManagedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
                 
-                _mainManagedObjectContext!.persistentStoreCoordinator = self.persistentStoreCoordinator
+                _mainManagedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
             }
             
             return _mainManagedObjectContext!
@@ -100,7 +100,7 @@ public class ServiceManager: NSObject {
             if _backgroundManagedObjectContext == nil {
                 _backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
                 
-                _backgroundManagedObjectContext!.parent = self.mainManagedObjectContext
+                _backgroundManagedObjectContext!.parent = mainManagedObjectContext
                 _backgroundManagedObjectContext!.undoManager = nil
             }
             
@@ -127,7 +127,7 @@ public class ServiceManager: NSObject {
      - Parameter name: filename of the model to load.
      */
     public func setupModel(name: String) {
-        self.setupModel(name: name, bundle: Bundle.main)
+        setupModel(name: name, bundle: Bundle.main)
     }
     
     /**
@@ -137,7 +137,7 @@ public class ServiceManager: NSObject {
      - Parameter bundle: bundle the model is in.
      */
     public func setupModel(name: String, bundle: Bundle) {
-        self.modelURL = bundle.url(forResource: name, withExtension: "momd")
+        modelURL = bundle.url(forResource: name, withExtension: "momd")
     }
     
     //MARK: - PersistentStore
@@ -151,8 +151,8 @@ public class ServiceManager: NSObject {
         var directoryCreated = true
         
         //Creating an additional directory so that when we clear we get all the files connected to Core Data
-        if !FileManager.fileExists(absolutePath: self.storeDirectoryURL.path) {
-            directoryCreated = FileManager.createDirectory(absoluteDirectoryPath: self.storeDirectoryURL.path)
+        if !FileManager.fileExists(absolutePath: storeDirectoryURL.path) {
+            directoryCreated = FileManager.createDirectory(absoluteDirectoryPath: storeDirectoryURL.path)
         }
         
         if directoryCreated {
@@ -161,14 +161,14 @@ public class ServiceManager: NSObject {
             options[NSInferMappingModelAutomaticallyOption] = true
             
             do {
-                try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: self.storeURL, options: options)
+                try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: options)
             } catch {
                 if  deleteAndRetry {
                     print("Unresolved persistent store error: \(error)")
                     print("Deleting and retrying")
                     
-                    self.deletePersistentStore()
-                    self.createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: coordinator, deleteAndRetry: false)
+                    deletePersistentStore()
+                    createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: coordinator, deleteAndRetry: false)
                 } else {
                     print("Serious error with persistent store: \(error)")
                 }
@@ -183,7 +183,7 @@ public class ServiceManager: NSObject {
      */
     private func deletePersistentStore() {
         //Need to delete the directory so that we also get the `-shm` and `-wal` files
-        FileManager.deleteData(absolutePath: self.storeDirectoryURL.path)
+        FileManager.deleteData(absolutePath: storeDirectoryURL.path)
     }
     
     //MARK: - Clear
@@ -201,7 +201,7 @@ public class ServiceManager: NSObject {
         _persistentStoreCoordinator = nil
         _managedObjectModel = nil
         
-        self.deletePersistentStore()
+        deletePersistentStore()
     }
     
     //MARK: - Save
@@ -210,18 +210,8 @@ public class ServiceManager: NSObject {
      Saves the managed object context that is used via the `mainManagedObjectContext` var.
      */
     public func saveMainManagedObjectContext() {
-        self.mainManagedObjectContext.performAndWait({
-            if self.mainManagedObjectContext.hasChanges {
-                do {
-                    try self.mainManagedObjectContext.save()
-                    
-                    //Force context to process pending changes as cascading deletes may not be immediately applied by coredata.
-                    self.mainManagedObjectContext.processPendingChanges()
-                    
-                } catch {
-                    print("Couldn't save the main context: \(error)")
-                }
-            }
+        mainManagedObjectContext.performAndWait({
+            self.mainManagedObjectContext.saveAndForcePushChangesIfNeeded()
         })
     }
     
@@ -231,20 +221,8 @@ public class ServiceManager: NSObject {
      Saving the backgroundManagedObjectContext will cause the mainManagedObjectContext to be saved. This can result in a slightly longer save operation however the trade-off is to ensure "data correctness" over performance.
      */
     public func saveBackgroundManagedObjectContext() {
-        self.backgroundManagedObjectContext.performAndWait({
-            if self.backgroundManagedObjectContext.hasChanges {
-                do {
-                    try self.backgroundManagedObjectContext.save()
-                    
-                    //Force context to process pending changes as cascading deletes may not be immediately applied by coredata.
-                    self.backgroundManagedObjectContext.processPendingChanges()
-                    
-                    self.saveMainManagedObjectContext()
-                    
-                } catch {
-                    print("Couldn't save the background context: \(error)")
-                }
-            }
+        backgroundManagedObjectContext.performAndWait({
+            self.backgroundManagedObjectContext.saveAndForcePushChangesIfNeeded()
         })
     }
 }

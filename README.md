@@ -77,15 +77,20 @@ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSInde
 #### Saving
 
 ```swift
+    ServiceManager.sharedInstance.mainManagedObjectContext.saveAndForcePushChangesIfNeeded()
+```
+
+What is interesting to note is when calling `saveAndForcePushChangesIfNeeded` on a background/private context the changes will be propagated through parent contexts until `save` is called on the main context. This introduces a small performance overhead but ensures that saved changes are not lost if the app crashes.
+
+Below are two convenience methods to make saving easier.
+
+```swift
     //Main thread's context
     ServiceManager.sharedInstance.saveMainManagedObjectContext()
     
     //Background thread's context
     ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
-}
 ```
-
-What is interesting to note is when calling `saveBackgroundManagedObjectContext`, CoreDataServices will also call `saveMainManagedObjectContext`, this introduces a small performance overhead but ensures that save events are not lost if the app crashes.
 
 #### Using BackgroundManagedObjectContext
 
