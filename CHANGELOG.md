@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.2.0](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.0)
+
+* Added generic `save` extension on `NSManagedObjectContext` so force changes from child->parent context
+
 ## [3.1.0](https://github.com/wibosco/CoreDataServices/releases/tag/3.1.0)
 
 * Added generic support to entityDescription class to avoid having to cast as much

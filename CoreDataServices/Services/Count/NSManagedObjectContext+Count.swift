@@ -47,7 +47,7 @@ public extension NSManagedObjectContext {
             
             return count
         } catch {
-            print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(predicate). Error: \(error)")
+            print("Error attempting to retrieve entries count from entity: \(entityClass) with pred: \(String(describing: predicate)). Error: \(error)")
             
             return 0
         }
