@@ -27,7 +27,7 @@ $ pod install
 
 ## Usage
 
-CoreDataServices is mainly composed of a suite of categories that extend `NSManagedObjectContext`.
+CoreDataServices is mainly composed of a suite of categories/extensions that extend `NSManagedObjectContext`.
 
 #### Init
 
@@ -64,13 +64,13 @@ func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> 
 
 ```swift
 func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-	let user = self.users[indexPath.row]
+	let user = users[indexPath.row]
 
 	let predicate = NSPredicate(format: "userID==%@", user.userID!)
 	ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(entityClass: User.self, predicate: predicate)
-        ServiceManager.sharedInstance.saveMainManagedObjectContext()
+    ServiceManager.sharedInstance.saveMainManagedObjectContext()
         
-        clearAndReloadUsers()
+    clearAndReloadUsers()
 }
 ```
 
@@ -118,8 +118,8 @@ func addUserOnBackgroundContext() {
 
 CoreDataServices has the following implementation of Core Data stack:
 
-* One  `NSManagedObjectContext` using the `NSMainQueueConcurrencyType` concurrency type that is attached directly to the `PersistentStoreCoordinator` - the intention is for this context to only be used on the main-thread.
-* One  `NSManagedObjectContext` using the `NSPrivateQueueConcurrencyType` concurrency type that has the `NSMainQueueConcurrencyType` context as it's parent - the intention is for this context to only be used on background-threads. 
+* One  `NSManagedObjectContext` using the `.mainQueueConcurrencyType` concurrency type that is attached directly to the `PersistentStoreCoordinator` - the intention is for this context to only be used on the main-thread.
+* One  `NSManagedObjectContext` using the `.privateQueueConcurrencyType` concurrency type that has the `.mainQueueConcurrencyType` context as it's parent - the intention is for this context to only be used on background-threads. 
 
 CoreDataServices uses the newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `perform` or `performAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread. 
 

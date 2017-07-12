@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.2.1](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.1)
+
+* Increased code coverage of unit tests
+
 ## [3.2.0](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.0)
 
 * Added generic `save` extension on `NSManagedObjectContext` so force changes from child->parent context
