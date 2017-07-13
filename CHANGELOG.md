@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [3.2.2](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.2)
+
+* Added SwiftLint
+
 ## [3.2.1](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.1)
 
 * Increased code coverage of unit tests
