@@ -12,7 +12,7 @@ import CoreData
 
 class ServiceManagerTests: XCTestCase {
     
-    class NSManagedObjectContextMock:  NSManagedObjectContext {
+    class NSManagedObjectContextMock: NSManagedObjectContext {
         
         var saveAndForcePushChangesIfNeededWasCalled = false
         var performAndWaitWasCalled = false
@@ -34,15 +34,11 @@ class ServiceManagerTests: XCTestCase {
         var backgroundManagedObjectContextToBeReturned: NSManagedObjectContextMock!
         
         override var mainManagedObjectContext: NSManagedObjectContext {
-            get {
-                return mainManagedObjectContextToBeReturned
-            }
+            return mainManagedObjectContextToBeReturned
         }
         
         override var backgroundManagedObjectContext: NSManagedObjectContext {
-            get {
-                return backgroundManagedObjectContextToBeReturned
-            }
+            return backgroundManagedObjectContextToBeReturned
         }
     }
     
@@ -54,7 +50,7 @@ class ServiceManagerTests: XCTestCase {
     var mainManagedObjectContextMock: NSManagedObjectContextMock!
     var backgroundManagedObjectContextMock: NSManagedObjectContextMock!
     
-    //MARK: - TestSuiteLifecycle
+    // MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -79,7 +75,7 @@ class ServiceManagerTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Singleton
+    // MARK: - Singleton
     
     func test_sharedInstance_returnsSameObjectOnMutlipleCalls() {
         let sharedInstanceA = ServiceManager.sharedInstance
@@ -88,7 +84,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertEqual(sharedInstanceA, sharedInstanceB, "Same object should be returned. sharedInstanceA: \(sharedInstanceA), sharedInstanceB\(sharedInstanceB)")
     }
     
-    //MARK: - SetUp
+    // MARK: - SetUp
     
     func test_setupModel_persistentStoreExists() {
         let modelName = "Model"
@@ -112,7 +108,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertNotNil(ServiceManager.sharedInstance.backgroundManagedObjectContext, "Background context should be able to be created")
     }
     
-    //MARK: - Contexts
+    // MARK: - Contexts
     
     func test_mainManagedObjectContext_setUp() {
         serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
@@ -137,7 +133,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertNotNil(backgroundManagedObjectContext.persistentStoreCoordinator)
     }
     
-    //MARK: - Clear
+    // MARK: - Clear
     
     func test_clear_persistentStoreDeleted() {
         let modelName = "Model"
@@ -199,7 +195,7 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertFalse(modelBeforeClear === modelAfterClear, "A new model should have been created after clear")
     }
     
-    //MARK: - Save
+    // MARK: - Save
     
     func test_saveMainManagedObjectContext_saves() {
         serviceManagerMock.mainManagedObjectContextToBeReturned = mainManagedObjectContextMock

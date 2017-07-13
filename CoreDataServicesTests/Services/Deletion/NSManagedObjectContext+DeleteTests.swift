@@ -11,7 +11,7 @@ import CoreData
 
 class NSManagedObjectContext_DeleteTests: XCTestCase {
     
-    //MARK: - TestSuiteLifecycle
+    // MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -51,7 +51,7 @@ class NSManagedObjectContext_DeleteTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - All
+    // MARK: - All
     
     func test_deleteEntries_deleteAll() {
         ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(entityClass: Test.self)
@@ -61,7 +61,7 @@ class NSManagedObjectContext_DeleteTests: XCTestCase {
         XCTAssertEqual(totalRemaining, 0, "Shouldn't have returned any entries for \(String(describing: Test.self))")
     }
     
-    //MARK: - Predciate
+    // MARK: - Predciate
     
     func test_deleteEntries_predicate() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")

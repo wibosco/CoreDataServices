@@ -9,5 +9,8 @@ osx_image: xcode8.3
 before_install:
    - bundle install
 
+before_script:
+   - swiftlint --strict   
+
 script:
    - bundle exec fastlane run_tests  --verbose

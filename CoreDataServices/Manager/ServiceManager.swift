@@ -15,7 +15,7 @@ import ConvenientFileManager
  */
 public class ServiceManager: NSObject {
     
-    //MARK: - Accessors
+    // MARK: - Accessors
 
     /// URL of the directory where persistent store's is located.
     private lazy var storeDirectoryURL: URL = {
@@ -23,7 +23,6 @@ public class ServiceManager: NSObject {
         
         return storeDirectoryURL
     }()
-    
     
     /// URL of where persistent store's is located.
     private lazy var storeURL: URL = {
@@ -43,28 +42,24 @@ public class ServiceManager: NSObject {
     
     /// Model of the persistent store.
     private var managedObjectModel: NSManagedObjectModel {
-        get {
-            if _managedObjectModel == nil {
-                _managedObjectModel = NSManagedObjectModel(contentsOf: modelURL!)
-            }
-            
-            return _managedObjectModel!
+        if _managedObjectModel == nil {
+            _managedObjectModel = NSManagedObjectModel(contentsOf: modelURL!)
         }
+        
+        return _managedObjectModel!
     }
     
     private var _managedObjectModel: NSManagedObjectModel?
     
     /// Persistent store coordinator - responsible for handling communication with the persistent store
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
-        get {
-            if _persistentStoreCoordinator == nil {
-                _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-                
-                createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: _persistentStoreCoordinator!, deleteAndRetry: true)
-            }
+        if _persistentStoreCoordinator == nil {
+            _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
             
-            return _persistentStoreCoordinator!
+            createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: _persistentStoreCoordinator!, deleteAndRetry: true)
         }
+        
+        return _persistentStoreCoordinator!
     }
     
     private var _persistentStoreCoordinator: NSPersistentStoreCoordinator?
@@ -75,18 +70,16 @@ public class ServiceManager: NSObject {
      This context should be used on the main thread - using concurrancy type: `NSMainQueueConcurrencyType`.
      */
     public var mainManagedObjectContext: NSManagedObjectContext {
-        get {
-            objc_sync_enter(self)
-            defer { objc_sync_exit(self) }
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        
+        if _mainManagedObjectContext == nil {
+            _mainManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
             
-            if _mainManagedObjectContext == nil {
-                _mainManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-                
-                _mainManagedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
-            }
-            
-            return _mainManagedObjectContext!
+            _mainManagedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
         }
+        
+        return _mainManagedObjectContext!
     }
     
     private var _mainManagedObjectContext: NSManagedObjectContext?
@@ -97,24 +90,22 @@ public class ServiceManager: NSObject {
      This context should be used on a background thread - using concurrancy type: `NSPrivateQueueConcurrencyType`.
      */
     public var backgroundManagedObjectContext: NSManagedObjectContext {
-        get {
-            objc_sync_enter(self)
-            defer { objc_sync_exit(self) }
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        
+        if _backgroundManagedObjectContext == nil {
+            _backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
             
-            if _backgroundManagedObjectContext == nil {
-                _backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-                
-                _backgroundManagedObjectContext!.parent = mainManagedObjectContext
-                _backgroundManagedObjectContext!.undoManager = nil
-            }
-            
-            return _backgroundManagedObjectContext!
+            _backgroundManagedObjectContext!.parent = mainManagedObjectContext
+            _backgroundManagedObjectContext!.undoManager = nil
         }
+        
+        return _backgroundManagedObjectContext!
     }
     
     private var _backgroundManagedObjectContext: NSManagedObjectContext?
     
-    //MARK: - SharedInstance
+    // MARK: - SharedInstance
     
     /**
      Returns the global ServiceManager instance.
@@ -123,7 +114,7 @@ public class ServiceManager: NSObject {
      */
     public static let sharedInstance = ServiceManager()
     
-    //MARK: - SetUp
+    // MARK: - SetUp
     
     /**
      Sets Up the core data stack using a model with the filename.
@@ -144,7 +135,7 @@ public class ServiceManager: NSObject {
         modelURL = bundle.url(forResource: name, withExtension: "momd")
     }
     
-    //MARK: - PersistentStore
+    // MARK: - PersistentStore
     
     /**
      Will attempt to create the persistent store and assign that persistent store to the coordinator.
@@ -160,7 +151,7 @@ public class ServiceManager: NSObject {
         }
         
         if directoryCreated {
-            var options = Dictionary<String, Bool>()
+            var options = [String: Bool]()
             options[NSMigratePersistentStoresAutomaticallyOption] = true
             options[NSInferMappingModelAutomaticallyOption] = true
             
@@ -190,7 +181,7 @@ public class ServiceManager: NSObject {
         FileManager.deleteData(absolutePath: storeDirectoryURL.path)
     }
     
-    //MARK: - Clear
+    // MARK: - Clear
     
     /**
      Destroys all data from core data and tears down the stack.
@@ -208,7 +199,7 @@ public class ServiceManager: NSObject {
         deletePersistentStore()
     }
     
-    //MARK: - Save
+    // MARK: - Save
     
     /**
      Saves the managed object context that is used via the `mainManagedObjectContext` var.

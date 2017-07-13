@@ -11,7 +11,7 @@ import CoreData
 
 class NSManagedObjectContext_SaveTests: XCTestCase {
     
-    class NSManagedObjectContextMock:  NSManagedObjectContext {
+    class NSManagedObjectContextMock: NSManagedObjectContext {
         
         var hasChangesToBeReturned = false
         
@@ -20,9 +20,7 @@ class NSManagedObjectContext_SaveTests: XCTestCase {
         var processPendingChangesWasCalled = false
         
         override var hasChanges: Bool {
-            get {
-                return hasChangesToBeReturned
-            }
+            return hasChangesToBeReturned
         }
         
         override func save() throws {
@@ -51,9 +49,7 @@ class NSManagedObjectContext_SaveTests: XCTestCase {
         super.setUp()
         
         managedObjectContextMock = NSManagedObjectContextMock(concurrencyType: .mainQueueConcurrencyType)
-        
         parentManagedObjectContextMock = NSManagedObjectContextMock(concurrencyType: .mainQueueConcurrencyType)
-        
         childManagedObjectContextMock = NSManagedObjectContextMock(concurrencyType: .privateQueueConcurrencyType)
         childManagedObjectContextMock.parent = parentManagedObjectContextMock
     }
@@ -66,7 +62,7 @@ class NSManagedObjectContext_SaveTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Changes
+    // MARK: - Changes
     
     func test_saveAndForcePushChangesIfNeeded_noChanges() {
         managedObjectContextMock.hasChangesToBeReturned = false

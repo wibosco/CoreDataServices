@@ -13,7 +13,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     
-    //MARK: - Nib
+    // MARK: - Nib
     
     override func awakeFromNib() {
         super.awakeFromNib()

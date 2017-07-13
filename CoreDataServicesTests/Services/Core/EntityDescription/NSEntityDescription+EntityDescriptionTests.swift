@@ -11,7 +11,7 @@ import CoreData
 
 class NSEntityDescription_EntityDescriptionTests: XCTestCase {
     
-    //MARK: - TestSuiteLifecycle
+    // MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class NSEntityDescription_EntityDescriptionTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Retrieval
+    // MARK: - Retrieval
     
     func test_entityDescriptionFor_entityDescriptionReturned() {
         let entityDescription = NSEntityDescription.entityDescriptionFor(entityClass: Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
@@ -33,7 +33,7 @@ class NSEntityDescription_EntityDescriptionTests: XCTestCase {
         XCTAssertEqual(entityDescription.name!, String(describing: Test.self), "Should have an NSEntityDescription instance for \(String(describing: Test.self))")
     }
     
-    //MARK: - Insert
+    // MARK: - Insert
     
     func test_insertNewObjectForEntity_inserted() {
         NSEntityDescription.insertNewObject(entityClass:Test.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
