@@ -35,7 +35,11 @@ public class ServiceManager: NSObject {
         return storeURL
     }()
     
-    private var modelURL: URL?
+    private var modelURL: URL? {
+        didSet {
+            _ = persistentStoreCoordinator
+        }
+    }
     
     /// Model of the persistent store.
     private var managedObjectModel: NSManagedObjectModel {
@@ -76,7 +80,7 @@ public class ServiceManager: NSObject {
             defer { objc_sync_exit(self) }
             
             if _mainManagedObjectContext == nil {
-                _mainManagedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+                _mainManagedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
                 
                 _mainManagedObjectContext!.persistentStoreCoordinator = persistentStoreCoordinator
             }
@@ -98,7 +102,7 @@ public class ServiceManager: NSObject {
             defer { objc_sync_exit(self) }
             
             if _backgroundManagedObjectContext == nil {
-                _backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+                _backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
                 
                 _backgroundManagedObjectContext!.parent = mainManagedObjectContext
                 _backgroundManagedObjectContext!.undoManager = nil
