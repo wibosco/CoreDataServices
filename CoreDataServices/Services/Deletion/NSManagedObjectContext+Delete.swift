@@ -32,7 +32,7 @@ public extension NSManagedObjectContext {
      - Parameter predicate: a predicate used to limit the entries deleted.
      */
     public func deleteEntries(entityClass: NSManagedObject.Type, predicate: NSPredicate?) {
-        var managedObjects: Array<NSManagedObject>
+        var managedObjects: [NSManagedObject]
         
         if let predicate = predicate {
             managedObjects = self.retrieveEntries(entityClass: entityClass, predicate: predicate)

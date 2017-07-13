@@ -14,21 +14,19 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var _users: [User]?
     var users: [User] {
-        get {
-            if(_users == nil) {
-                let sortDescriptor = NSSortDescriptor.init(key: "age", ascending: true)
-                
-                _users = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: User.self, sortDescriptors: [sortDescriptor])
-            }
+        if(_users == nil) {
+            let sortDescriptor = NSSortDescriptor(key: "age", ascending: true)
             
-            return _users!
+            _users = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: User.self, sortDescriptors: [sortDescriptor])
         }
+        
+        return _users!
     }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addUserBarButtonItem: UIBarButtonItem!
     
-    //MARK: - ViewLifecycle
+    // MARK: - ViewLifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +38,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         addUserBarButtonItem.target = self
     }
 
-    //MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
@@ -62,7 +60,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return "Total Users: \(totalUsers)"
     }
     
-    //MARK: - UITableViewDelegate
+    // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -76,7 +74,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         clearAndReloadUsers()
     }
     
-    //MARK: - ButtonActions
+    // MARK: - ButtonActions
     
     func addUserButtonPressed(sender: UIBarButtonItem) {
         let shouldAddUserOnMainContext = arc4random_uniform(2) == 0
@@ -88,7 +86,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    //MARK: - AddUser
+    // MARK: - AddUser
     
     func addUserOnMainContext() {
         let user = NSEntityDescription.insertNewObject(entityClass: User.self, managedObjectContext: ServiceManager.sharedInstance.mainManagedObjectContext)
@@ -125,4 +123,3 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
     }
 }
-

@@ -16,7 +16,7 @@ import CoreData
  */
 public extension NSFetchRequest {
     
-    //MARK: - Class
+    // MARK: - Class
     
     /**
      Convenience init method to allow for retreive of a NSFetchRequest instance given a core data entity class.

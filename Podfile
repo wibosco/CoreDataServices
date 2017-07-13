@@ -7,6 +7,7 @@ inhibit_all_warnings!
 
 target 'CoreDataServices' do
 	pod 'ConvenientFileManager'
+	pod 'SwiftLint', '0.18.1'
 end
 
 target 'CoreDataServicesTests' do

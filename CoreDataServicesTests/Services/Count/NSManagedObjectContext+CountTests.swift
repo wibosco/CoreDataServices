@@ -11,7 +11,7 @@ import CoreData
 
 class NSManagedObjectContext_CountTests: XCTestCase {
     
-    //MARK: - TestSuiteLifecycle
+    // MARK: - TestSuiteLifecycle
     
     override func setUp() {
         super.setUp()
@@ -51,7 +51,7 @@ class NSManagedObjectContext_CountTests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Total
+    // MARK: - Total
     
     func test_retrieveEntriesCount_total() {
         let total = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: Test.self)
@@ -59,7 +59,7 @@ class NSManagedObjectContext_CountTests: XCTestCase {
         XCTAssertEqual(total, 3, "Should have returned all entries for \(String(describing: Test.self))")
     }
     
-    //MARK: - Predicate
+    // MARK: - Predicate
     
     func test_retrieveEntriesCountWithPredicate_total() {
         let predicate = NSPredicate(format: "name CONTAINS[cd] 'bob'")

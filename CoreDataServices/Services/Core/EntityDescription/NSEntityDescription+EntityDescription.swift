@@ -16,7 +16,7 @@ import CoreData
  */
 public extension NSEntityDescription {
     
-    //MARK: - Retrieval
+    // MARK: - Retrieval
     
     /**
      Retrieves `NSEntityDescription` instance for core data entity class.
@@ -35,7 +35,7 @@ public extension NSEntityDescription {
         return NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)!
     }
     
-    //MARK: - Insertion
+    // MARK: - Insertion
     
     /**
      Inserts instance of entity class into core data.
