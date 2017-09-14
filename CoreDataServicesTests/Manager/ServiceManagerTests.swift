@@ -22,7 +22,7 @@ class ServiceManagerTests: XCTestCase {
             super.saveAndForcePushChangesIfNeeded()
         }
         
-        override func performAndWait(_ block: @escaping () -> Void) {
+        @objc override func performAndWait(_ block: @escaping () -> Void) {
             performAndWaitWasCalled = true
             block()
         }
