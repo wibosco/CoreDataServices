@@ -4,7 +4,7 @@ cache:
   - bundler
   - cocoapods
 
-osx_image: xcode8.3
+osx_image: xcode9
 
 before_install:
    - bundle install

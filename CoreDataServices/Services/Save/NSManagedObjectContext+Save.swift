@@ -17,7 +17,7 @@ public extension NSManagedObjectContext {
     /**
      Saves any pending changes in current context, skips save if there are no changes. If current context is of type `privateQueueConcurrencyType` then the save operation is propagated up the stack until it reaches a context with `mainQueueConcurrencyType`.
      */
-    public func saveAndForcePushChangesIfNeeded() {
+    @objc public func saveAndForcePushChangesIfNeeded() {
         if hasChanges {
             do {
                 try save()

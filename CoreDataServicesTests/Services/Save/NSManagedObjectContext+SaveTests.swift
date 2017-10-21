@@ -22,7 +22,7 @@ class NSManagedObjectContext_SaveTests: XCTestCase {
         override var hasChanges: Bool {
             return hasChangesToBeReturned
         }
-        
+      
         override func save() throws {
             saveWasCalled = true
         }
