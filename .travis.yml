@@ -8,6 +8,7 @@ osx_image: xcode9
 
 before_install:
    - bundle install
+   - bundle exec pod repo update
 
 before_script:
    - swiftlint --strict   
