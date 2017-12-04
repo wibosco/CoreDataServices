@@ -37,8 +37,6 @@
 		43C7C39D1F167498006399BD /* NSManagedObjectContext+SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7C39C1F167498006399BD /* NSManagedObjectContext+SaveTests.swift */; };
 		912D8C6E1DD634C200215F5A /* String+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D8C6D1DD634C200215F5A /* String+Module.swift */; };
 		912D8C6F1DD635B900215F5A /* String+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D8C6D1DD634C200215F5A /* String+Module.swift */; };
-		9BE18F05B873FB0D9667C203 /* Pods_CoreDataServicesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4B9E6303D1E34E96BF3D65 /* Pods_CoreDataServicesTests.framework */; };
-		A630DFAC4815C1BFB3B987E0 /* Pods_CoreDataServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C79220D2D6C6CC3398FE44E /* Pods_CoreDataServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A630DFAC4815C1BFB3B987E0 /* Pods_CoreDataServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +97,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				438B0E091CAD66AE005F7AA9 /* CoreDataServices.framework in Frameworks */,
-				9BE18F05B873FB0D9667C203 /* Pods_CoreDataServicesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,13 +383,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 438B0E121CAD66AE005F7AA9 /* Build configuration list for PBXNativeTarget "CoreDataServices" */;
 			buildPhases = (
-				4196812C754B7241DC3B9D38 /* [CP] Check Pods Manifest.lock */,
 				438B0DF91CAD66AE005F7AA9 /* Sources */,
 				438B0DFA1CAD66AE005F7AA9 /* Frameworks */,
 				438B0DFB1CAD66AE005F7AA9 /* Headers */,
 				438B0DFC1CAD66AE005F7AA9 /* Resources */,
-				ECA840E4AC58EEA2EEA793AC /* [CP] Copy Pods Resources */,
-				43C97B9C1F177F13001A6F9E /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -408,12 +401,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 438B0E151CAD66AE005F7AA9 /* Build configuration list for PBXNativeTarget "CoreDataServicesTests" */;
 			buildPhases = (
-				4C5D39F92375277E67057CE0 /* [CP] Check Pods Manifest.lock */,
 				438B0E041CAD66AE005F7AA9 /* Sources */,
 				438B0E051CAD66AE005F7AA9 /* Frameworks */,
 				438B0E061CAD66AE005F7AA9 /* Resources */,
-				A9DE4980BCC3C7582D73688B /* [CP] Embed Pods Frameworks */,
-				7C5C1FEB9BAA08352E0E9C88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -479,107 +469,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4196812C754B7241DC3B9D38 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoreDataServices-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		43C97B9C1F177F13001A6F9E /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-		};
-		4C5D39F92375277E67057CE0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoreDataServicesTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7C5C1FEB9BAA08352E0E9C88 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A9DE4980BCC3C7582D73688B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ConvenientFileManager/ConvenientFileManager.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConvenientFileManager.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ECA840E4AC58EEA2EEA793AC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataServices/Pods-CoreDataServices-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		438B0DF91CAD66AE005F7AA9 /* Sources */ = {
@@ -763,7 +652,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -785,7 +674,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamboles.CoreDataServices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

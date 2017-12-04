@@ -8,7 +8,6 @@
 
 import CoreData
 import Foundation
-import ConvenientFileManager
 
 /**
  A singleton manager that is responsible for setting up a core data stack and providing access to both a main `NSManagedObjectContext` and private `NSManagedObjectContext` context. The implementation of this stack is where mainManagedObjectContext will be the parent of backgroundManagedObjectContext using the newer main/private concurrency solution rather than confinement. When performing Core Data tasks you should use `performBlock` or `performBlockAndWait` to ensure that the context is being used on the correct thread. Please note, that this can lead to performance overhead when compared to alternative stack solutions (http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/) however it is the simplest conceptually to understand.
@@ -19,7 +18,7 @@ public class ServiceManager: NSObject {
 
     /// URL of the directory where persistent store's is located.
     private lazy var storeDirectoryURL: URL = {
-        let storeDirectoryURL = FileManager.documentsDirectoryURL().appendingPathComponent("persistent-store")
+        let storeDirectoryURL = FileManager.default.documentsDirectoryURL().appendingPathComponent("persistent-store")
         
         return storeDirectoryURL
     }()
@@ -146,8 +145,8 @@ public class ServiceManager: NSObject {
         var directoryCreated = true
         
         //Creating an additional directory so that when we clear we get all the files connected to Core Data
-        if !FileManager.fileExists(absolutePath: storeDirectoryURL.path) {
-            directoryCreated = FileManager.createDirectory(absoluteDirectoryPath: storeDirectoryURL.path)
+        if !FileManager.default.fileExists(atPath: storeDirectoryURL.path) {
+            directoryCreated = FileManager.default.createDirectory(absoluteDirectoryPath: storeDirectoryURL.path)
         }
         
         if directoryCreated {
@@ -178,7 +177,7 @@ public class ServiceManager: NSObject {
      */
     private func deletePersistentStore() {
         //Need to delete the directory so that we also get the `-shm` and `-wal` files
-        FileManager.deleteData(absolutePath: storeDirectoryURL.path)
+        FileManager.default.deleteData(absolutePath: storeDirectoryURL.path)
     }
     
     // MARK: - Clear
@@ -219,5 +218,51 @@ public class ServiceManager: NSObject {
         backgroundManagedObjectContext.performAndWait({
             self.backgroundManagedObjectContext.saveAndForcePushChangesIfNeeded()
         })
+    }
+}
+
+private extension FileManager {
+    
+    // MARK: - Documents
+    
+    func documentsDirectoryURL() -> URL {
+        return urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).last!
+    }
+    
+    // MARK: - Create
+    
+    func createDirectory(absoluteDirectoryPath: String) -> Bool {
+        guard !absoluteDirectoryPath.isEmpty else {
+            return false
+        }
+        
+        let absoluteDirectoryURL = URL(fileURLWithPath: absoluteDirectoryPath)
+        
+        do {
+            try createDirectory(at: absoluteDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            return true
+        } catch {
+            print("Error when creating a directory at location: \(absoluteDirectoryPath). The error was: \(error)")
+            return false
+        }
+    }
+    
+    // MARK: - Delete
+    
+    @discardableResult
+    func deleteData(absolutePath: String) -> Bool {
+        guard !absolutePath.isEmpty else {
+            return false
+        }
+        
+        let absoluteURL = URL(fileURLWithPath: absolutePath)
+        
+        do {
+            try FileManager.default.removeItem(at: absoluteURL)
+            return true
+        } catch {
+            print("Error when deleting data at location: \(absolutePath). The error was: \(error)")
+            return false
+        }
     }
 }

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import ConvenientFileManager
 import CoreData
 
 class ServiceManagerTests: XCTestCase {
@@ -91,7 +90,7 @@ class ServiceManagerTests: XCTestCase {
         
         serviceManager.setupModel(name: modelName, bundle: Bundle(for: ServiceManagerTests.self))
         
-        let persistentStoreExists = FileManager.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
+        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
         
         XCTAssertTrue(persistentStoreExists)
     }
@@ -142,7 +141,7 @@ class ServiceManagerTests: XCTestCase {
         
         serviceManager.clear()
         
-        let persistentStoreExists = FileManager.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
+        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
         
         XCTAssertFalse(persistentStoreExists, "Persistent store file on disk should have been deleted")
     }
@@ -229,3 +228,30 @@ class ServiceManagerTests: XCTestCase {
         XCTAssertTrue(backgroundManagedObjectContextMock.performAndWaitWasCalled)
     }
 }
+
+private extension FileManager {
+    
+    // MARK: - Documents
+    
+    func documentsDirectoryURL() -> URL {
+        return urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).last!
+    }
+    
+    func fileExistsInDocumentsDirectory(relativePath: String) -> Bool {
+        guard !relativePath.isEmpty else {
+            return false
+        }
+        
+        let documentsDirectory = FileManager.default.documentsDirectoryURL()
+        let absolutePath = documentsDirectory.appendingPathComponent(relativePath).path
+        
+        return FileManager.default.fileExists(absolutePath: absolutePath)
+    }
+    
+    // MARK: - Exists
+    
+    func fileExists(absolutePath: String) -> Bool {
+        return FileManager.default.fileExists(atPath: absolutePath)
+    }
+}
+

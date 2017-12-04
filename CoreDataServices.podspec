@@ -18,8 +18,6 @@ Pod::Spec.new do |s|
   s.source_files  = "CoreDataServices/**/*.swift"
 	
   s.requires_arc = true
-
-  s.dependency 'ConvenientFileManager', '4.0.1'
 	
   s.frameworks = 'CoreData'
   
