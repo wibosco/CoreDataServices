@@ -2,16 +2,11 @@ language: objective-c
 
 cache:
   - bundler
-  - cocoapods
 
-osx_image: xcode9
+osx_image: xcode9.1
 
 before_install:
-   - bundle install
-   - bundle exec pod repo update
-
-before_script:
-   - swiftlint --strict   
+   - bundle install   
 
 script:
    - bundle exec fastlane run_tests  --verbose
