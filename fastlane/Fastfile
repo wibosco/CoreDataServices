@@ -5,8 +5,7 @@ platform :ios do
   
   # Common
 
-  lane :run_tests do
-    cocoapods 
+  lane :run_tests do 
     scan(
       scheme: 'CoreDataServices',
       skip_build: true
