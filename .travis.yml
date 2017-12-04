@@ -4,10 +4,11 @@ cache:
   - bundler
   - cocoapods
 
-osx_image: xcode8.3
+osx_image: xcode9
 
 before_install:
    - bundle install
+   - bundle exec pod repo update
 
 before_script:
    - swiftlint --strict   

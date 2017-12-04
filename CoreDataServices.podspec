@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CoreDataServices"
-  s.version      = "3.2.2"
+  s.version      = "4.0.0"
   s.summary      = "CoreDataServices contains a set of helper classes/extensions to abstract out a lot of the boilerplate that you get with Core Data."
 
   s.homepage     = "http://www.williamboles.me"
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 	
   s.requires_arc = true
 
-  s.dependency 'ConvenientFileManager', '~> 3.0'
+  s.dependency 'ConvenientFileManager', '4.0.1'
 	
   s.frameworks = 'CoreData'
   

@@ -25,7 +25,7 @@ public extension NSFetchRequest {
      
      - Returns: `NSFetchRequest` instance for the entityClass passed in.
      */
-    public convenience init(entityClass: NSManagedObject.Type) {
+    @objc public convenience init(entityClass: NSManagedObject.Type) {
         let entityName = String.stripModule(entityClass: entityClass)!
         self.init(entityName: entityName)
     }
