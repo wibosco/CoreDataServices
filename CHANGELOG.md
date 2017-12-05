@@ -4,9 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [4.0.0](https://github.com/wibosco/CoreDataServices/releases/tag/4.0.0)
+
+* Updated project to use Swift 4.0
+* Removed pod dependency on `SwiftLint` and `ConvenientFileManager`
+
 ## [3.2.2](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.2)
 
-* Added SwiftLint
+* Added `SwiftLint`
 
 ## [3.2.1](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.1)
 
