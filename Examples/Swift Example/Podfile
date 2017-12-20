@@ -6,6 +6,5 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'SwiftExample' do
-	pod 'CoreDataServices'
-	pod 'PureLayout'
+	pod 'CoreDataServices', :git => 'https://github.com/wibosco/CoreDataServices'
 end

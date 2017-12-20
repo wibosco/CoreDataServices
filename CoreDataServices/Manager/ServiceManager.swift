@@ -23,11 +23,17 @@ public class ServiceManager: NSObject {
         return storeDirectoryURL
     }()
     
+    private var modelFileName: String?
+    
+    private var bundle: Bundle?
+    
     /// URL of where persistent store's is located.
     private lazy var storeURL: URL = {
-        let modelFileName = self.modelURL?.deletingPathExtension().lastPathComponent
-        let storeFilePath = "\(modelFileName!).sqlite"
+        guard let modelFileName = self.modelFileName else {
+            fatalError("Ensure that setupModel is called before attempting to use your stack")
+        }
         
+        let storeFilePath = "\(modelFileName).sqlite"
         let storeURL = self.storeDirectoryURL.appendingPathComponent(storeFilePath)
         
         return storeURL
@@ -130,8 +136,10 @@ public class ServiceManager: NSObject {
      - Parameter name: filename of the model to load.
      - Parameter bundle: bundle the model is in.
      */
-    public func setupModel(name: String, bundle: Bundle) {
-        modelURL = bundle.url(forResource: name, withExtension: "momd")
+    public func setupModel(name setUpName: String, bundle setUpBundle: Bundle) {
+        modelFileName = setUpName
+        bundle = setUpBundle
+        modelURL = bundle!.url(forResource: modelFileName, withExtension: "momd")
     }
     
     // MARK: - PersistentStore
@@ -164,11 +172,11 @@ public class ServiceManager: NSObject {
                     deletePersistentStore()
                     createPersistentStoreAndAssignToCoordinatorWithDeleteAndRetryOnError(coordinator: coordinator, deleteAndRetry: false)
                 } else {
-                    print("Serious error with persistent store: \(error)")
+                    fatalError("Serious error with persistent store: \(error)")
                 }
             }
         } else {
-            print("Unable to persistentstore due to directory issue")
+            fatalError("Unable to persistentstore due to directory issue")
         }
     }
     
@@ -177,7 +185,7 @@ public class ServiceManager: NSObject {
      */
     private func deletePersistentStore() {
         //Need to delete the directory so that we also get the `-shm` and `-wal` files
-        FileManager.default.deleteData(absolutePath: storeDirectoryURL.path)
+        persistentStoreCoordinator.destroyStore()
     }
     
     // MARK: - Clear
@@ -189,13 +197,24 @@ public class ServiceManager: NSObject {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         
+         deletePersistentStore()
+        
+        _mainManagedObjectContext?.reset()
         _mainManagedObjectContext = nil
+        
+        _backgroundManagedObjectContext?.reset()
         _backgroundManagedObjectContext = nil
         
         _persistentStoreCoordinator = nil
         _managedObjectModel = nil
-        
-        deletePersistentStore()
+    }
+    
+    /**
+     Destroys all data from core data and tears down the stack.
+     */
+    public func reset() {
+        clear()
+        setupModel(name: modelFileName!, bundle: bundle!)
     }
     
     // MARK: - Save
@@ -221,7 +240,24 @@ public class ServiceManager: NSObject {
     }
 }
 
-private extension FileManager {
+fileprivate extension NSPersistentStoreCoordinator {
+    
+    // MARK: - Destroy
+    
+    func destroyStore() {
+        guard let persistentStore = persistentStores.first, let storeURL = persistentStore.url else {
+            return
+        }
+        
+        do {
+            try destroyPersistentStore(at: storeURL, ofType: persistentStore.type, options: persistentStore.options)
+        } catch let error {
+            fatalError("failed to destroy persistent store at \(storeURL), error: \(error)")
+        }
+    }
+}
+
+fileprivate extension FileManager {
     
     // MARK: - Documents
     

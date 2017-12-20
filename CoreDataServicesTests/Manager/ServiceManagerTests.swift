@@ -55,7 +55,10 @@ class ServiceManagerTests: XCTestCase {
         super.setUp()
         
         serviceManager = ServiceManager()
+        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
+        
         serviceManagerMock = ServiceManagerMock()
+        serviceManagerMock.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
         
         mainManagedObjectContextMock = NSManagedObjectContextMock(concurrencyType: .mainQueueConcurrencyType)
         backgroundManagedObjectContextMock = NSManagedObjectContextMock(concurrencyType: .privateQueueConcurrencyType)
@@ -86,32 +89,22 @@ class ServiceManagerTests: XCTestCase {
     // MARK: - SetUp
     
     func test_setupModel_persistentStoreExists() {
-        let modelName = "Model"
-        
-        serviceManager.setupModel(name: modelName, bundle: Bundle(for: ServiceManagerTests.self))
-        
-        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
+        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/Model.sqlite")
         
         XCTAssertTrue(persistentStoreExists)
     }
     
     func test_setupModel_mainContextCreated() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         XCTAssertNotNil(ServiceManager.sharedInstance.mainManagedObjectContext, "Main context should be able to be created")
     }
     
     func test_setupModel_backgroundContextCreated() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         XCTAssertNotNil(ServiceManager.sharedInstance.backgroundManagedObjectContext, "Background context should be able to be created")
     }
     
     // MARK: - Contexts
     
     func test_mainManagedObjectContext_setUp() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let mainMainManagedObjectContext = serviceManager.mainManagedObjectContext
         
         XCTAssertEqual(mainMainManagedObjectContext.concurrencyType, .mainQueueConcurrencyType)
@@ -121,8 +114,6 @@ class ServiceManagerTests: XCTestCase {
     }
     
     func test_backgroundManagedObjectContext_setUp() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let mainMainManagedObjectContext = serviceManager.mainManagedObjectContext
         let backgroundManagedObjectContext = serviceManager.backgroundManagedObjectContext
         
@@ -135,20 +126,14 @@ class ServiceManagerTests: XCTestCase {
     // MARK: - Clear
     
     func test_clear_persistentStoreDeleted() {
-        let modelName = "Model"
-        
-        serviceManager.setupModel(name: modelName, bundle: Bundle(for: ServiceManagerTests.self))
-        
         serviceManager.clear()
         
-        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/\(modelName).sqlite")
+        let persistentStoreExists = FileManager.default.fileExistsInDocumentsDirectory(relativePath: "persistent-store/Model.sqlite")
         
         XCTAssertFalse(persistentStoreExists, "Persistent store file on disk should have been deleted")
     }
     
     func test_clear_differentMainContextToWhatWasBefore() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let managedObjectContextBeforeClear = serviceManager.mainManagedObjectContext
         
         serviceManager.clear()
@@ -159,8 +144,6 @@ class ServiceManagerTests: XCTestCase {
     }
     
     func test_clear_differentBackgroundContextToWhatWasBefore() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let managedObjectContextBeforeClear = serviceManager.backgroundManagedObjectContext
         
         serviceManager.clear()
@@ -171,8 +154,6 @@ class ServiceManagerTests: XCTestCase {
     }
     
     func test_clear_differentPersistentStoreCoordinatorToWhatWasBefore() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let persistentStoreCoordinatorBeforeClear = serviceManager.mainManagedObjectContext.persistentStoreCoordinator!
         
         serviceManager.clear()
@@ -183,8 +164,6 @@ class ServiceManagerTests: XCTestCase {
     }
     
     func test_clear_differentModelToWhatWasBefore() {
-        serviceManager.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
-        
         let modelBeforeClear = serviceManager.mainManagedObjectContext.persistentStoreCoordinator!.managedObjectModel
         
         serviceManager.clear()
