@@ -50,8 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		120E5A506594C4EA473B3485 /* Pods-CoreDataServices.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServices.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServices/Pods-CoreDataServices.debug.xcconfig"; sourceTree = "<group>"; };
-		25D8F908B66F791C56A89CCA /* Pods-CoreDataServices.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServices.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServices/Pods-CoreDataServices.release.xcconfig"; sourceTree = "<group>"; };
 		438B0DFE1CAD66AE005F7AA9 /* CoreDataServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		438B0E011CAD66AE005F7AA9 /* CoreDataServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataServices.h; sourceTree = "<group>"; };
 		438B0E081CAD66AE005F7AA9 /* CoreDataServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,12 +73,7 @@
 		43BD3CA11CAEC5FB0026ADD5 /* AdditionalTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalTest.swift; sourceTree = "<group>"; };
 		43BD3CA41CAECB290026ADD5 /* Test+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		43C7C39C1F167498006399BD /* NSManagedObjectContext+SaveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+SaveTests.swift"; sourceTree = "<group>"; };
-		6406C1F3A9BEFB6524DD700B /* Pods-CoreDataServicesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServicesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6F01A54C866891B00DE00EBA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D8C6D1DD634C200215F5A /* String+Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Module.swift"; sourceTree = "<group>"; };
-		9C79220D2D6C6CC3398FE44E /* Pods_CoreDataServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7FC826BBBA88751D87719F8 /* Pods-CoreDataServicesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataServicesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataServicesTests/Pods-CoreDataServicesTests.release.xcconfig"; sourceTree = "<group>"; };
-		DD4B9E6303D1E34E96BF3D65 /* Pods_CoreDataServicesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataServicesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40C75F51CAFE72800AF89CB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,8 +102,6 @@
 				438B0E001CAD66AE005F7AA9 /* CoreDataServices */,
 				438B0E0C1CAD66AE005F7AA9 /* CoreDataServicesTests */,
 				438B0DFF1CAD66AE005F7AA9 /* Products */,
-				94ED3B33B5FE130CD8C848A3 /* Frameworks */,
-				97CBFD8C2EEAA183D09D1CC4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -334,27 +325,6 @@
 				912D8C6D1DD634C200215F5A /* String+Module.swift */,
 			);
 			path = String;
-			sourceTree = "<group>";
-		};
-		94ED3B33B5FE130CD8C848A3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6F01A54C866891B00DE00EBA /* Pods.framework */,
-				9C79220D2D6C6CC3398FE44E /* Pods_CoreDataServices.framework */,
-				DD4B9E6303D1E34E96BF3D65 /* Pods_CoreDataServicesTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		97CBFD8C2EEAA183D09D1CC4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				120E5A506594C4EA473B3485 /* Pods-CoreDataServices.debug.xcconfig */,
-				25D8F908B66F791C56A89CCA /* Pods-CoreDataServices.release.xcconfig */,
-				6406C1F3A9BEFB6524DD700B /* Pods-CoreDataServicesTests.debug.xcconfig */,
-				D7FC826BBBA88751D87719F8 /* Pods-CoreDataServicesTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F40C75F41CAFE72800AF89CB /* SupportingFiles */ = {
@@ -636,7 +606,6 @@
 		};
 		438B0E131CAD66AE005F7AA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 120E5A506594C4EA473B3485 /* Pods-CoreDataServices.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -659,7 +628,6 @@
 		};
 		438B0E141CAD66AE005F7AA9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25D8F908B66F791C56A89CCA /* Pods-CoreDataServices.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -681,7 +649,6 @@
 		};
 		438B0E161CAD66AE005F7AA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6406C1F3A9BEFB6524DD700B /* Pods-CoreDataServicesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataServicesTests/Info.plist;
@@ -695,7 +662,6 @@
 		};
 		438B0E171CAD66AE005F7AA9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7FC826BBBA88751D87719F8 /* Pods-CoreDataServicesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataServicesTests/Info.plist;
