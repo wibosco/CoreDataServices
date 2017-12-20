@@ -16,11 +16,11 @@ class NSFetchRequest_FetchRequestTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        ServiceManager.sharedInstance.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
+        ServiceManager.shared.setupModel(name: "Model", bundle: Bundle(for: ServiceManagerTests.self))
     }
     
     override func tearDown() {
-        ServiceManager.sharedInstance.clear()
+        ServiceManager.shared.clear()
         
         super.tearDown()
     }

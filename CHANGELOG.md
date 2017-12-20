@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 * Updated project to use Swift 4.0
 * Removed pod dependency on `SwiftLint` and `ConvenientFileManager`
+* Renamed `sharedInstance` to `shared`
+* Implemented `reset` - clears the Core Data stack and rebuilds it
 
 ## [3.2.2](https://github.com/wibosco/CoreDataServices/releases/tag/3.2.2)
 

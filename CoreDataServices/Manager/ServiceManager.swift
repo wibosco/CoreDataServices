@@ -117,7 +117,7 @@ public class ServiceManager: NSObject {
      
      - Returns: ServiceManager shared instance.
      */
-    public static let sharedInstance = ServiceManager()
+    public static let shared = ServiceManager()
     
     // MARK: - SetUp
     
@@ -210,7 +210,7 @@ public class ServiceManager: NSObject {
     }
     
     /**
-     Destroys all data from core data and tears down the stack.
+     Destroys all data from core data, tears down the stack and rebuilds it.
      */
     public func reset() {
         clear()
