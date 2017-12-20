@@ -65,7 +65,7 @@ class UsersViewController: UIViewController {
         
         user.userID = UUID().uuidString
         user.name = "Bob MainContext"
-        user.dateOfBirth = Date.randomDate(daysBack: 30000) as NSDate?
+        user.dateOfBirth = Date.randomDate(daysBack: 30000)
         
         ServiceManager.sharedInstance.saveMainManagedObjectContext()
         
@@ -79,7 +79,7 @@ class UsersViewController: UIViewController {
                 
                 user.userID = UUID().uuidString
                 user.name = "Anna BackgroundContext"
-                user.dateOfBirth = Date.randomDate(daysBack: 30000) as NSDate?
+                user.dateOfBirth = Date.randomDate(daysBack: 30000)
                 
                 ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
                 

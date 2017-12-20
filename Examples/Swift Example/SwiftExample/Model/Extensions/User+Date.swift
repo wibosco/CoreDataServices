@@ -15,7 +15,7 @@ extension User {
     override public func awakeFromInsert() {
         super.awakeFromInsert()
         
-        dateAdded = Date() as NSDate
+        dateAdded = Date()
     }
     
     // MARK: - Age
