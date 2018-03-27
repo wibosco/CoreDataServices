@@ -1,0 +1,16 @@
+PODS:
+  - CoreDataServices (4.0.0)
+
+DEPENDENCIES:
+  - CoreDataServices (from `../`)
+
+EXTERNAL SOURCES:
+  CoreDataServices:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CoreDataServices: 973d46cd7ee553cd0ca9ce2d66be3a9df2b652c3
+
+PODFILE CHECKSUM: 71c7b05af46fd84153c450ca0d0dc9c046d26dc3
+
+COCOAPODS: 1.4.0
