@@ -32,44 +32,48 @@ CoreDataServices is mainly composed of a suite of categories/extensions that ext
 #### Init
 
 ```swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        ServiceManager.sharedInstance.setupModel(name: "Model")
-        return true
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    ServiceManager.shared.setupModel(name: "Model")
+    return true
 }
 ```
 
 #### Retrieving
 
 ```swift
-lazy var users: [User] = {
-	let ageSort = NSSortDescriptor(key: "age", ascending: true)
+var _users: [User]?
+var users: [User] {
+    if(_users == nil) {
+        let sortDescriptor = NSSortDescriptor(key: "dateAdded", ascending: false)
 
-	let users = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntries(entityClass: User.self, sortDescriptors: [ageSort])
+        _users = ServiceManager.shared.mainManagedObjectContext.retrieveEntries(entityClass: User.self, sortDescriptors: [sortDescriptor])
+    }
 
-	return users
+    return _users!
 }
 ```
 
 #### Counting
 
 ```swift
-func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-	let totalUsers = ServiceManager.sharedInstance.mainManagedObjectContext.retrieveEntriesCount(entityClass: User.self)
-
-	return "Total Users: \(totalUsers)"
+func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let totalUsers = ServiceManager.shared.mainManagedObjectContext.retrieveEntriesCount(entityClass: User.self)
+    return "Total Users: \(totalUsers)"
 }
 ```
 
 #### Deleting
 
 ```swift
-func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-	let user = users[indexPath.row]
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
 
-	let predicate = NSPredicate(format: "userID==%@", user.userID!)
-	ServiceManager.sharedInstance.mainManagedObjectContext.deleteEntries(entityClass: User.self, predicate: predicate)
-    ServiceManager.sharedInstance.saveMainManagedObjectContext()
-        
+    let user = users[indexPath.row]
+
+    let predicate = NSPredicate(format: "userID==%@", user.userID!)
+    ServiceManager.shared.mainManagedObjectContext.deleteEntries(entityClass: User.self, predicate: predicate)
+    ServiceManager.shared.saveMainManagedObjectContext()
+
     clearAndReloadUsers()
 }
 ```
@@ -77,7 +81,7 @@ func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSInde
 #### Saving
 
 ```swift
-    ServiceManager.sharedInstance.mainManagedObjectContext.saveAndForcePushChangesIfNeeded()
+ServiceManager.shared.mainManagedObjectContext.saveAndForcePushChangesIfNeeded()
 ```
 
 What is interesting to note is when calling `saveAndForcePushChangesIfNeeded` on a background/private context the changes will be propagated through parent contexts until `save` is called on the main context. This introduces a small performance overhead but ensures that saved changes are not lost if the app crashes.
@@ -85,11 +89,11 @@ What is interesting to note is when calling `saveAndForcePushChangesIfNeeded` on
 Below are two convenience methods to make saving easier.
 
 ```swift
-    //Main thread's context
-    ServiceManager.sharedInstance.saveMainManagedObjectContext()
-    
-    //Background thread's context
-    ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
+//Main thread's context
+ServiceManager.shared.saveMainManagedObjectContext()
+
+//Background thread's context
+ServiceManager.shared.saveBackgroundManagedObjectContext()
 ```
 
 #### Using BackgroundManagedObjectContext
@@ -97,15 +101,15 @@ Below are two convenience methods to make saving easier.
 ```swift
 func addUserOnBackgroundContext() {
     DispatchQueue.global(qos: .background).async { [weak self] in
-        ServiceManager.sharedInstance.backgroundManagedObjectContext.performAndWait({
-            let user = NSEntityDescription.insertNewObject(entityClass: User.self, managedObjectContext: ServiceManager.sharedInstance.backgroundManagedObjectContext)
-            
+        ServiceManager.shared.backgroundManagedObjectContext.performAndWait({
+            let user = NSEntityDescription.insertNewObject(entityClass: User.self, managedObjectContext: ServiceManager.shared.backgroundManagedObjectContext)
+
             user.userID = UUID().uuidString
             user.name = "Anna BackgroundContext"
-            user.age = Int16(arc4random_uniform(102))
-            
-            ServiceManager.sharedInstance.saveBackgroundManagedObjectContext()
-            
+            user.dateOfBirth = Date.randomDate(daysBack: 30000)
+
+            ServiceManager.shared.saveBackgroundManagedObjectContext()
+
             DispatchQueue.main.async(execute: {
                 self?.clearAndReloadUsers()
             })
@@ -119,9 +123,9 @@ func addUserOnBackgroundContext() {
 CoreDataServices has the following implementation of Core Data stack:
 
 * One  `NSManagedObjectContext` using the `.mainQueueConcurrencyType` concurrency type that is attached directly to the `PersistentStoreCoordinator` - the intention is for this context to only be used on the main-thread.
-* One  `NSManagedObjectContext` using the `.privateQueueConcurrencyType` concurrency type that has the `.mainQueueConcurrencyType` context as it's parent - the intention is for this context to only be used on background-threads. 
+* One  `NSManagedObjectContext` using the `.privateQueueConcurrencyType` concurrency type that has the `.mainQueueConcurrencyType` context as it's parent - the intention is for this context to only be used on background-threads.
 
-CoreDataServices uses the newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `perform` or `performAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread. 
+CoreDataServices uses the newer main/private concurrency solution rather than confinement concurrency as it offers conceptually the easiest solution. However in order for this to behave as expected when on a background-thread you will need to ensure that you use either `perform` or `performAndWait` to access the background-thread context. to ensure that the context is being used on the correct thread.
 
 An interesting article about different configurations to the Core Data stack can be found [here](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/).
 
